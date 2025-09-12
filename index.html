@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Just Saying — jsdotnews</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="What was claimed. What the record shows. Why it matters." />
+  <style>
+    :root{
+      --blue:#1D3557;     /* steadiness, trust */
+      --gray:#4A4A4A;     /* neutral */
+      --gold:#FFD166;     /* honor highlight */
+      --paper:#FFFFFF;    /* canvas */
+      --wash:#F7F8FA;     /* light section bg */
+      --line:#E6E9EE;     /* soft border */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--paper);color:var(--blue);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(29,53,87,.25)}
+    .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+    header{background:var(--blue);color:#fff}
+    .mast{display:flex;gap:14px;align-items:center;padding:16px 20px}
+    .logo{width:42px;height:42px;flex:0 0 42px}
+    .title{margin:0;font-size:22px}
+    .tag{margin:2px 0 0;color:var(--gold);font-size:14px}
+    .hero{background:var(--wash);border-bottom:1px solid var(--line)}
+    .hero .wrap{padding:22px 20px}
+    h1{margin:0 0 6px;font-size:26px}
+    .lead{margin:0 0 14px}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:9px 12px;border-radius:8px;border:1px solid #dfe6ee;background:#fff;color:var(--blue)}
+    .btn.gold{background:var(--gold);border-color:var(--gold);color:#111}
+    main{padding:24px 0}
+    .card{background:#fff;border:1px solid var(--line);border-left:6px solid var(--gold);padding:16px;border-radius:8px;margin:0 0 16px}
+    .card h3{margin:0 0 6px;font-size:16px}
+    .meta{color:var(--gray);font-size:12px;margin-top:8px}
+    footer{margin-top:28px;padding:16px 20px;background:#f1f3f6;color:var(--gray);text-align:center;font-size:14px;border-top:1px solid #e1e5ea}
+    @media (max-width:640px){ h1{font-size:22px} .title{font-size:20px} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap mast">
+      <!-- Inline SVG logo (use this for avatars too) -->
+      <svg class="logo" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="jsdotnews">
+        <rect width="256" height="256" fill="#1D3557" rx="40"/>
+        <circle cx="56" cy="200" r="12" fill="#FFD166"/>
+        <text x="56" y="110" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="96" fill="#FFD166">js</text>
+        <text x="56" y="180" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="58" fill="#FFFFFF">news</text>
+      </svg>
+      <div>
+        <p class="title">Just Saying</p>
+        <p class="tag">jsdotnews — receipts over rumors</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Today</h1>
+      <p class="lead">We check the lines people pass around—memes, posts, headlines—against the record. What was claimed. What the record shows. Why it matters.</p>
+      <div class="row">
+        <a class="btn gold" href="#checks">See checks</a>
+        <a class="btn" href="mailto:hello@justsaying.news">Send a tip</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap" id="checks">
+    <!-- Example fact cards (edit these) -->
+    <article class="card">
+      <h3>Claim: “X person said Y at Z event.”</h3>
+      <p><strong>Record:</strong> Exact quotation with date/time. Link the source.</p>
+      <p><strong>Why it matters:</strong> Two short lines on reach or stakes.</p>
+      <p class="meta">Sources: <a href="#">link</a>, <a href="#">link</a></p>
+    </article>
+
+    <article class="card">
+      <h3>Image/Meme: viral screenshot about A.</h3>
+      <p><strong>Record:</strong> Original image context, who posted first, any edits.</p>
+      <p><strong>Why it matters:</strong> One or two lines on distortion or missing context.</p>
+      <p class="meta">Sources: <a href="#">link</a>, <a href="#">link</a></p>
+    </article>
+  </main>
+
+  <footer>
+    © 2025 Just Saying — jsdotnews • hello@justsaying.news
+  </footer>
+</body>
+</html>
