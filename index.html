@@ -4,87 +4,213 @@
   <meta charset="utf-8" />
   <title>Just Saying — jsdotnews</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="What was claimed. What the record shows. Why it matters." />
+  <meta name="description" content="Just Saying (jsdotnews). Claim. Record. Why it matters. Short, sourced, shareable." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect rx='10' width='48' height='48' fill='%232563EB'/%3E%3Ctext x='9' y='30' font-size='18' font-family='Inter, Arial, sans-serif' font-weight='800' fill='white'%3EJS%3C/text%3E%3C/svg%3E">
+
   <style>
+    /* ---------- Tokens (Light) ---------- */
     :root{
-      --blue:#1D3557;     /* steadiness, trust */
-      --gray:#4A4A4A;     /* neutral */
-      --gold:#FFD166;     /* honor highlight */
-      --paper:#FFFFFF;    /* canvas */
-      --wash:#F7F8FA;     /* light section bg */
-      --line:#E6E9EE;     /* soft border */
+      --bg: #F8FAFC;             /* off-white */
+      --surface: #FFFFFF;
+      --ink: #1E293B;            /* graphite */
+      --muted: #64748B;          /* slate */
+      --line: #E2E8F0;           /* subtle border */
+
+      --brand: #2563EB;          /* cobalt */
+      --brand-2: #14B8A6;        /* teal */
+      --accent: #FACC15;         /* amber */
+
+      --radius: 16px;
+      --shadow: 0 14px 40px rgba(2,6,23,.09);
+      --shadow-soft: 0 6px 18px rgba(2,6,23,.06);
     }
+
+    /* ---------- Dark mode ---------- */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0F172A;
+        --surface: #0B1220;
+        --ink: #E5EDF7;
+        --muted: #9FB0C8;
+        --line: #1F2A44;
+
+        --brand: #60A5FA;
+        --brand-2: #22D3EE;
+        --accent: #FACC15;
+
+        --shadow: 0 16px 44px rgba(0,0,0,.45);
+        --shadow-soft: 0 8px 22px rgba(0,0,0,.35);
+      }
+    }
+
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--paper);color:var(--blue);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(29,53,87,.25)}
-    .wrap{max-width:980px;margin:0 auto;padding:0 20px}
-    header{background:var(--blue);color:#fff}
-    .mast{display:flex;gap:14px;align-items:center;padding:16px 20px}
-    .logo{width:42px;height:42px;flex:0 0 42px}
-    .title{margin:0;font-size:22px}
-    .tag{margin:2px 0 0;color:var(--gold);font-size:14px}
-    .hero{background:var(--wash);border-bottom:1px solid var(--line)}
-    .hero .wrap{padding:22px 20px}
-    h1{margin:0 0 6px;font-size:26px}
-    .lead{margin:0 0 14px}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:9px 12px;border-radius:8px;border:1px solid #dfe6ee;background:#fff;color:var(--blue)}
-    .btn.gold{background:var(--gold);border-color:var(--gold);color:#111}
-    main{padding:24px 0}
-    .card{background:#fff;border:1px solid var(--line);border-left:6px solid var(--gold);padding:16px;border-radius:8px;margin:0 0 16px}
-    .card h3{margin:0 0 6px;font-size:16px}
-    .meta{color:var(--gray);font-size:12px;margin-top:8px}
-    footer{margin-top:28px;padding:16px 20px;background:#f1f3f6;color:var(--gray);text-align:center;font-size:14px;border-top:1px solid #e1e5ea}
-    @media (max-width:640px){ h1{font-size:22px} .title{font-size:20px} }
+    html,body{margin:0;background:var(--bg);color:var(--ink);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif}
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+    /* ----- Header ----- */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(180deg, rgba(248,250,252,.95), rgba(248,250,252,.80));
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(150%) blur(6px);
+    }
+    @media (prefers-color-scheme: dark){
+      header{background:linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.78))}
+    }
+    .mast{display:flex;align-items:center;gap:14px;padding:14px 0}
+    .logo{width:40px;height:40px;border-radius:10px;background:var(--brand);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow-soft)}
+    .right{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+    .pill:hover{box-shadow:var(--shadow-soft)}
+    .brand{margin:0;font-size:22px;font-weight:800}
+    .tag{margin:0;color:var(--muted);font-size:14px}
+
+    /* ----- Hero ----- */
+    .hero{
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(1000px 420px at 18% -10%, rgba(37,99,235,.12), transparent 50%),
+        radial-gradient(900px 420px at 100% 0%, rgba(20,184,166,.14), transparent 50%);
+    }
+    .hero-inner{padding:42px 0}
+    .eyebrow{color:var(--brand-2);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800}
+    h1{margin:.25rem 0 .5rem;font-size:42px;line-height:1.15}
+    .lead{margin:0 0 18px;max-width:860px;color:var(--muted);font-size:18px}
+    .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .btn{
+      --bgc: var(--brand); --fgc: #fff; --bd: transparent;
+      background:var(--bgc); color:var(--fgc); border:1px solid var(--bd);
+      padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer
+    }
+    .btn.secondary{--bgc: var(--surface); --fgc: var(--ink); --bd: var(--line)}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+
+    /* ----- Sections ----- */
+    section{padding:26px 0}
+    .grid{display:grid;gap:16px}
+    .cols-2{grid-template-columns:1fr}
+    @media(min-width:900px){.cols-2{grid-template-columns:1.1fr .9fr}}
+
+    .card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    h2{margin:4px 0 12px;font-size:24px}
+    h3{margin:6px 0 10px;font-size:18px}
+    .kicker{color:var(--brand-2);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:900}
+    .meta{color:var(--muted);font-size:12px;margin-top:8px}
+    .list{padding-left:18px}
+    .list li{margin:6px 0}
+
+    /* ----- Footer ----- */
+    footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--muted);text-align:center}
+    .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+    .chip{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;background:var(--surface)}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap mast">
-      <!-- Inline SVG logo (use this for avatars too) -->
-      <svg class="logo" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="jsdotnews">
-        <rect width="256" height="256" fill="#1D3557" rx="40"/>
-        <circle cx="56" cy="200" r="12" fill="#FFD166"/>
-        <text x="56" y="110" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="96" fill="#FFD166">js</text>
-        <text x="56" y="180" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="58" fill="#FFFFFF">news</text>
-      </svg>
+      <div class="logo" aria-hidden="true">JS</div>
       <div>
-        <p class="title">Just Saying</p>
+        <p class="brand">Just Saying</p>
         <p class="tag">jsdotnews — receipts over rumors</p>
       </div>
+      <nav class="right">
+        <a class="pill" href="#method">Method</a>
+        <a class="pill" href="#checks">Latest checks</a>
+        <a class="pill" href="mailto:hello@justsaying.news">Tips</a>
+      </nav>
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <div class="wrap">
-      <h1>Today</h1>
-      <p class="lead">We check the lines people pass around—memes, posts, headlines—against the record. What was claimed. What the record shows. Why it matters.</p>
+    <div class="wrap hero-inner">
+      <span class="eyebrow">Today</span>
+      <h1>Claim. Record. Why it matters.</h1>
+      <p class="lead">
+        We check the lines people pass around—memes, posts, headlines—against the record.
+        What was claimed. What the record shows. Why it matters.
+      </p>
       <div class="row">
-        <a class="btn gold" href="#checks">See checks</a>
-        <a class="btn" href="mailto:hello@justsaying.news">Send a tip</a>
+        <a class="btn" href="#checks">See checks</a>
+        <a class="btn secondary" href="#method">How we work</a>
       </div>
     </div>
   </section>
 
-  <main class="wrap" id="checks">
-    <!-- Example fact cards (edit these) -->
-    <article class="card">
-      <h3>Claim: “X person said Y at Z event.”</h3>
-      <p><strong>Record:</strong> Exact quotation with date/time. Link the source.</p>
-      <p><strong>Why it matters:</strong> Two short lines on reach or stakes.</p>
-      <p class="meta">Sources: <a href="#">link</a>, <a href="#">link</a></p>
-    </article>
+  <main class="wrap">
+    <!-- Method -->
+    <section id="method">
+      <div class="grid cols-2">
+        <article class="card">
+          <span class="kicker">How to read us</span>
+          <h2>Simple card structure</h2>
+          <ul class="list">
+            <li><b>Claim:</b> the exact line spreading.</li>
+            <li><b>Record:</b> what was said/done, with time and link.</li>
+            <li><b>Why it matters:</b> two lines. No lecture.</li>
+          </ul>
+        </article>
 
-    <article class="card">
-      <h3>Image/Meme: viral screenshot about A.</h3>
-      <p><strong>Record:</strong> Original image context, who posted first, any edits.</p>
-      <p><strong>Why it matters:</strong> One or two lines on distortion or missing context.</p>
-      <p class="meta">Sources: <a href="#">link</a>, <a href="#">link</a></p>
-    </article>
+        <article class="card">
+          <span class="kicker">Standards</span>
+          <h2>Receipts first</h2>
+          <p class="meta">
+            Primary links top the list: video, transcript, docket, official post.
+            We note edits and missing context. Labels last.
+          </p>
+          <div class="chips">
+            <span class="chip">Sources first</span>
+            <span class="chip">Short + shareable</span>
+            <span class="chip">No spin</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Latest checks (static placeholders) -->
+    <section id="checks">
+      <div class="grid">
+        <article class="card">
+          <h3>Claim: “X person said Y at Z event.”</h3>
+          <p><b>Record:</b> Exact quotation with date/time. Link the source.</p>
+          <p><b>Why it matters:</b> Two short lines on reach or stakes.</p>
+          <p class="meta">Sources: <a href="#">link</a>, <a href="#">link</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Image/Meme: viral screenshot about A.</h3>
+          <p><b>Record:</b> Original image context, who posted first, any edits.</p>
+          <p><b>Why it matters:</b> One or two lines on distortion or missing context.</p>
+          <p class="meta">Sources: <a href="#">link</a>, <a href="#">link</a></p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer>
-    © 2025 Just Saying — jsdotnews • hello@justsaying.news
+    <div class="wrap">
+      <div>&copy; <span id="year"></span> Just Saying — jsdotnews</div>
+      <div class="chips" style="margin-top:10px">
+        <span class="chip">hello@justsaying.news</span>
+        <span class="chip">Light/Dark auto</span>
+        <span class="chip">v0.3 UI</span>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
