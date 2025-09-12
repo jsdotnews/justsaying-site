@@ -4,125 +4,83 @@
   <meta charset="utf-8" />
   <title>Just Saying — jsdotnews</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Just Saying (jsdotnews). Claim. Record. Why it matters. Short, sourced, shareable." />
-
-  <!-- Open Graph / X -->
-  <meta property="og:title" content="Just Saying — jsdotnews" />
-  <meta property="og:description" content="Claim. Record. Why it matters. Short, sourced, shareable." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://justsaying.news" />
-  <meta property="og:image" content="https://justsaying.news/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Just Saying — jsdotnews" />
-  <meta name="twitter:description" content="Claim. Record. Why it matters." />
-  <meta name="twitter:image" content="https://justsaying.news/og.png" />
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect rx='10' width='48' height='48' fill='%232563EB'/%3E%3Ctext x='9' y='30' font-size='18' font-family='Inter, Arial, sans-serif' font-weight='800' fill='white'%3EJS%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Claim vs. record. Original source linked. Readers decide." />
 
   <style>
-    /* ---------- Tokens (Light) ---------- */
+    /* --- Color & type tokens (dark mode first) --- */
     :root{
-      --bg: #F8FAFC;
-      --surface: #FFFFFF;
-      --ink: #1E293B;
-      --muted: #64748B;
-      --line: #E2E8F0;
-
-      --primary: #2563EB;  /* cobalt */
-      --teal: #14B8A6;     /* fresh accent */
-      --amber: #FACC15;    /* highlight */
-
-      --radius: 16px;
-      --shadow: 0 14px 40px rgba(2,6,23,.09);
-      --shadow-soft: 0 6px 18px rgba(2,6,23,.06);
-    }
-
-    /* ---------- Dark mode ---------- */
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg: #0F172A;
-        --surface: #0B1220;
-        --ink: #E5EDF7;
-        --muted: #9FB0C8;
-        --line: #1F2A44;
-
-        --primary: #60A5FA;
-        --teal: #22D3EE;
-        --amber: #FACC15;
-
-        --shadow: 0 16px 44px rgba(0,0,0,.45);
-        --shadow-soft: 0 8px 22px rgba(0,0,0,.35);
-      }
+      --bg:#0F172A;          /* page background */
+      --surface:#0B1220;     /* cards/nav */
+      --ink:#E6EDF7;         /* main text */
+      --muted:#9FB0C8;       /* secondary text */
+      --line:#1E2A44;        /* borders */
+      --brand:#60A5FA;       /* action / links */
+      --accent:#22D3EE;      /* section kickers */
+      --update:#F59E0B;      /* update label */
+      --radius:16px;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif}
-    a{color:var(--primary);text-decoration:none}
+    html,body{
+      margin:0;background:var(--bg);color:var(--ink);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif
+    }
+    a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+    .wrap{max-width:880px;margin:0 auto;padding:20px}
 
-    /* Header */
+    /* --- Header --- */
     header{
-      position:sticky;top:0;z-index:50;
-      background:linear-gradient(180deg, rgba(248,250,252,.95), rgba(248,250,252,.80));
-      border-bottom:1px solid var(--line);
-      backdrop-filter:saturate(150%) blur(6px);
+      position:sticky;top:0;z-index:10;
+      background:linear-gradient(180deg, rgba(15,23,42,.95), rgba(15,23,42,.85));
+      backdrop-filter:saturate(140%) blur(6px);
+      border-bottom:1px solid var(--line)
     }
-    @media (prefers-color-scheme: dark){
-      header{background:linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.78))}
+    .mast{display:flex;align-items:center;gap:12px;padding:12px 0}
+    .logo{
+      width:36px;height:36px;border-radius:10px;background:var(--brand);
+      color:#0b1220;display:grid;place-items:center;font-weight:800
     }
-    .mast{display:flex;align-items:center;gap:14px;padding:14px 0}
-    .logo{width:40px;height:40px;border-radius:10px;background:var(--primary);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow-soft)}
-    .name{margin:0;font-size:22px;font-weight:800}
-    .tag{margin:0;color:var(--muted);font-size:14px}
-    .right{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
-    .pill:hover{box-shadow:var(--shadow-soft)}
+    .name{margin:0;font-size:20px;font-weight:800}
+    .tag{margin:0;color:var(--muted);font-size:13px}
 
-    /* Hero */
-    .hero{
-      border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(1000px 420px at 18% -10%, rgba(37,99,235,.12), transparent 50%),
-        radial-gradient(900px 420px at 100% 0%, rgba(20,184,166,.14), transparent 50%);
-    }
-    .hero-inner{padding:42px 0}
-    .eyebrow{color:var(--teal);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800}
-    h1{margin:.25rem 0 .5rem;font-size:42px;line-height:1.15}
-    .lead{margin:0 0 18px;max-width:860px;color:var(--muted);font-size:18px}
-    .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-    .btn{
-      --bgc: var(--primary); --fgc: #fff; --bd: transparent;
-      background:var(--bgc); color:var(--fgc); border:1px solid var(--bd);
-      padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer
-    }
-    .btn.secondary{--bgc: var(--surface); --fgc: var(--ink); --bd: var(--line)}
-    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
-
-    /* Sections */
-    section{padding:26px 0}
-    .grid{display:grid;gap:16px}
-    .cols-2{grid-template-columns:1fr}
-    @media(min-width:900px){.cols-2{grid-template-columns:1.1fr .9fr}}
+    /* --- Sections & cards --- */
+    section{padding:18px 0}
+    h1{margin:8px 0 4px;font-size:28px}
+    .lead{color:var(--muted);margin:0 0 10px}
+    h2{margin:0 0 10px;font-size:20px}
+    h3{margin:10px 0 6px;font-size:16px}
+    .key{color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:800}
     .card{
-      background:var(--surface);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:18px;
-      box-shadow:var(--shadow);
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:16px;box-shadow:var(--shadow);margin:0 0 16px
     }
-    h2{margin:4px 0 12px;font-size:24px}
-    h3{margin:6px 0 10px;font-size:18px}
-    .kicker{color:var(--teal);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:900}
+    .grid{display:grid;gap:12px}
+    .box{border:1px solid var(--line);border-radius:12px;padding:12px;background:#0c152b}
     .meta{color:var(--muted);font-size:12px;margin-top:8px}
-    .list{padding-left:18px}
-    .list li{margin:6px 0}
+    .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 10px;
+      color:var(--muted);font-size:12px;margin-right:8px}
 
-    /* Footer */
-    footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--muted);text-align:center}
-    .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-    .chip{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;background:var(--surface)}
+    /* --- Media & buttons --- */
+    .video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#000}
+    .btn{
+      display:inline-block;background:#0b223c;border:1px solid var(--line);color:var(--ink);
+      padding:10px 12px;border-radius:10px;margin-right:8px;margin-top:6px;text-decoration:none
+    }
+    .btn:hover{background:#0d2644}
+
+    /* --- Updates box --- */
+    .updates .key{color:var(--update)}
+    .update-item{border-left:4px solid var(--update);padding-left:10px;margin:6px 0}
+
+    footer{border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:20px 0 40px}
+
+    /* Slight type bump on larger screens */
+    @media (min-width:720px){
+      h1{font-size:32px}
+      .name{font-size:22px}
+    }
   </style>
 </head>
 <body>
@@ -131,103 +89,155 @@
       <div class="logo" aria-hidden="true">JS</div>
       <div>
         <p class="name">Just Saying</p>
-        <p class="tag">jsdotnews — receipts over rumors</p>
+        <p class="tag">Claim vs. record — original source linked. Readers decide.</p>
       </div>
-      <nav class="right">
-        <a class="pill" href="#method">Method</a>
-        <a class="pill" href="#checks">Latest checks</a>
-        <a class="pill" href="mailto:hello@justsaying.news">Tips</a>
-      </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <span class="eyebrow">Today</span>
-      <h1>Claim. Record. Why it matters.</h1>
-      <p class="lead">
-        We look at the lines that move through feeds and headlines, then match them to the record.
-        The claim is quoted. The record is linked. The reason it matters is clear.
-      </p>
-      <div class="row">
-        <a class="btn" href="#checks">See checks</a>
-        <a class="btn secondary" href="#method">How we work</a>
-      </div>
-    </div>
-  </section>
-
   <main class="wrap">
-    <!-- Method -->
-    <section id="method">
-      <div class="grid cols-2">
-        <article class="card">
-          <span class="kicker">How to read us</span>
-          <h2>A simple card structure</h2>
-          <ul class="list">
-            <li><b>Claim:</b> the exact line that’s circulating, quoted precisely.</li>
-            <li><b>Record:</b> what was said or done, with time and a link to the source.</li>
-            <li><b>Why it matters:</b> two sentences that explain the stakes without a lecture.</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <span class="kicker">Standards</span>
-          <h2>Receipts first</h2>
-          <p class="meta">
-            Primary links go first: video, transcript, docket, or the speaker’s own post.
-            If context was cut, we note it. Labels come last.
-          </p>
-          <div class="chips">
-            <span class="chip">Short & shareable</span>
-            <span class="chip">Source-linked</span>
-            <span class="chip">Neutral tone</span>
-          </div>
-        </article>
-      </div>
+    <section>
+      <h1>Today</h1>
+      <p class="lead">We publish the claim as stated, the record with source, what is known/unknown, and any later updates. No verdicts.</p>
     </section>
 
-    <!-- Latest checks -->
-    <section id="checks">
+    <!-- ===== Example entry (Charlie Kirk) ===== -->
+    <article class="card" id="kirk"
+      data-video=""  <!-- Put an embeddable URL here (YouTube/rumble/etc). Leave empty if none -->
+      data-alt-1-label="Open PBS segment"
+      data-alt-1-href="https://www.pbs.org/newshour/show/authorities-piece-together-the-killing-of-conservative-activist-charlie-kirk"
+      data-alt-2-label="Daily Beast recap"
+      data-alt-2-href="https://www.thedailybeast.com/maga-rages-at-stephen-king-over-charlie-kirk-post/">
+
+      <span class="key">Viral claim</span>
+      <h2>“Charlie Kirk advocated stoning gay people to death.”</h2>
+
       <div class="grid">
-        <!-- Charlie Kirk example -->
-        <article class="card">
-          <h3>Claim: “Charlie Kirk advocated stoning gay people to death.”</h3>
-          <p><b>Record:</b> In June 2024, Kirk cited Leviticus 20:13 on his show, described it as “God’s perfect law … when it comes to sexual matters,” and added “just sayin’.” That is a quotation of scripture, not an explicit call to enforce stoning under U.S. law. After his death in September 2025, Stephen King posted that Kirk “advocated stoning gays,” then shifted toward saying the clip showed selective use of scripture.</p>
-          <p><b>Why it matters:</b> Quoting a text and urging modern enforcement are not the same. The difference was lost in the reaction cycle, and the claim spread quickly without that context.</p>
-          <p class="meta">
-            Sources:
-            <a href="https://www.thedailybeast.com/maga-rages-at-stephen-king-over-charlie-kirk-post/">Daily Beast</a>,
-            <a href="https://www.pbs.org/newshour/show/authorities-piece-together-the-killing-of-conservative-activist-charlie-kirk">PBS NewsHour</a>,
-            <a href="https://www.lgbtqnation.com/2024/06/donald-trump-shares-stage-with-rightwing-activist-whos-discussing-stoning-gay-people-to-death/">LGBTQ Nation</a>,
-            <a href="https://www.whitehouse.gov/presidential-actions/2025/09/honoring-the-memory-of-charlie-kirk/">White House proclamation</a>
-          </p>
-        </article>
+        <!-- Source media -->
+        <div class="box" id="kirk-media">
+          <h3>Original source</h3>
+          <div id="kirk-embed"></div>
+          <p class="meta" id="kirk-alt-note"></p>
+        </div>
 
-        <!-- Keep one placeholder you can edit later -->
-        <article class="card">
-          <h3>Image/Meme: viral screenshot about A.</h3>
-          <p><b>Record:</b> Original image context, who posted first, and any edits or cropping that change the reading.</p>
-          <p><b>Why it matters:</b> A clean source line prevents a screenshot from standing in for the full event.</p>
-          <p class="meta">Sources: <a href="#">link</a>, <a href="#">link</a></p>
-        </article>
+        <!-- Transcript -->
+        <div class="box">
+          <h3>Transcript excerpt (verbatim)</h3>
+          <p><strong>Timestamp:</strong> 00:MM:SS (update when known)</p>
+          <p style="font-family:ui-monospace,Menlo,Consolas,monospace">
+            “… in Leviticus 20:13 it says that a man who lies with another man shall be put to death …
+            <em>just sayin’</em>. … ‘God’s perfect law’ when it comes to sexual matters …”
+          </p>
+          <p class="meta">Exact words from the clip. Ellipses show omitted portions; no words altered.</p>
+        </div>
+
+        <!-- Factual record -->
+        <div class="box">
+          <h3>Record (plain facts)</h3>
+          <ul>
+            <li>Date of episode: June 2024.</li>
+            <li>Speaker quoted Leviticus 20:13 and called it “God’s perfect law.”</li>
+            <li>No explicit line in this clip calling for U.S. legal enforcement of stoning.</li>
+            <li>On Sept 11, 2025, Stephen King posted that Kirk “advocated stoning gays,” then deleted that post and apologized.</li>
+          </ul>
+        </div>
+
+        <!-- Verification status -->
+        <div class="box">
+          <h3>What we can verify</h3>
+          <ul>
+            <li>Quotation and wording in the source clip.</li>
+            <li>Subsequent social posts summarizing the clip and the deletion/apology.</li>
+          </ul>
+          <h3 style="margin-top:8px">What is not established here</h3>
+          <ul>
+            <li>Any policy proposal or legal advocacy beyond the scripture citation within this clip.</li>
+          </ul>
+        </div>
+
+        <!-- Sources -->
+        <div class="box">
+          <h3>Sources</h3>
+          <ul>
+            <li><a href="https://www.pbs.org/newshour/show/authorities-piece-together-the-killing-of-conservative-activist-charlie-kirk">PBS NewsHour segment</a></li>
+            <li><a href="https://www.thedailybeast.com/maga-rages-at-stephen-king-over-charlie-kirk-post/">Daily Beast recap</a></li>
+            <li><a href="https://www.lgbtqnation.com/2024/06/donald-trump-shares-stage-with-rightwing-activist-whos-discussing-stoning-gay-people-to-death/">LGBTQ Nation (June 2024 coverage)</a></li>
+            <li><a href="https://www.whitehouse.gov/presidential-actions/2025/09/honoring-the-memory-of-charlie-kirk/">White House (flag order)</a></li>
+          </ul>
+        </div>
+
+        <!-- Updates / Corrections log (doesn't change the claim) -->
+        <div class="box updates">
+          <span class="key">Updates</span>
+          <div class="update-item">
+            <strong>Sept 11, 2025 — Stephen King:</strong>
+            “I was wrong, and I apologize. I have deleted the post.”  
+            <a href="https://x.com/stephenking/status/1966484038648021264" target="_blank" rel="noopener">View on X</a>
+          </div>
+          <!-- Add future items as new .update-item blocks with date, who, and link -->
+          <p class="meta">This section records new statements, retractions, or clarifications from principals. The original claim above remains unchanged.</p>
+        </div>
       </div>
-    </section>
+
+      <p class="meta">
+        <span class="pill">No rating</span>
+        <span class="pill">No conclusion</span>
+        <span class="pill">Verifiable items only</span>
+      </p>
+    </article>
+    <!-- ===== /Example entry ===== -->
+
   </main>
 
   <footer>
     <div class="wrap">
-      <div>&copy; <span id="year"></span> Just Saying — jsdotnews</div>
-      <div class="chips" style="margin-top:10px">
-        <span class="chip">hello@justsaying.news</span>
-        <span class="chip">Light/Dark auto</span>
-        <span class="chip">v0.3 UI</span>
-      </div>
+      <div>&copy; <span id="year"></span> Just Saying — jsdotnews • <a href="mailto:hello@justsaying.news">hello@justsaying.news</a></div>
     </div>
   </footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Media embed helper: if data-video is set, show iframe; else show fallback link buttons.
+    (function(){
+      const card = document.getElementById('kirk');
+      const container = document.getElementById('kirk-embed');
+      const note = document.getElementById('kirk-alt-note');
+      const video = (card.getAttribute('data-video')||'').trim();
+
+      if (video){
+        const ok = /^https:\/\/.+/i.test(video);
+        if (ok){
+          const iframe = document.createElement('iframe');
+          iframe.className = 'video';
+          iframe.src = video;
+          iframe.allowFullscreen = true;
+          iframe.title = 'Original clip';
+          container.appendChild(iframe);
+          note.textContent = 'If the player fails, open in a new tab.';
+        }
+      } else {
+        const makeBtn = (label, href) => {
+          const a = document.createElement('a');
+          a.className = 'btn';
+          a.textContent = label;
+          a.href = href;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          return a;
+        };
+        let added = 0;
+        for (let i=1;i<=5;i++){
+          const label = card.getAttribute(`data-alt-${i}-label`);
+          const href = card.getAttribute(`data-alt-${i}-href`);
+          if (label && href){
+            container.appendChild(makeBtn(label, href));
+            added++;
+          }
+        }
+        note.textContent = added ? 'No embeddable source here. Use the links above.' : 'Source link pending.';
+      }
+    })();
   </script>
 </body>
 </html>
