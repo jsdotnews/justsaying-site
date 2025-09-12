@@ -16,7 +16,6 @@
       --line:#1E2A44;        /* borders */
       --brand:#60A5FA;       /* action / links */
       --accent:#22D3EE;      /* section kickers */
-      --update:#F59E0B;      /* update label */
       --radius:16px;
       --shadow:0 12px 30px rgba(0,0,0,.35);
     }
@@ -62,17 +61,13 @@
     .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 10px;
       color:var(--muted);font-size:12px;margin-right:8px}
 
-    /* --- Media & buttons --- */
+    /* --- Media --- */
     .video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#000}
     .btn{
       display:inline-block;background:#0b223c;border:1px solid var(--line);color:var(--ink);
       padding:10px 12px;border-radius:10px;margin-right:8px;margin-top:6px;text-decoration:none
     }
     .btn:hover{background:#0d2644}
-
-    /* --- Updates box --- */
-    .updates .key{color:var(--update)}
-    .update-item{border-left:4px solid var(--update);padding-left:10px;margin:6px 0}
 
     footer{border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:20px 0 40px}
 
@@ -97,12 +92,12 @@
   <main class="wrap">
     <section>
       <h1>Today</h1>
-      <p class="lead">We publish the claim as stated, the record with source, what is known/unknown, and any later updates. No verdicts.</p>
+      <p class="lead">We publish the claim as stated, the record with source, and what is known/unknown. No verdicts.</p>
     </section>
 
     <!-- ===== Example entry (Charlie Kirk) ===== -->
-    <article class="card" id="kirk"
-      data-video=""  <!-- Put an embeddable URL here (YouTube/rumble/etc). Leave empty if none -->
+    <article class="card" id="kirk-example"
+      data-video="VIDEO_URL"                          <!-- Put a playable embed URL or leave empty -->
       data-alt-1-label="Open PBS segment"
       data-alt-1-href="https://www.pbs.org/newshour/show/authorities-piece-together-the-killing-of-conservative-activist-charlie-kirk"
       data-alt-2-label="Daily Beast recap"
@@ -112,14 +107,14 @@
       <h2>“Charlie Kirk advocated stoning gay people to death.”</h2>
 
       <div class="grid">
-        <!-- Source media -->
         <div class="box" id="kirk-media">
           <h3>Original source</h3>
+          <!-- The script below will either render an <iframe> if data-video is set,
+               or show the alternative link buttons if not. -->
           <div id="kirk-embed"></div>
           <p class="meta" id="kirk-alt-note"></p>
         </div>
 
-        <!-- Transcript -->
         <div class="box">
           <h3>Transcript excerpt (verbatim)</h3>
           <p><strong>Timestamp:</strong> 00:MM:SS (update when known)</p>
@@ -127,26 +122,24 @@
             “… in Leviticus 20:13 it says that a man who lies with another man shall be put to death …
             <em>just sayin’</em>. … ‘God’s perfect law’ when it comes to sexual matters …”
           </p>
-          <p class="meta">Exact words from the clip. Ellipses show omitted portions; no words altered.</p>
+          <p class="meta">Exact wording from the clip. Ellipses show omitted portions; no words altered.</p>
         </div>
 
-        <!-- Factual record -->
         <div class="box">
           <h3>Record (plain facts)</h3>
           <ul>
             <li>Date of episode: June 2024.</li>
             <li>Speaker quoted Leviticus 20:13 and called it “God’s perfect law.”</li>
             <li>No explicit line in this clip calling for U.S. legal enforcement of stoning.</li>
-            <li>On Sept 11, 2025, Stephen King posted that Kirk “advocated stoning gays,” then deleted that post and apologized.</li>
+            <li>After his death (Sept 2025), a post by Stephen King summarized this as “advocated stoning gays.”</li>
           </ul>
         </div>
 
-        <!-- Verification status -->
         <div class="box">
           <h3>What we can verify</h3>
           <ul>
             <li>Quotation and wording in the source clip.</li>
-            <li>Subsequent social posts summarizing the clip and the deletion/apology.</li>
+            <li>Post-event social posts referring to the clip.</li>
           </ul>
           <h3 style="margin-top:8px">What is not established here</h3>
           <ul>
@@ -154,7 +147,6 @@
           </ul>
         </div>
 
-        <!-- Sources -->
         <div class="box">
           <h3>Sources</h3>
           <ul>
@@ -163,18 +155,6 @@
             <li><a href="https://www.lgbtqnation.com/2024/06/donald-trump-shares-stage-with-rightwing-activist-whos-discussing-stoning-gay-people-to-death/">LGBTQ Nation (June 2024 coverage)</a></li>
             <li><a href="https://www.whitehouse.gov/presidential-actions/2025/09/honoring-the-memory-of-charlie-kirk/">White House (flag order)</a></li>
           </ul>
-        </div>
-
-        <!-- Updates / Corrections log (doesn't change the claim) -->
-        <div class="box updates">
-          <span class="key">Updates</span>
-          <div class="update-item">
-            <strong>Sept 11, 2025 — Stephen King:</strong>
-            “I was wrong, and I apologize. I have deleted the post.”  
-            <a href="https://x.com/stephenking/status/1966484038648021264" target="_blank" rel="noopener">View on X</a>
-          </div>
-          <!-- Add future items as new .update-item blocks with date, who, and link -->
-          <p class="meta">This section records new statements, retractions, or clarifications from principals. The original claim above remains unchanged.</p>
         </div>
       </div>
 
@@ -195,17 +175,18 @@
   </footer>
 
   <script>
-    // Year
+    // year stamp
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Media embed helper: if data-video is set, show iframe; else show fallback link buttons.
+    // Simple embed/alt logic: if data-video is set, show iframe; else show buttons from data-alt-*.
     (function(){
-      const card = document.getElementById('kirk');
+      const card = document.getElementById('kirk-example');
       const container = document.getElementById('kirk-embed');
       const note = document.getElementById('kirk-alt-note');
       const video = (card.getAttribute('data-video')||'').trim();
 
       if (video){
+        // basic sanity: allow only https and basic embed forms
         const ok = /^https:\/\/.+/i.test(video);
         if (ok){
           const iframe = document.createElement('iframe');
@@ -214,9 +195,10 @@
           iframe.allowFullscreen = true;
           iframe.title = 'Original clip';
           container.appendChild(iframe);
-          note.textContent = 'If the player fails, open in a new tab.';
+          note.textContent = 'If the player fails, use the link above to open in a new tab.';
         }
       } else {
+        // Build alt link buttons from any data-alt-N-label/href pairs present
         const makeBtn = (label, href) => {
           const a = document.createElement('a');
           a.className = 'btn';
