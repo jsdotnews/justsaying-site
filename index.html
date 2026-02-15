@@ -1,240 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Just Saying — jsdotnews</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Claim and record. Original source linked. Readers decide." />
-
-  <!-- Open Graph / X -->
-  <meta property="og:title" content="Just Saying — jsdotnews" />
-  <meta property="og:description" content="Claim and record. Original source linked. Readers decide." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://justsaying.news" />
-  <meta property="og:image" content="https://justsaying.news/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Just Saying — jsdotnews" />
-  <meta name="twitter:description" content="Claim and record. Original source linked. Readers decide." />
-  <meta name="twitter:image" content="https://justsaying.news/og.png" />
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect rx='10' width='48' height='48' fill='%232563EB'/%3E%3Ctext x='9' y='30' font-size='18' font-family='Inter, Arial, sans-serif' font-weight='800' fill='white'%3EJS%3C/text%3E%3C/svg%3E">
-
-  <style>
-    :root{
-      --bg: #F8FAFC; --surface: #FFFFFF; --ink: #1E293B; --muted: #64748B; --line: #E2E8F0;
-      --primary: #2563EB; --teal: #14B8A6; --amber: #FACC15;
-      --radius: 16px; --shadow: 0 14px 40px rgba(2,6,23,.09); --shadow-soft: 0 6px 18px rgba(2,6,23,.06);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg: #0F172A; --surface: #0B1220; --ink: #E5EDF7; --muted: #9FB0C8; --line: #1F2A44;
-        --primary: #60A5FA; --teal: #22D3EE; --amber: #FACC15;
-        --shadow: 0 16px 44px rgba(0,0,0,.45); --shadow-soft: 0 8px 22px rgba(0,0,0,.35);
-      }
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif}
-    a{color:var(--primary);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(248,250,252,.95), rgba(248,250,252,.80));
-      border-bottom:1px solid var(--line);backdrop-filter:saturate(150%) blur(6px)}
-    @media (prefers-color-scheme: dark){header{background:linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.78))}}
-    .mast{display:flex;align-items:center;gap:14px;padding:14px 0}
-    .logo{width:40px;height:40px;border-radius:10px;background:var(--primary);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow-soft)}
-    .name{margin:0;font-size:22px;font-weight:800}
-    .tag{margin:0;color:var(--muted);font-size:14px}
-    .right{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
-    .pill:hover{box-shadow:var(--shadow-soft)}
-
-    /* Hero */
-    .hero{border-bottom:1px solid var(--line);
-      background:radial-gradient(1000px 420px at 18% -10%, rgba(37,99,235,.12), transparent 50%),
-                 radial-gradient(900px 420px at 100% 0%, rgba(20,184,166,.14), transparent 50%)}
-    .hero-inner{padding:28px 0}
-    .eyebrow{color:var(--teal);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800}
-    h1{margin:.25rem 0 .5rem;font-size:36px;line-height:1.2}
-    .lead{margin:0 0 14px;max-width:860px;color:var(--muted);font-size:16px}
-    .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-    .btn{--bgc: var(--primary); --fgc: #fff; --bd: transparent; background:var(--bgc); color:var(--fgc);
-      border:1px solid var(--bd); padding:12px 16px; border-radius:12px; font-weight:800; cursor:pointer}
-    .btn.secondary{--bgc: var(--surface); --fgc: var(--ink); --bd: var(--line)}
-    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
-
-    /* Sections */
-    section{padding:22px 0}
-    .grid{display:grid;gap:16px}
-    .cols-2{grid-template-columns:1fr}
-    @media(min-width:900px){.cols-2{grid-template-columns:1.1fr .9fr}}
-    .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-    h2{margin:4px 0 12px;font-size:22px}
-    h3{margin:8px 0 8px;font-size:18px}
-    .kicker{color:var(--teal);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:900}
-    .meta{color:var(--muted);font-size:12px;margin-top:8px}
-    .list{padding-left:18px} .list li{margin:6px 0}
-    .box{border:1px solid var(--line);border-radius:12px;padding:12px;background:#f8fafc}
-    @media (prefers-color-scheme: dark){.box{background:#0e1628}}
-    .video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#000}
-    .btnlink{display:inline-block;background:#eef2ff;border:1px solid var(--line);color:var(--ink);
-      padding:10px 12px;border-radius:10px;margin-right:8px;margin-top:6px;text-decoration:none}
-    @media (prefers-color-scheme: dark){.btnlink{background:#0b223c;color:#e6edf5}}
-
-    /* Footer */
-    footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--muted);text-align:center}
-    .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-    .chip{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;background:var(--surface)}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Saying — Primary Source Deep Dives</title>
+<meta name="description" content="Primary source deep dives. History, politics, religion, culture.">
+<meta property="og:title" content="Just Saying">
+<meta property="og:description" content="Primary source deep dives. History, politics, religion, culture.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://justsaying.news">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Just Saying">
+<meta name="twitter:description" content="Primary source deep dives. History, politics, religion, culture.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Georgia,'Times New Roman',serif;background:#f5f0e8;color:#1a1a1a;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center}
+.mark{font-size:14px;letter-spacing:4px;text-transform:uppercase;color:#8b2500;margin-bottom:24px;font-family:monospace}
+h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;line-height:1.1;margin-bottom:16px}
+.bio{font-size:1.1rem;color:#555;max-width:480px;line-height:1.6;margin-bottom:40px}
+.investigations{text-align:left;max-width:500px;width:100%}
+.investigations h2{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#8b2500;margin-bottom:16px;font-family:monospace}
+.investigation{display:block;padding:20px;background:#fffcf5;border:1px solid #d5cbb8;border-left:4px solid #8b2500;margin-bottom:12px;text-decoration:none;color:#1a1a1a;transition:box-shadow 0.2s}
+.investigation:hover{box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.investigation h3{font-size:1.1rem;margin-bottom:4px}
+.investigation p{font-size:0.85rem;color:#888;font-family:monospace}
+.contact{margin-top:50px;font-size:0.85rem;color:#999;font-family:monospace;letter-spacing:1px}
+.contact a{color:#8b2500}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap mast">
-      <div class="logo" aria-hidden="true">JS</div>
-      <div>
-        <p class="name">Just Saying</p>
-        <p class="tag">jsdotnews — receipts over rumors</p>
-      </div>
-      <nav class="right">
-        <a class="pill" href="#checks">Checks</a>
-        <a class="pill" href="mailto:hello@justsaying.news">Tips</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <span class="eyebrow">Today</span>
-      <h1>Claim and record.</h1>
-      <p class="lead">We post the claim as stated and the record with source. Transcript excerpt and links are shown. Updates are logged below the original claim.</p>
-      <div class="row">
-        <a class="btn" href="#checks">See checks</a>
-      </div>
-    </div>
-  </section>
-
-  <main class="wrap">
-    <!-- Latest checks (neutral: claim → source → transcript → updates → sources) -->
-    <section id="checks">
-      <div class="grid">
-        <!-- Example: Charlie Kirk -->
-        <article class="card" id="kirk"
-          data-video=""  <!-- optional embeddable URL; leave empty to show link buttons -->
-          data-alt-1-label="PBS segment"
-          data-alt-1-href="https://www.pbs.org/newshour/show/authorities-piece-together-the-killing-of-conservative-activist-charlie-kirk"
-          data-alt-2-label="Daily Beast recap"
-          data-alt-2-href="https://www.thedailybeast.com/maga-rages-at-stephen-king-over-charlie-kirk-post/">
-          
-          <div class="box">
-            <span class="kicker">Claim</span>
-            <h3>“Charlie Kirk advocated stoning gay people to death.”</h3>
-          </div>
-
-          <div class="box">
-            <span class="kicker">Original source</span>
-            <div id="kirk-embed"></div>
-            <p class="meta" id="kirk-alt-note"></p>
-          </div>
-
-          <div class="box">
-            <span class="kicker">Transcript excerpt (verbatim)</span>
-            <p><strong>Timestamp:</strong> 00:MM:SS (update when known)</p>
-            <p style="font-family:ui-monospace,Menlo,Consolas,monospace">
-              “… in Leviticus 20:13 it says that a man who lies with another man shall be put to death …
-              <em>just sayin’</em>. … ‘God’s perfect law’ when it comes to sexual matters …”
-            </p>
-            <p class="meta">Ellipses indicate omitted portions; no words altered.</p>
-          </div>
-
-          <div class="box">
-            <span class="kicker">Record (plain facts)</span>
-            <ul class="list">
-              <li>Episode date: June 2024.</li>
-              <li>Speaker quoted Leviticus 20:13 and described it as “God’s perfect law.”</li>
-              <li>This clip contains no explicit call to enact stoning under U.S. law.</li>
-            </ul>
-          </div>
-
-          <div class="box">
-            <span class="kicker">Updates</span>
-            <p class="meta">
-              Sept 11, 2025 — Stephen King: “I was wrong, and I apologize. I have deleted the post.”
-              <a href="https://x.com/stephenking/status/1966484038648021264" target="_blank" rel="noopener">View on X</a>
-            </p>
-          </div>
-
-          <div class="box">
-            <span class="kicker">Sources</span>
-            <ul class="list">
-              <li><a href="https://www.pbs.org/newshour/show/authorities-piece-together-the-killing-of-conservative-activist-charlie-kirk">PBS NewsHour segment</a></li>
-              <li><a href="https://www.thedailybeast.com/maga-rages-at-stephen-king-over-charlie-kirk-post/">Daily Beast recap</a></li>
-              <li><a href="https://www.lgbtqnation.com/2024/06/donald-trump-shares-stage-with-rightwing-activist-whos-discussing-stoning-gay-people-to-death/">LGBTQ Nation (June 2024)</a></li>
-              <li><a href="https://www.whitehouse.gov/presidential-actions/2025/09/honoring-the-memory-of-charlie-kirk/">White House proclamation</a></li>
-            </ul>
-          </div>
-
-          <p class="meta">No ratings or conclusions are provided.</p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div>&copy; <span id="year"></span> Just Saying — jsdotnews</div>
-      <div class="chips" style="margin-top:10px">
-        <span class="chip">hello@justsaying.news</span>
-        <span class="chip">Light/Dark auto</span>
-        <span class="chip">v0.3 UI</span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Media embed helper: if data-video is set, show iframe; else show fallback link buttons.
-    (function(){
-      const card = document.getElementById('kirk');
-      const container = document.getElementById('kirk-embed');
-      const note = document.getElementById('kirk-alt-note');
-      const video = (card.getAttribute('data-video')||'').trim();
-
-      if (video){
-        const ok = /^https:\/\/.+/i.test(video);
-        if (ok){
-          const iframe = document.createElement('iframe');
-          iframe.className = 'video';
-          iframe.src = video;
-          iframe.allowFullscreen = true;
-          iframe.title = 'Original clip';
-          container.appendChild(iframe);
-          note.textContent = 'If the player fails, open in a new tab.';
-        }
-      } else {
-        const makeBtn = (label, href) => {
-          const a = document.createElement('a');
-          a.className = 'btnlink';
-          a.textContent = label;
-          a.href = href;
-          a.target = '_blank';
-          a.rel = 'noopener';
-          return a;
-        };
-        let added = 0;
-        for (let i=1;i<=5;i++){
-          const label = card.getAttribute(`data-alt-${i}-label`);
-          const href = card.getAttribute(`data-alt-${i}-href`);
-          if (label && href){
-            container.appendChild(makeBtn(label, href));
-            added++;
-          }
-        }
-        note.textContent = added ? 'No embeddable player here. Use the links above.' : 'Source link pending.';
-      }
-    })();
-  </script>
+<div class="mark">jsdotnews</div>
+<h1>Just Saying.</h1>
+<p class="bio">Primary source deep dives. History, politics, religion, culture.</p>
+<div class="investigations">
+<h2>Investigations</h2>
+<a class="investigation" href="christian-front.html">
+<h3>The Echo Chamber: From Coughlin's Radio to the Catholic Prayer Gala</h3>
+<p>Feb 2026 · In progress · 11 primary sources</p>
+</a>
+</div>
+<div class="contact">tips: <a href="mailto:hello@justsaying.news">hello@justsaying.news</a></div>
 </body>
 </html>
