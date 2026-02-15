@@ -1,1 +1,1015 @@
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Echo Chamber: From Coughlin's Radio to the Catholic Prayer Gala</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #f5f0e8;
+  --paper-dark: #e8e0d0;
+  --accent: #8b2500;
+  --accent-light: #c44d2a;
+  --gold: #b8860b;
+  --gold-light: #daa520;
+  --link: #1a5276;
+  --timeline-line: #8b2500;
+  --shadow: rgba(0,0,0,0.12);
+  --card-bg: #fffcf5;
+}
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+font-family: ‘Source Serif 4’, Georgia, serif;
+background: var(–paper);
+color: var(–ink);
+line-height: 1.7;
+font-size: 18px;
+-webkit-font-smoothing: antialiased;
+}
+
+/* HERO */
+.hero {
+background: linear-gradient(175deg, #1a1a1a 0%, #2c1810 40%, #3d1f10 100%);
+color: #f5f0e8;
+padding: 80px 24px 60px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: url(“data:image/svg+xml,%3Csvg width=‘60’ height=‘60’ viewBox=‘0 0 60 60’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cg fill=‘none’ fill-rule=‘evenodd’%3E%3Cg fill=’%23ffffff’ fill-opacity=‘0.03’%3E%3Cpath d=‘M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z’/%3E%3C/g%3E%3C/g%3E%3C/svg%3E”);
+opacity: 0.5;
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+
+.hero-kicker {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 12px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold-light);
+margin-bottom: 20px;
+display: inline-block;
+border: 1px solid var(–gold);
+padding: 6px 16px;
+}
+
+.hero h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.2rem, 5vw, 3.8rem);
+font-weight: 900;
+line-height: 1.15;
+margin-bottom: 20px;
+text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.hero h1 em {
+font-style: italic;
+color: var(–gold-light);
+}
+
+.hero-subtitle {
+font-size: 1.15rem;
+line-height: 1.6;
+max-width: 680px;
+margin: 0 auto 30px;
+opacity: 0.85;
+font-weight: 300;
+}
+
+.hero-meta {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 12px;
+letter-spacing: 1px;
+opacity: 0.5;
+margin-top: 20px;
+}
+
+/* NAV */
+.sticky-nav {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(26,26,26,0.95);
+backdrop-filter: blur(10px);
+border-bottom: 2px solid var(–accent);
+padding: 0 24px;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+
+.sticky-nav ul {
+list-style: none;
+display: flex;
+gap: 0;
+max-width: 1100px;
+margin: 0 auto;
+white-space: nowrap;
+}
+
+.sticky-nav a {
+display: block;
+padding: 14px 18px;
+color: #ccc;
+text-decoration: none;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+letter-spacing: 1px;
+text-transform: uppercase;
+transition: all 0.2s;
+border-bottom: 2px solid transparent;
+}
+
+.sticky-nav a:hover {
+color: var(–gold-light);
+border-bottom-color: var(–gold-light);
+}
+
+/* MAIN CONTENT */
+.content { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+/* SECTION HEADERS */
+.section-header {
+padding: 60px 0 30px;
+border-bottom: 3px double var(–accent);
+margin-bottom: 40px;
+}
+
+.section-header .section-number {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 12px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 8px;
+}
+
+.section-header h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+font-weight: 900;
+line-height: 1.2;
+color: var(–ink);
+}
+
+.section-header .section-dek {
+font-size: 1.05rem;
+color: #555;
+margin-top: 10px;
+font-style: italic;
+}
+
+/* PROSE */
+.prose { margin-bottom: 40px; }
+.prose p { margin-bottom: 1.2em; }
+.prose p:first-of-type::first-letter {
+font-family: ‘Playfair Display’, serif;
+font-size: 3.2em;
+float: left;
+line-height: 0.8;
+margin: 0.05em 0.12em 0 0;
+color: var(–accent);
+font-weight: 900;
+}
+
+.prose a { color: var(–link); text-decoration: underline; text-underline-offset: 3px; }
+
+/* EVIDENCE CARDS */
+.evidence-card {
+background: var(–card-bg);
+border: 1px solid #d5cbb8;
+border-left: 4px solid var(–accent);
+padding: 28px;
+margin: 30px 0;
+box-shadow: 0 2px 8px var(–shadow);
+position: relative;
+}
+
+.evidence-card::before {
+content: ‘PRIMARY SOURCE’;
+position: absolute;
+top: -10px;
+left: 20px;
+background: var(–accent);
+color: white;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+letter-spacing: 2px;
+padding: 3px 10px;
+}
+
+.evidence-card.secondary::before { content: ‘SECONDARY SOURCE’; background: var(–gold); }
+.evidence-card.social::before { content: ‘SOCIAL MEDIA’; background: #1a5276; }
+.evidence-card.analysis::before { content: ‘ANALYSIS’; background: #2e7d32; }
+
+.evidence-card h4 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.15rem;
+margin-bottom: 6px;
+color: var(–ink);
+}
+
+.evidence-card .source-meta {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+color: #888;
+margin-bottom: 12px;
+}
+
+.evidence-card .source-description { font-size: 0.95rem; line-height: 1.6; color: #444; }
+
+.evidence-card img {
+width: 100%;
+margin-top: 15px;
+border: 1px solid #ccc;
+cursor: pointer;
+transition: transform 0.2s;
+}
+
+.evidence-card img:hover { transform: scale(1.01); box-shadow: 0 4px 16px var(–shadow); }
+
+/* TIMELINE */
+.timeline {
+position: relative;
+padding: 20px 0;
+margin: 40px 0;
+}
+
+.timeline::before {
+content: ‘’;
+position: absolute;
+left: 30px;
+top: 0;
+bottom: 0;
+width: 3px;
+background: var(–timeline-line);
+}
+
+.timeline-entry {
+position: relative;
+padding-left: 70px;
+margin-bottom: 40px;
+}
+
+.timeline-entry::before {
+content: ‘’;
+position: absolute;
+left: 22px;
+top: 6px;
+width: 20px;
+height: 20px;
+background: var(–accent);
+border: 3px solid var(–paper);
+border-radius: 50%;
+box-shadow: 0 0 0 2px var(–accent);
+}
+
+.timeline-entry.major::before {
+width: 24px;
+height: 24px;
+left: 20px;
+background: var(–gold);
+box-shadow: 0 0 0 3px var(–gold), 0 0 12px rgba(184,134,11,0.3);
+}
+
+.timeline-entry .year {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 13px;
+font-weight: 500;
+color: var(–accent);
+letter-spacing: 1px;
+margin-bottom: 4px;
+}
+
+.timeline-entry h4 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.15rem;
+margin-bottom: 6px;
+}
+
+.timeline-entry p { font-size: 0.95rem; color: #444; line-height: 1.6; }
+
+.timeline-entry .has-source {
+display: inline-block;
+margin-top: 6px;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: var(–accent);
+border: 1px solid var(–accent);
+padding: 2px 8px;
+}
+
+/* PULLQUOTE */
+.pullquote {
+border-left: 4px solid var(–gold);
+padding: 20px 30px;
+margin: 40px 0;
+background: rgba(184,134,11,0.06);
+font-family: ‘Playfair Display’, serif;
+font-size: 1.3rem;
+font-style: italic;
+line-height: 1.5;
+color: #333;
+}
+
+.pullquote cite {
+display: block;
+font-size: 0.8rem;
+font-style: normal;
+font-family: ‘JetBrains Mono’, monospace;
+color: #888;
+margin-top: 10px;
+letter-spacing: 1px;
+}
+
+/* COMPARISON TABLE */
+.comparison {
+margin: 40px 0;
+overflow-x: auto;
+}
+
+.comparison table {
+width: 100%;
+border-collapse: collapse;
+font-size: 0.9rem;
+}
+
+.comparison th {
+background: var(–ink);
+color: var(–paper);
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 14px 16px;
+text-align: left;
+}
+
+.comparison td {
+padding: 14px 16px;
+border-bottom: 1px solid #d5cbb8;
+vertical-align: top;
+}
+
+.comparison tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+.comparison td:first-child { font-weight: 600; color: var(–accent); white-space: nowrap; }
+
+/* ADD SOURCE SECTION */
+.add-source-section {
+background: #2c1810;
+color: var(–paper);
+padding: 50px 24px;
+margin: 60px -24px 0;
+text-align: center;
+}
+
+.add-source-section h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.8rem;
+margin-bottom: 15px;
+}
+
+.add-source-section p { max-width: 600px; margin: 0 auto 20px; opacity: 0.8; }
+
+.source-slots {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 12px;
+max-width: 800px;
+margin: 30px auto 0;
+}
+
+.source-slot {
+border: 2px dashed rgba(255,255,255,0.2);
+padding: 20px;
+border-radius: 4px;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+color: rgba(255,255,255,0.4);
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+/* FOOTER */
+footer {
+background: var(–ink);
+color: rgba(255,255,255,0.5);
+padding: 40px 24px;
+text-align: center;
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+letter-spacing: 1px;
+line-height: 2;
+}
+
+footer a { color: var(–gold-light); }
+
+/* IMAGE MODAL */
+.modal-overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.9);
+z-index: 1000;
+cursor: zoom-out;
+padding: 20px;
+overflow: auto;
+justify-content: center;
+align-items: center;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal-overlay img {
+max-width: 95%;
+max-height: 95vh;
+object-fit: contain;
+box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+body { font-size: 16px; }
+.hero { padding: 50px 20px 40px; }
+.content { padding: 0 16px; }
+.evidence-card { padding: 20px 16px; }
+.pullquote { padding: 16px 20px; font-size: 1.1rem; }
+.timeline::before { left: 16px; }
+.timeline-entry { padding-left: 50px; }
+.timeline-entry::before { left: 8px; }
+.timeline-entry.major::before { left: 6px; }
+.sticky-nav a { padding: 12px 12px; font-size: 10px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-kicker">Investigative Research &amp; Primary Source Analysis</div>
+    <h1>The Echo Chamber:<br>From Coughlin's Radio to the <em>Catholic Prayer Gala</em></h1>
+    <p class="hero-subtitle">
+      A documented investigation into the historical parallels between Father Charles Coughlin's Christian Front movement of the 1930s–40s and the contemporary "Catholics for Catholics" organization — using primary newspaper sources, Church documents, and public records.
+    </p>
+    <div class="hero-meta">
+      Research compiled February 2026 &nbsp;·&nbsp; Sources ongoing (50+ documents) &nbsp;·&nbsp; Open-source investigation
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+
+<nav class="sticky-nav">
+  <ul>
+    <li><a href="#trigger">The Trigger</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#coughlin">Coughlin</a></li>
+    <li><a href="#christian-front">Christian Front</a></li>
+    <li><a href="#parallels">Parallels</a></li>
+    <li><a href="#sources">Sources</a></li>
+    <li><a href="#methodology">Methodology</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+
+<!-- SECTION 1: THE TRIGGER -->
+
+<section id="trigger">
+  <div class="section-header">
+    <div class="section-number">Part I</div>
+    <h2>The Trigger: February 2026</h2>
+    <div class="section-dek">A fired commissioner, a champion award, and an alarm sounded on social media</div>
+  </div>
+
+  <div class="prose">
+    <p>On February 9, 2026, Carrie Prejean Boller — a recent Catholic convert and Trump appointee to the White House Religious Liberty Commission — derailed a hearing on antisemitism by arguing that Catholics cannot embrace Zionism and pressing Jewish witnesses on whether her anti-Israel views made her antisemitic. Two days later, she was removed from the commission by its chair, Texas Lt. Gov. Dan Patrick.</p>
+
+```
+<p>Within days, an organization called <strong>Catholics for Catholics</strong> (@CforCatholics) — which bills itself as "the fastest growing Catholic movement in America" and has ties to the White House's "America Prays" campaign — announced it would honor Prejean Boller with a <strong>"Catholic Champion Award"</strong> at their Catholic Prayer for America Gala in Washington, D.C. on March 19, 2026.</p>
+
+<p>On X (formerly Twitter), a verified account called <strong>@StealthMedical1</strong> posted a thread that went viral, making a specific historical claim: what was unfolding was an "astroturfed revival" of the Christian Front movement of the late 1930s–early 1940s, a Catholic-aligned paramilitary organization inspired by Father Charles Coughlin that merged religious zealotry with violent antisemitism and fascist ideology.</p>
+
+<p>This investigation examines that claim using primary newspaper sources from the 1930s, secondary historical analyses, and contemporary reporting. The goal is not advocacy but documentation — laying out the historical record so readers can evaluate the parallels for themselves.</p>
+```
+
+  </div>
+
+  <div class="evidence-card social">
+    <h4>StealthMedical1's Thread on X</h4>
+    <div class="source-meta">@StealthMedical1 · X (formerly Twitter) · February 2026</div>
+    <div class="source-description">
+      The post that initiated this investigation. Claims: (1) The "Catholics for Catholics" award to Prejean Boller represents an astroturfed revival of the Christian Front movement. (2) The Christian Front wanted to install a temporary dictatorship to fight "Judeo-Bolshevism." (3) "Long live Christ the King" was one of the movement's refrains. (4) This is "a power play protected by the armor of religious piety."
+    </div>
+    <img src="IMG_7447.png" alt="StealthMedical1 post page 1" onclick="openModal(this)">
+    <img src="IMG_7448.png" alt="StealthMedical1 post page 2" onclick="openModal(this)" style="margin-top:10px">
+    <img src="IMG_7449.png" alt="Catholics for Catholics award announcement" onclick="openModal(this)" style="margin-top:10px">
+  </div>
+</section>
+
+<!-- SECTION 2: THE HISTORICAL TIMELINE -->
+
+<section id="timeline">
+  <div class="section-header">
+    <div class="section-number">Part II</div>
+    <h2>The Historical Timeline</h2>
+    <div class="section-dek">Key dates from Father Coughlin's rise to the Christian Front's collapse — and the echoes that followed</div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-entry">
+      <div class="year">1926</div>
+      <h4>Coughlin Takes to the Airwaves</h4>
+      <p>Father Charles Edward Coughlin, a Canadian-born Catholic priest at the Shrine of the Little Flower in Royal Oak, Michigan, begins radio broadcasts. Initially religious, his sermons reach a growing audience through WJR Detroit.</p>
+    </div>
+
+```
+<div class="timeline-entry">
+  <div class="year">1930–1932</div>
+  <h4>The "Radio Priest" Becomes a National Force</h4>
+  <p>As the Great Depression devastates the country, Coughlin's broadcasts become overtly political. His audience reaches an estimated 30 million listeners weekly — when the entire U.S. population is roughly 120 million. He initially supports FDR and the New Deal.</p>
+</div>
+
+<div class="timeline-entry major">
+  <div class="year">1933</div>
+  <h4>Coughlin's Radio Show Listed Alongside Mainstream Programming</h4>
+  <p>By late 1933, Father Coughlin's broadcasts appear in daily radio listings alongside Bing Crosby, Jack Benny, and the Metropolitan Opera — a sign of complete normalization. His show on WMCA and WOR reaches the New York metropolitan area.</p>
+  <span class="has-source">📰 Source: Daily News, Nov 27, 1933</span>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">1934–1935</div>
+  <h4>The Break with FDR and the Turn Toward Extremism</h4>
+  <p>Coughlin breaks with Roosevelt, calling him "the great liar and betrayer." His rhetoric grows more extreme. NRA chief Hugh Johnson publicly attacks Coughlin, accusing him of being a purveyor of "bunk" and aspiring to be an American Hitler.</p>
+  <span class="has-source">📰 Source: The Morning Call, March 31, 1935</span>
+</div>
+
+<div class="timeline-entry major">
+  <div class="year">1936</div>
+  <h4>The Union Party and the Lemke Presidential Campaign</h4>
+  <p>Coughlin creates the National Union for Social Justice and backs Rep. William Lemke of North Dakota for president on the Union Party ticket. Coughlin appears as a surprise speaker at political rallies. He launches <em>Social Justice</em> magazine to spread his message in print. He declares: "This is our last election. It is fascism or communism."</p>
+  <span class="has-source">📰 Sources: The Frederick Leader, July 16, 1936 · St. Louis Post-Dispatch, Nov 1, 1936</span>
+</div>
+
+<div class="timeline-entry major">
+  <div class="year">1938</div>
+  <h4>The Christian Front Is Born</h4>
+  <p>After the failure of the Union Party (Lemke gets less than 2% of the vote), Coughlin drops all pretense. In a broadcast, he calls for the creation of a "Christian Front" — ostensibly to fight communism, but in practice a paramilitary organization targeting Jews. The Front organizes "Buy Christian" rallies, harasses Jewish merchants, and operates under the slogan "For Christ and Country." <em>Social Justice</em> reprints portions of the Protocols of the Elders of Zion and plagiarizes a speech by Joseph Goebbels.</p>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">November 1938</div>
+  <h4>Coughlin Defends Kristallnacht</h4>
+  <p>After the Nazi pogrom against Jews known as Kristallnacht, Coughlin defends the violence on air, arguing it was "justified as retaliation for Jewish persecution of Christians." WMCA cancels his broadcasts. Thousands of his supporters surround the station, shouting antisemitic slogans.</p>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">1939</div>
+  <h4>The Christian Front Terrorizes New York</h4>
+  <p>The Christian Front holds an estimated 30 rallies per week across New York City's boroughs, drawing crowds of up to 2,000. Jewish storeowners face regular pickets. Members harass Jews on the streets — many of them seniors, women, and children. Street meetings begin with: "For Christ and Country, I open this meeting in the name of the Christian Front! The leader of the Christian Front is Jesus Christ."</p>
+</div>
+
+<div class="timeline-entry major">
+  <div class="year">January 1940</div>
+  <h4>FBI Raids the Christian Front</h4>
+  <p>The FBI arrests 17 Christian Front members in Brooklyn on charges of conspiring to overthrow the U.S. government. Bomb-making equipment is found in members' homes. The group had planned a "Zero Hour" — a coordinated wave of bombings, shootings, and assassinations of congressmen. The arrests make national headlines.</p>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">1942</div>
+  <h4>The Church Silences Coughlin</h4>
+  <p>The Archdiocese of Detroit, under Archbishop (later Cardinal) Edward Mooney, orders Coughlin to cease all public and political activities. His newspaper <em>Social Justice</em> is barred from the mails under the Espionage Act. Coughlin retreats to parish work in Royal Oak, where he remains until retirement in 1966. He dies in 1979.</p>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">1965</div>
+  <h4>Vatican II: <em>Nostra Aetate</em></h4>
+  <p>The Second Vatican Council issues <em>Nostra Aetate</em>, a declaration on the relation of the Church to non-Christian religions. It explicitly repudiates the charge of collective Jewish guilt for the death of Christ and condemns all forms of antisemitism. This represents the Church's definitive break with the theology that had fueled movements like the Christian Front.</p>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">1984</div>
+  <h4>Catholic Heritage Publications Reassess the Coughlin Era</h4>
+  <p>Catholic newspapers publish retrospective accounts of Coughlin's rise and fall, framing it as a cautionary tale about demagoguery within the Church. These accounts acknowledge his antisemitism while noting the Church ultimately silenced him.</p>
+  <span class="has-source">📰 Source: The Messenger, September 7, 1984</span>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">2001</div>
+  <h4>Star Tribune Republishes Coughlin's Rhetoric</h4>
+  <p>The Minneapolis Star Tribune's Commentary section reprints selections from Coughlin's speeches under the heading "Arguments through the ages," allowing modern readers to see his exact language and rhetorical techniques.</p>
+  <span class="has-source">📰 Source: Star Tribune, February 19, 2001</span>
+</div>
+
+<div class="timeline-entry">
+  <div class="year">2017</div>
+  <h4>Charlottesville and Michigan's Far-Right History</h4>
+  <p>After the "Unite the Right" rally in Charlottesville, Virginia, the Detroit Free Press publishes a major investigation tracing the long arc of far-right extremism in Michigan — from the KKK to Coughlin to the Black Legion to the Michigan Militia. The article explicitly draws the line from Coughlin's era to present-day extremism.</p>
+  <span class="has-source">📰 Source: Detroit Free Press, August 17, 2017</span>
+</div>
+
+<div class="timeline-entry major">
+  <div class="year">February 9, 2026</div>
+  <h4>Prejean Boller's Confrontation at the Religious Liberty Commission</h4>
+  <p>At a hearing on antisemitism, Prejean Boller argues Catholics cannot embrace Zionism, defends Candace Owens and Tucker Carlson against antisemitism charges, and presses Jewish witnesses on Israel and Gaza. Fellow Catholic commissioner Ryan Anderson reads her Vatican II documents and papal statements in rebuttal. She is removed from the commission two days later.</p>
+</div>
+
+<div class="timeline-entry major">
+  <div class="year">February 2026</div>
+  <h4>"Catholics for Catholics" Announces Champion Award</h4>
+  <p>The organization announces it will honor Prejean Boller with a "Catholic Champion Award" at their Catholic Prayer for America Gala on March 19, 2026 in Washington, D.C. The event is to be held at the Waldorf (formerly Trump Hotel). @StealthMedical1 posts the thread comparing this to a revival of the Christian Front.</p>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- SECTION 3: FATHER CHARLES COUGHLIN -->
+
+<section id="coughlin">
+  <div class="section-header">
+    <div class="section-number">Part III</div>
+    <h2>Father Charles Coughlin: The Primary Sources</h2>
+    <div class="section-dek">What the newspapers actually reported, in their own time</div>
+  </div>
+
+  <div class="prose">
+    <p>The following primary source documents establish the historical record of Father Coughlin's activities, his political alliances, and his place in the American media landscape. Each source has been photographed from original newspaper archives and is presented with context about what it documents and why it matters to this investigation.</p>
+  </div>
+
+  <div class="evidence-card">
+    <h4>Father Charles Coughlin — Portrait</h4>
+    <div class="source-meta">Archival photograph · Undated, circa 1930s</div>
+    <div class="source-description">
+      Father Charles Edward Coughlin (1891–1979), the "Radio Priest." A Canadian-born Catholic priest based at the Shrine of the Little Flower in Royal Oak, Michigan. At his peak, an estimated 30 million Americans — one in four — tuned in to his weekly broadcasts. One poll found him the second most admired figure in America after President Roosevelt himself.
+    </div>
+    <img src="_Father_Charles_Coughlin.jpg" alt="Father Charles Coughlin portrait" onclick="openModal(this)">
+  </div>
+
+  <div class="evidence-card">
+    <h4>"Father Coughlin — Our Monetary Policy?" Listed in Daily Radio Programming</h4>
+    <div class="source-meta">Daily News (New York) · November 27, 1933 · Page 44 (Radio Program section)</div>
+    <div class="source-description">
+      <strong>Why this matters:</strong> This radio listings page shows Coughlin's broadcast scheduled at 4:00 PM on WMCA and WOR under the title "Our Monetary Policy?" — sandwiched between Bing Crosby, Jack Benny, and other mainstream entertainment. It demonstrates how completely Coughlin's political programming had been normalized as everyday media consumption by late 1933. The column below also mentions him in ABE Greenberg's "Listening In" column as a mainstream radio personality. This normalization of extremist content within mainstream media is a key parallel to contemporary concerns.
+    </div>
+    <img src="Daily_News_1933_11_27_432.jpg" alt="Daily News Nov 27 1933 radio listings showing Coughlin" onclick="openModal(this)">
+  </div>
+
+  <div class="evidence-card">
+    <h4>"Johnson Again Lashes at Long and Coughlin — Accuses Priest of Trying to Be U.S. Hitler"</h4>
+    <div class="source-meta">The Morning Call (Allentown, PA) · March 31, 1935 · Page 1</div>
+    <div class="source-description">
+      <strong>Why this matters:</strong> Front-page coverage of NRA Administrator General Hugh Johnson publicly attacking Coughlin and comparing him to Hitler. Johnson accused Coughlin of being a "purveyor of bunk" and said he preferred "Huey Long's forthright bunk" to Coughlin's "pious speech." The article describes Johnson defending the NRA against Coughlin's attacks and noting the priest's aspirations to be an American strongman figure. This shows that even by 1935 — three years before the Christian Front's formal creation — senior government officials were sounding alarms about Coughlin's fascist tendencies.
+    </div>
+    <img src="The_Morning_Call_1935_03_31_1.jpg" alt="Morning Call March 31 1935 Johnson attacks Coughlin" onclick="openModal(this)">
+  </div>
+
+  <div class="evidence-card">
+    <h4>"Father Charles Coughlin Surprise Speaker Before Townsend Meeting — Will Assist Lemke"</h4>
+    <div class="source-meta">The Frederick Leader (Frederick, OK) · July 16, 1936 · Front Page</div>
+    <div class="source-description">
+      <strong>Why this matters:</strong> Front-page coverage of Coughlin's political alliance-building. He appears as a "surprise speaker" at a Townsend Plan meeting in Cleveland, Ohio, announcing his support for Rep. William Lemke's Union Party presidential candidacy. The article notes Coughlin "raised a hoard [sic] of cheers" from the audience. The headline juxtaposition — Coughlin's political alliance sits alongside "Supreme Court to Act on Repeal Ballot" and international news about Mussolini — captures the political volatility of the moment. This documents the transition from religious broadcasting to active political organizing.
+    </div>
+    <img src="The_Frederick_Leader_1936_07_16_1__1_.jpg" alt="Frederick Leader July 16 1936 Coughlin supports Lemke" onclick="openModal(this)">
+  </div>
+
+  <div class="evidence-card">
+    <h4>Coughlin's Broadcasts in Election-Eve Radio Listings</h4>
+    <div class="source-meta">St. Louis Post-Dispatch · November 1, 1936 · Section 4 (Radio Section)</div>
+    <div class="source-description">
+      <strong>Why this matters:</strong> Three days before the 1936 presidential election, the radio section shows Coughlin's broadcasts listed alongside election coverage, the Metropolitan Opera, and Bing Crosby specials. The page also references the historic election coverage planned for Tuesday night. This snapshot shows Coughlin operating as a full political force through the medium of radio — exactly as StealthMedical1's post describes the contemporary use of social media and galas to build political-religious movements.
+    </div>
+    <img src="St_Louis_Post_Dispatch_1936_11_01_Page_51.jpg" alt="St Louis Post-Dispatch Nov 1 1936 radio listings" onclick="openModal(this)">
+  </div>
+
+  <div class="pullquote">
+    "This is our last election. It is fascism or communism. We are at the crossroads. I take the road to fascism."
+    <cite>— Father Charles Coughlin, 1936 (documented in PBS/WNET's "Exploring Hate" series)</cite>
+  </div>
+</section>
+
+<!-- SECTION 4: THE CHRISTIAN FRONT -->
+
+<section id="christian-front">
+  <div class="section-header">
+    <div class="section-number">Part IV</div>
+    <h2>The Christian Front: What It Was</h2>
+    <div class="section-dek">A documented account of the paramilitary organization at the center of this investigation</div>
+  </div>
+
+  <div class="prose">
+    <p>The Christian Front was formally established in 1938 following a Coughlin radio broadcast calling on listeners to form "platoons" to fight communism. According to the U.S. Holocaust Memorial Museum, the Britannica encyclopedia, and Harvard historian Charles Gallagher (author of <em>Nazis of Copley Square</em>, published by Harvard University Press in 2022), the Christian Front was:</p>
+  </div>
+
+  <div class="comparison">
+    <table>
+      <tr>
+        <th style="width: 180px;">Characteristic</th>
+        <th>Historical Record (Christian Front, 1938–1942)</th>
+      </tr>
+      <tr>
+        <td>Composition</td>
+        <td>Almost entirely working-class Irish Catholic Americans from New York City and Boston</td>
+      </tr>
+      <tr>
+        <td>Self-concept</td>
+        <td>"Foot soldiers of the Roman Catholic Church fighting a holy war against Judeo-Bolshevism"</td>
+      </tr>
+      <tr>
+        <td>Rallying cry</td>
+        <td>"For Christ and Country" — meetings opened with: "The leader of the Christian Front is Jesus Christ"</td>
+      </tr>
+      <tr>
+        <td>Activities</td>
+        <td>"Buy Christian" boycotts of Jewish businesses; street harassment of Jews (including seniors, women, children); weekly rallies (30/week in NYC alone at peak); distribution of <em>Social Justice</em></td>
+      </tr>
+      <tr>
+        <td>Ideology</td>
+        <td>Anti-communist, antisemitic, pro-fascist; blamed Jews for both capitalism and communism; defended Nazi violence including Kristallnacht</td>
+      </tr>
+      <tr>
+        <td>Media strategy</td>
+        <td>Mass radio broadcasts (Coughlin); print newspaper (<em>Social Justice</em>); street rallies; political alliances with Townsend Plan, Union Party</td>
+      </tr>
+      <tr>
+        <td>Collapse</td>
+        <td>FBI arrests 17 members in Brooklyn (Jan 1940) for conspiracy to overthrow the government; bomb-making materials found; Church silences Coughlin (1942); <em>Social Justice</em> barred from U.S. mail</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="evidence-card secondary">
+    <h4>"Catholics' Response to the Great Depression" — Including Father Charles Coughlin Section</h4>
+    <div class="source-meta">The Messenger (Belleville, IL) · September 7, 1984 · "Our Catholic Heritage" series</div>
+    <div class="source-description">
+      <strong>Why this matters:</strong> This retrospective from a Catholic diocesan newspaper provides the Church's own historical accounting of the Coughlin era. It documents his rise from parish priest to national political force, his initial support for and then break with FDR, the creation of the National Union for Social Justice, his alliance with Huey Long, and ultimately his antisemitic turn and forced silencing by the Church. The article notably appears in a series called "A History of the Catholic Church in America" — meaning the Church itself has documented this history as a cautionary chapter.
+    </div>
+    <img src="The_Messenger_1984_09_07_42.jpg" alt="The Messenger Sept 7 1984 Catholic Heritage Coughlin" onclick="openModal(this)">
+  </div>
+
+  <div class="evidence-card secondary">
+    <h4>"Father Charles Coughlin: In midst of plenty, we create want" — Arguments Through the Ages</h4>
+    <div class="source-meta">Star Tribune (Minneapolis) · February 19, 2001 · Commentary, Page A17</div>
+    <div class="source-description">
+      <strong>Why this matters:</strong> This Commentary page presents Coughlin's own rhetoric for modern readers under the framing "Samples of great rhetoric from the past." The editors provide an introductory note identifying Coughlin as "a Roman Catholic priest and radio commentator in the 1930s and '50s, [who] exerted enormous political influence during the Great Depression. Although his rhetoric was unmistakably anti-Semitic, other elements of his philosophy resist easy description." The reprinted speech shows Coughlin's populist technique: mixing genuine economic grievance with coded scapegoating, wrapping it in religious authority, and presenting it as patriotic duty.
+    </div>
+    <img src="Star_Tribune_2001_02_19_Page_17.jpg" alt="Star Tribune Feb 19 2001 Coughlin rhetoric" onclick="openModal(this)">
+  </div>
+</section>
+
+<!-- SECTION 5: THE PARALLELS -->
+
+<section id="parallels">
+  <div class="section-header">
+    <div class="section-number">Part V</div>
+    <h2>The Parallels: Then and Now</h2>
+    <div class="section-dek">A side-by-side examination of the structural similarities — and the differences</div>
+  </div>
+
+  <div class="prose">
+    <p>StealthMedical1's central claim is that the current moment — specifically, the "Catholics for Catholics" organization and its championing of Prejean Boller — represents a structural revival of the Christian Front playbook. Below is a documented comparison of the patterns. Readers should note both the parallels and the significant differences.</p>
+  </div>
+
+  <div class="comparison">
+    <table>
+      <tr>
+        <th style="width:180px;">Pattern</th>
+        <th>Christian Front Era (1930s–40s)</th>
+        <th>Current Moment (2025–26)</th>
+      </tr>
+      <tr>
+        <td>Religious framing of political extremism</td>
+        <td>"For Christ and Country"; meetings opened invoking Jesus as leader; Coughlin compared critics to those who persecuted Christ</td>
+        <td>"Catholic Prayer for America" gala; "Catholic Champion Award"; framing political anti-Zionism as faithful Catholicism</td>
+      </tr>
+      <tr>
+        <td>Anti-Jewish rhetoric wrapped in theology</td>
+        <td>Blamed "Judeo-Bolshevism"; accused Jewish bankers; defended Kristallnacht as retaliation for Jewish persecution of Christians</td>
+        <td>"Catholics do not embrace Zionism"; citing 1 Thess 2:15 (Jews killed Christ) at antisemitism hearing; framing anti-Zionism as Catholic doctrine</td>
+      </tr>
+      <tr>
+        <td>Media platform for amplification</td>
+        <td>Weekly radio broadcasts to 30 million; <em>Social Justice</em> newspaper; rally circuit</td>
+        <td>Social media (X/Twitter); organizational websites; gala events; White House adjacency</td>
+      </tr>
+      <tr>
+        <td>Normalization through mainstream adjacency</td>
+        <td>Coughlin's show listed alongside Bing Crosby and Jack Benny in radio listings; endorsed by mainstream politicians</td>
+        <td>Prejean Boller appointed to White House commission; "Catholics for Catholics" claims fastest-growing Catholic movement; gala at former Trump Hotel</td>
+      </tr>
+      <tr>
+        <td>Response from Catholic establishment</td>
+        <td>Catholic League condemned Coughlin; Church eventually silenced him (1942)</td>
+        <td>Catholic League's Bill Donohue called for Prejean Boller's removal; EWTN reported Catholic scholars' rebuttals; Coalition of Catholics Against Antisemitism formed</td>
+      </tr>
+      <tr>
+        <td>Championing of removed/marginalized figures</td>
+        <td>Coughlin championed after stations dropped him; supporters picketed WMCA</td>
+        <td>Prejean Boller championed with award after removal from commission; Candace Owens defended</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="evidence-card secondary">
+    <h4>"Michigan Has Long Been Fertile Ground for Far Right"</h4>
+    <div class="source-meta">Detroit Free Press · August 17, 2017 · Cover Story, Page 9A · By Allie Gross</div>
+    <div class="source-description">
+      <strong>Why this matters:</strong> Published after the Charlottesville rally, this Detroit Free Press investigation traces the direct lineage from the Ku Klux Klan to Father Coughlin to the Black Legion to the Michigan Militia — documenting how extremist movements in America repeatedly use the same playbook of religious/patriotic framing, scapegoating, and paramilitary organization. The article explicitly places Coughlin in the continuum of American far-right movements and quotes historians on the persistent patterns. JoEllen Vinyard, author of "Right in Michigan's Grassroots," noted the similarities between historical and contemporary far-right movements.
+    </div>
+    <img src="Detroit_Free_Press_2017_08_17_A9.jpg" alt="Detroit Free Press Aug 17 2017 Michigan far right history" onclick="openModal(this)">
+  </div>
+
+  <div class="pullquote">
+    "This is a power play protected by the armor of religious piety. Reject it or it will fracture us."
+    <cite>— @StealthMedical1, February 2026</cite>
+  </div>
+
+  <div class="prose" style="margin-top: 30px;">
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 15px;">Important Differences to Note</h3>
+    <p>Responsible analysis requires documenting the differences alongside the parallels. The Christian Front was a paramilitary organization whose members were arrested for conspiring to overthrow the government and manufacturing bombs. There is no evidence that "Catholics for Catholics" has engaged in or advocated violence. The Christian Front operated in an era before Vatican II's <em>Nostra Aetate</em> explicitly condemned antisemitism. Today's Catholic Church has doctrinal guardrails that did not exist in the 1930s. Coughlin reached 30 million through radio monopoly; today's media landscape is fragmented and contested. The Catholic League, EWTN, and mainstream Catholic institutions have pushed back forcefully against Prejean Boller's claims.</p>
+
+```
+<p>What the historical record does support is StealthMedical1's observation about the <em>structural pattern</em>: the use of Catholic identity and theology to legitimize anti-Jewish sentiment, the championing of figures removed for extremism, and the normalization of these views through religious events and political adjacency. Whether this constitutes a "revival" or merely a "rhyme" is a judgment this investigation leaves to the reader.</p>
+```
+
+  </div>
+</section>
+
+<!-- SECTION 6: SOURCE INDEX -->
+
+<section id="sources">
+  <div class="section-header">
+    <div class="section-number">Part VI</div>
+    <h2>Complete Source Index</h2>
+    <div class="section-dek">Primary documents, secondary sources, and reference materials used in this investigation</div>
+  </div>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 30px 0 15px; color: var(--accent);">Primary Newspaper Sources (Archived Originals)</h3>
+
+  <div class="evidence-card">
+    <h4>Daily News (New York) — Radio Listings</h4>
+    <div class="source-meta">November 27, 1933 · Page 44</div>
+    <div class="source-description">Documents Coughlin's broadcast normalization alongside mainstream entertainment programming.</div>
+  </div>
+
+  <div class="evidence-card">
+    <h4>The Morning Call (Allentown, PA) — "Johnson Lashes at Coughlin"</h4>
+    <div class="source-meta">March 31, 1935 · Front Page</div>
+    <div class="source-description">NRA chief Hugh Johnson publicly accuses Coughlin of aspiring to be a U.S. Hitler.</div>
+  </div>
+
+  <div class="evidence-card">
+    <h4>The Frederick Leader (Frederick, OK) — "Coughlin Surprise Speaker"</h4>
+    <div class="source-meta">July 16, 1936 · Front Page</div>
+    <div class="source-description">Documents Coughlin's political alliance with the Lemke/Union Party presidential campaign.</div>
+  </div>
+
+  <div class="evidence-card">
+    <h4>St. Louis Post-Dispatch — Radio Section</h4>
+    <div class="source-meta">November 1, 1936 · Section 4</div>
+    <div class="source-description">Election-eve radio listings showing Coughlin as a normalized part of political media landscape.</div>
+  </div>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 30px 0 15px; color: var(--accent);">Secondary Historical Sources</h3>
+
+  <div class="evidence-card secondary">
+    <h4>The Messenger — "Catholics' Response to the Great Depression"</h4>
+    <div class="source-meta">September 7, 1984 · Belleville, IL</div>
+    <div class="source-description">Catholic diocesan newspaper's own historical accounting of the Coughlin era.</div>
+  </div>
+
+  <div class="evidence-card secondary">
+    <h4>Star Tribune — "Father Charles Coughlin" Commentary</h4>
+    <div class="source-meta">February 19, 2001 · Minneapolis · Page A17</div>
+    <div class="source-description">Reprints Coughlin's actual rhetoric for modern readers with editorial context.</div>
+  </div>
+
+  <div class="evidence-card secondary">
+    <h4>Detroit Free Press — "Michigan Has Long Been Fertile Ground for Far Right"</h4>
+    <div class="source-meta">August 17, 2017 · Cover Story · By Allie Gross</div>
+    <div class="source-description">Investigation tracing far-right lineage from KKK through Coughlin to present-day extremism.</div>
+  </div>
+
+  <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 30px 0 15px; color: var(--accent);">Online Reference Sources</h3>
+
+  <div class="evidence-card analysis">
+    <h4>Key Reference Links</h4>
+    <div class="source-meta">Verified as of February 2026</div>
+    <div class="source-description">
+      <strong>U.S. Holocaust Memorial Museum:</strong> <a href="https://encyclopedia.ushmm.org/content/en/article/charles-e-coughlin" target="_blank">Charles E. Coughlin entry</a><br>
+      <strong>Britannica:</strong> <a href="https://www.britannica.com/topic/Christian-Front" target="_blank">Christian Front</a><br>
+      <strong>PBS/WNET Exploring Hate:</strong> <a href="https://www.pbs.org/wnet/exploring-hate/2022/03/09/today-in-history-the-father-coughlin-story/" target="_blank">"Radioactive: The Father Coughlin Story" (8-part podcast)</a><br>
+      <strong>Book:</strong> Charles Gallagher, <em>Nazis of Copley Square: The Forgotten Story of the Christian Front</em> (Harvard University Press, 2022)<br>
+      <strong>Catholic Review (OSV News):</strong> <a href="https://catholicreview.org/carrie-prejean-boller-removed-from-religious-liberty-commission-after-antisemitism-row/" target="_blank">Prejean Boller removal report</a><br>
+      <strong>Catholic League:</strong> <a href="https://www.catholicleague.org/catholic-on-religious-liberty-panel-should-go/" target="_blank">Bill Donohue's statement on Prejean Boller</a><br>
+      <strong>EWTN News:</strong> <a href="https://www.ewtnnews.com/world/us/members-of-religious-liberty-commission-clash-over-catholic-views-on-zionism" target="_blank">Commission clash reporting</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: METHODOLOGY -->
+
+<section id="methodology">
+  <div class="section-header">
+    <div class="section-number">Part VII</div>
+    <h2>Methodology &amp; How to Contribute</h2>
+    <div class="section-dek">How this research was compiled and how to add your own sources</div>
+  </div>
+
+  <div class="prose">
+    <p>This investigation was compiled using standard journalistic research methods: primary source newspaper archives accessed through digital repositories, secondary historical analyses from academic and journalistic sources, and contemporary reporting from established news outlets. All primary sources are presented as photographic reproductions of the original documents.</p>
+
+```
+<p>This is an open-source investigation. The researcher has identified over 50 relevant documents and is in the process of adding them. If you have primary sources — newspaper clippings, archival documents, church bulletins, photographs — that document either the historical Christian Front movement or contemporary Catholic nationalist organizations, you can contribute them to this project.</p>
+```
+
+  </div>
+</section>
+
+<!-- PLACEHOLDER SECTION FOR ADDITIONAL SOURCES -->
+
+<div class="add-source-section">
+  <h3>This Investigation Is Ongoing</h3>
+  <p>50+ additional primary sources are being cataloged and will be added to this timeline. Placeholder categories for upcoming additions:</p>
+  <div class="source-slots">
+    <div class="source-slot">📰 Additional 1930s newspaper coverage of Coughlin rallies</div>
+    <div class="source-slot">📰 Christian Front arrest coverage (1940)</div>
+    <div class="source-slot">📰 Social Justice newspaper excerpts</div>
+    <div class="source-slot">📰 FBI investigation documents</div>
+    <div class="source-slot">📰 Church responses / Bishop statements</div>
+    <div class="source-slot">📰 "Buy Christian" rally documentation</div>
+    <div class="source-slot">📰 Kristallnacht broadcast reactions</div>
+    <div class="source-slot">📰 Union Party / Lemke campaign coverage</div>
+    <div class="source-slot">📰 Contemporary Catholics for Catholics materials</div>
+    <div class="source-slot">📰 Vatican II / Nostra Aetate documents</div>
+    <div class="source-slot">📰 Modern Catholic anti-antisemitism statements</div>
+    <div class="source-slot">📰 Your source here — contribute to the investigation</div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <p>This investigation is independent, open-source research. It is not affiliated with any religious organization, political party, or advocacy group.<br>
+  All primary sources are public record. All analysis is documented and sourced.<br>
+  <a href="#">View on GitHub</a> &nbsp;·&nbsp; Licensed under Creative Commons Attribution 4.0</p>
+</footer>
+
+<!-- IMAGE MODAL -->
+
+<div class="modal-overlay" id="imageModal" onclick="closeModal()">
+  <img id="modalImg" src="" alt="">
+</div>
+
+<script>
+function openModal(img) {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImg');
+  modalImg.src = img.src;
+  modalImg.alt = img.alt;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('imageModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('.sticky-nav a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      const navHeight = document.querySelector('.sticky-nav').offsetHeight;
+      const targetPosition = target.offsetTop - navHeight - 10;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
