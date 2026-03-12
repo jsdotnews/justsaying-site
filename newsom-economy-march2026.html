@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Economic Claims vs. Federal Data | Just Saying News</title>
+<meta name="description" content="Five economic claims checked against federal data — BLS, BEA, EIA, and the Supreme Court. Facts first. You decide.">
+<meta property="og:title" content="5 Economic Claims vs. Federal Data | Just Saying News">
+<meta property="og:description" content="Five economic claims checked against federal data. No opinion. Just sources.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f5f0eb;
+    --paper-dark: #ebe4dc;
+    --accent: #c44b28;
+    --accent-light: #e8d5cc;
+    --muted: #6b6560;
+    --rule: #c9c1b8;
+    --highlight: #fdf6e3;
+    --blue-link: #2a5aa7;
+    --green: #2d6a4f;
+    --red-subtle: #9b2226;
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* MASTHEAD */
+  .masthead { border-bottom: 3px double var(--rule); padding: 20px 0 16px; text-align: center; }
+  .masthead-date { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .masthead-logo { font-family: var(--font-display); font-size: clamp(28px, 5vw, 42px); font-weight: 700; letter-spacing: -0.5px; color: var(--ink); text-decoration: none; }
+  .masthead-logo span { color: var(--accent); }
+  .masthead-tagline { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--muted); margin-top: 4px; }
+
+  /* NAV */
+  .nav { border-bottom: 1px solid var(--rule); padding: 10px 0; position: sticky; top: 0; background: var(--paper); z-index: 100; }
+  .nav-inner { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  .nav a { font-family: var(--font-body); font-size: 13px; font-weight: 600; text-decoration: none; color: var(--ink); padding: 6px 14px; border-radius: 3px; letter-spacing: 0.3px; text-transform: uppercase; transition: all 0.2s; }
+  .nav a:hover { background: var(--ink); color: var(--paper); }
+
+  /* HERO */
+  .hero { padding: 48px 0 40px; border-bottom: 1px solid var(--rule); }
+  .article-tag { display: inline-block; font-family: var(--font-mono); font-size: 12px; background: var(--ink); color: var(--paper); padding: 4px 12px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(30px, 6vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; max-width: 750px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+  .meta-item { font-size: 12px; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.5px; }
+  .hero-lede { font-family: var(--font-display); font-size: 19px; line-height: 1.55; color: #3a3632; max-width: 700px; margin-bottom: 16px; }
+  .attribution { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--muted); }
+  .attribution a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  .attribution a:hover { color: var(--ink); }
+
+  /* SECTIONS */
+  section { padding: 48px 0; border-bottom: 1px solid var(--rule); }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+  .section-number { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 1px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.5px; }
+  .section-rule { width: 60px; height: 3px; background: var(--accent); margin-bottom: 28px; }
+
+  /* TABS + CHART */
+  .tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--ink); }
+  .tab-btn { background: transparent; color: var(--muted); border: 1px solid transparent; border-bottom: none; margin-bottom: -2px; padding: 9px 20px; cursor: pointer; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; font-family: var(--font-body); transition: all 0.15s; }
+  .tab-btn.active { background: var(--paper); color: var(--ink); border-color: var(--ink); border-bottom: 2px solid var(--paper); }
+  .tab-btn:hover:not(.active) { color: var(--ink); }
+  .chart-panel { background: white; border: 1px solid var(--rule); border-top: none; padding: 20px 16px 16px; }
+  .chart-meta { display: flex; justify-content: space-between; align-items: center; padding: 0 4px 14px; flex-wrap: wrap; gap: 8px; border-bottom: 1px dashed var(--rule); margin-bottom: 16px; }
+  .chart-desc { font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
+  .chart-source { font-size: 11px; color: var(--muted); text-decoration: underline; font-family: var(--font-mono); margin-left: 12px; transition: color 0.15s; }
+  .chart-source:hover { color: var(--ink); }
+  .legend { display: flex; gap: 20px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .legend-label { font-size: 11px; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.5px; }
+  .chart-wrap { position: relative; height: 240px; }
+
+  /* TABLE */
+  .data-table-wrap { margin-top: 32px; }
+  .table-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead { background: var(--ink); color: var(--paper); }
+  th { font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+  tbody tr { border-bottom: 1px solid var(--rule); }
+  tbody tr:hover td { background: white; }
+  td { padding: 11px 14px; }
+  td.period { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+  td.context { font-style: italic; font-size: 13px; color: var(--muted); }
+  td a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--rule); transition: border-color 0.15s; }
+  td a:hover { border-bottom-color: var(--ink); }
+
+  /* STAT CARDS */
+  .stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+  @media (max-width: 560px) { .stat-cards { grid-template-columns: 1fr; } }
+  .stat-card { background: white; border: 1px solid var(--rule); padding: 20px; display: block; text-decoration: none; color: var(--ink); border-radius: 4px; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+  .stat-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,0.07); transform: translateY(-2px); }
+  .stat-card-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .stat-card-value { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .stat-card-sub { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 6px; }
+  .stat-card-change { font-family: var(--font-body); font-size: 12px; font-weight: 600; margin-top: 5px; }
+  .snapshot-note { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 20px; display: block; }
+
+  /* VERDICTS */
+  .verdicts-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .verdict-list { display: flex; flex-direction: column; gap: 3px; }
+  .verdict-btn { width: 100%; background: white; border: 1px solid var(--rule); padding: 14px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; text-align: left; font-family: var(--font-body); transition: background 0.15s; }
+  .verdict-btn:hover { background: var(--paper-dark); }
+  .verdict-claim { font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--ink); }
+  .verdict-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin-left: 16px; }
+  .verdict-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .verdict-arrow { color: var(--muted); font-size: 12px; }
+  .verdict-detail { background: var(--highlight); border: 1px solid var(--rule); border-top: none; padding: 16px 20px; display: none; }
+  .verdict-detail.open { display: block; }
+  .verdict-detail p { font-family: var(--font-display); font-size: 16px; line-height: 1.65; color: #3a3632; }
+  .verdict-detail a { display: inline-block; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-decoration: underline; letter-spacing: 1px; text-transform: uppercase; transition: color 0.15s; }
+  .verdict-detail a:hover { color: var(--ink); }
+
+  /* SOURCES / FOOTER */
+  .sources { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-bottom: 20px; }
+  .sources a { font-family: var(--font-body); font-size: 13px; color: var(--blue-link); text-decoration: underline; transition: color 0.15s; }
+  .sources a:hover { color: var(--ink); }
+  .footer-note { font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.9; }
+  .footer { padding: 40px 0; text-align: center; border-top: 3px double var(--rule); }
+  .footer-logo { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .footer-logo span { color: var(--accent); }
+  .footer-disclaimer { font-family: var(--font-mono); font-size: 11px; color: var(--muted); line-height: 1.8; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 32px 0; }
+    section { padding: 36px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="container">
+    <div class="masthead-date" id="current-date"></div>
+    <a href="/" class="masthead-logo">Just Saying<span>.</span> News</a>
+    <div class="masthead-tagline">Facts first. Then you decide.</div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Page sections">
+  <div class="container nav-inner">
+    <a href="#data">The Data</a>
+    <a href="#snapshot">Current Numbers</a>
+    <a href="#verdicts">Verdicts</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="article-tag">Fact Check</div>
+    <h1>5 Economic Claims vs. Federal Data</h1>
+    <div class="hero-meta">
+      <span class="meta-item">March 2022 &ndash; Present</span>
+      <span class="meta-item">&middot;</span>
+      <span class="meta-item">Same-month comparison</span>
+      <span class="meta-item">&middot;</span>
+      <span class="meta-item">Federal sources only</span>
+    </div>
+    <p class="hero-lede">Five claims about the U.S. economy. We checked each one against federal data—BLS, BEA, EIA, and the Supreme Court—and linked every source.</p>
+    <p class="attribution">In response to <a href="https://x.com/gavinnewsom/status/2031901526717767926?s=46" target="_blank" rel="noreferrer">a post by @GavinNewsom &middot; X.com &middot; March 11, 2026 &#8599;</a></p>
+  </div>
+</div>
+
+<section id="data">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">The Numbers, March by March</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="tabs" id="tabs"></div>
+    <div class="chart-panel">
+      <div class="chart-meta">
+        <div>
+          <span class="chart-desc" id="chart-desc"></span>
+          <a class="chart-source" id="chart-source" href="#" target="_blank" rel="noreferrer">&#8599; Source</a>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#2a5aa7"></div><span class="legend-label">Biden</span></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#c44b28"></div><span class="legend-label">Trump</span></div>
+        </div>
+      </div>
+      <div class="chart-wrap"><canvas id="myChart"></canvas></div>
+    </div>
+    <div class="data-table-wrap">
+      <div class="table-label">March &middot; Year-over-Year Comparison</div>
+      <table>
+        <thead><tr><th>Period</th><th>Context</th><th>President</th><th>Inflation</th><th>Unemployment</th><th>Gas Price</th></tr></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="snapshot">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Current Snapshot</h2>
+    </div>
+    <div class="section-rule"></div>
+    <span class="snapshot-note">February 2026 &middot; Most recent available &middot; March 2026 figures release April 10</span>
+    <div class="stat-cards">
+      <a class="stat-card" href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noreferrer">
+        <div class="stat-card-label">Inflation (CPI YoY)</div>
+        <div class="stat-card-value">2.4%</div>
+        <div class="stat-card-sub">Feb 2026 &middot; BLS</div>
+        <div class="stat-card-change" style="color:#2d6a4f">&#8595; from 8.5% peak (Mar 2022)</div>
+      </a>
+      <a class="stat-card" href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noreferrer">
+        <div class="stat-card-label">Unemployment (U-3)</div>
+        <div class="stat-card-value">4.4%</div>
+        <div class="stat-card-sub">Feb 2026 &middot; BLS</div>
+        <div class="stat-card-change" style="color:#9b6500">&#8593; 0.4 pts since Jan 2025</div>
+      </a>
+      <a class="stat-card" href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noreferrer">
+        <div class="stat-card-label">Gas &middot; Nat'l Avg</div>
+        <div class="stat-card-value">$3.58</div>
+        <div class="stat-card-sub">March 2026 &middot; EIA STEO</div>
+        <div class="stat-card-change" style="color:#9b6500">&#8593; war spike from $2.81 low</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="verdicts">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Fact-Check Verdicts</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="verdicts-label">Click any claim to see the data</div>
+    <div class="verdict-list" id="verdict-list"></div>
+  </div>
+</section>
+
+<section id="sources" style="border-bottom:none">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Sources</h2>
+    </div>
+    <div class="section-rule"></div>
+    <div class="sources" id="sources-list"></div>
+    <div class="footer-note" id="footer-note"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">Just Saying<span>.</span> News</div>
+    <div class="footer-disclaimer">
+      An independent civic information resource. We don't lobby, endorse, or fundraise.<br>
+      We apply this standard to economic claims from any politician, regardless of party.
+    </div>
+  </div>
+</footer>
+
+<script>
+const SOURCES = {
+  inflation:    "https://www.bls.gov/news.release/cpi.nr0.htm",
+  unemployment: "https://www.bls.gov/news.release/empsit.nr0.htm",
+  gas:          "https://www.eia.gov/outlooks/steo/",
+  gdp:          "https://www.bea.gov/news/2026/gross-domestic-product-fourth-quarter-and-year-2025-advance-estimate",
+};
+
+const DATA = [
+  { year: "Mar 2022", context: "Ukraine war",  president: "Biden", inflation: 8.5, unemployment: 3.6, gas: 4.17 },
+  { year: "Mar 2023", context: "no war",        president: "Biden", inflation: 5.0, unemployment: 3.5, gas: 3.46 },
+  { year: "Mar 2024", context: "election yr",   president: "Biden", inflation: 3.5, unemployment: 3.8, gas: 3.53 },
+  { year: "Mar 2025", context: "month 3",       president: "Trump", inflation: 2.4, unemployment: 4.2, gas: 3.10 },
+];
+
+const METRICS = [
+  { key: "inflation",    label: "Inflation",    unit: "%", source: SOURCES.inflation,    yMax: 10, desc: "CPI Year-over-Year" },
+  { key: "unemployment", label: "Unemployment", unit: "%", source: SOURCES.unemployment, yMax: 6,  desc: "U-3 Unemployment Rate" },
+  { key: "gas",          label: "Gas Price",    unit: "$", source: SOURCES.gas,          yMax: 5,  desc: "Avg. National Regular (EIA STEO)" },
+];
+
+const VERDICTS = [
+  { claim: '"Wrecked economy"', verdict: "FALSE", color: "#9b2226",
+    detail: "A wrecked economy shrinks. The U.S. economy actually grew 2.2% in 2025. That's not a wreck. That's growth.",
+    source: SOURCES.gdp },
+  { claim: '"Gas prices soaring"', verdict: "MISLEADING", color: "#9b6500",
+    detail: "Gas is $3.58 this month. That's up from a $2.81 low in January 2026, partly because of a conflict with Iran. But it's still lower than the $4.17 Americans paid in March 2022. Up from a recent low—yes. 'Soaring'—that's a stretch.",
+    source: SOURCES.gas },
+  { claim: '"Inflation is up"', verdict: "FALSE", color: "#9b2226",
+    detail: "Inflation measures how fast prices are rising. In March 2022, it was 8.5%—prices were rising fast. By the time Trump took office in early 2025, it had already fallen to 2.4%. It's still 2.4% today. Prices aren't rising faster. They're rising slower.",
+    source: SOURCES.inflation },
+  { claim: '"Unemployment is sky rocketing"', verdict: "TRUE — OVERSTATED", color: "#9b6500",
+    detail: "More people are out of work than when Trump took office—unemployment went from 4.0% to 4.4%. That's real. But a 0.4-point rise over more than a year isn't skyrocketing. For comparison, the normal post-WWII average is around 5–6%. We're still well below that.",
+    source: SOURCES.unemployment },
+  { claim: '"Fighting to TAX the American people"', verdict: "FALSE", color: "#9b2226",
+    detail: "Trump's tariffs—taxes on imported goods—were struck down by the Supreme Court on February 20, 2026. Six of nine justices ruled that the law Trump used to set tariffs (called IEEPA) does not give the president that power. The policy was thrown out by the nation's highest court.",
+    source: "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf" },
+];
+
+const COLORS = { Biden: "#2a5aa7", Trump: "#c44b28" };
+let activeMetric = "inflation";
+let chartInstance = null;
+
+document.getElementById("current-date").textContent =
+  new Date().toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+
+// Tabs
+const tabsEl = document.getElementById("tabs");
+METRICS.forEach(m => {
+  const btn = document.createElement("button");
+  btn.className = "tab-btn" + (m.key === activeMetric ? " active" : "");
+  btn.textContent = m.label;
+  btn.addEventListener("click", () => {
+    activeMetric = m.key;
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    updateChart();
+  });
+  tabsEl.appendChild(btn);
+});
+
+// Table
+const tbody = document.getElementById("table-body");
+DATA.forEach(row => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td class="period">${row.year}</td>
+    <td class="context">${row.context}</td>
+    <td><span style="color:${COLORS[row.president]};font-family:var(--font-mono);font-size:12px;letter-spacing:0.5px">${row.president}</span></td>
+    <td><a href="${SOURCES.inflation}" target="_blank" rel="noreferrer">${row.inflation}%</a></td>
+    <td><a href="${SOURCES.unemployment}" target="_blank" rel="noreferrer">${row.unemployment}%</a></td>
+    <td><a href="${SOURCES.gas}" target="_blank" rel="noreferrer">$${row.gas}</a></td>
+  `;
+  tbody.appendChild(tr);
+});
+
+// Verdicts
+const verdictList = document.getElementById("verdict-list");
+VERDICTS.forEach(v => {
+  const wrap = document.createElement("div");
+  const btn = document.createElement("button");
+  btn.className = "verdict-btn";
+  btn.style.borderLeft = `4px solid ${v.color}`;
+  btn.innerHTML = `
+    <span class="verdict-claim">${v.claim}</span>
+    <div class="verdict-right">
+      <span class="verdict-label" style="color:${v.color}">${v.verdict}</span>
+      <span class="verdict-arrow">&#9660;</span>
+    </div>
+  `;
+  const detail = document.createElement("div");
+  detail.className = "verdict-detail";
+  detail.style.borderLeft = `4px solid ${v.color}`;
+  detail.innerHTML = `<p>${v.detail}</p><a href="${v.source}" target="_blank" rel="noreferrer">&#8599; View Source</a>`;
+  btn.addEventListener("click", () => {
+    const isOpen = detail.classList.contains("open");
+    document.querySelectorAll(".verdict-detail").forEach(d => d.classList.remove("open"));
+    document.querySelectorAll(".verdict-arrow").forEach(a => a.innerHTML = "&#9660;");
+    if (!isOpen) {
+      detail.classList.add("open");
+      btn.querySelector(".verdict-arrow").innerHTML = "&#9650;";
+    }
+  });
+  wrap.appendChild(btn);
+  wrap.appendChild(detail);
+  verdictList.appendChild(wrap);
+});
+
+// Sources
+const sourcesList = document.getElementById("sources-list");
+[
+  { label: "BLS — Consumer Price Index",                                url: SOURCES.inflation },
+  { label: "BLS — Employment Situation",                                url: SOURCES.unemployment },
+  { label: "EIA — Short-Term Energy Outlook (March 2026)",              url: SOURCES.gas },
+  { label: "BEA — GDP Q4 & Full Year 2025",                            url: SOURCES.gdp },
+  { label: "SCOTUS — Learning Resources, Inc. v. Trump (Feb 20, 2026)", url: "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf" },
+].forEach(s => {
+  const a = document.createElement("a");
+  a.href = s.url; a.target = "_blank"; a.rel = "noreferrer"; a.textContent = s.label;
+  sourcesList.appendChild(a);
+});
+
+document.getElementById("footer-note").innerHTML =
+  "Chart and table use March figures only (Mar 2022&ndash;Mar 2025) for same-month comparability.<br>" +
+  "Current Snapshot uses February 2026 BLS data (latest available; March 2026 CPI releases April 10, 2026) and EIA Short-Term Energy Outlook (March 2026) for gasoline prices.";
+
+// Chart
+function updateChart() {
+  const m = METRICS.find(x => x.key === activeMetric);
+  document.getElementById("chart-desc").textContent = m.desc;
+  document.getElementById("chart-source").href = m.source;
+  if (chartInstance) chartInstance.destroy();
+  chartInstance = new Chart(document.getElementById("myChart"), {
+    type: "bar",
+    data: {
+      labels: DATA.map(d => d.year),
+      datasets: [{
+        data: DATA.map(d => d[m.key]),
+        backgroundColor: DATA.map(d => COLORS[d.president] + "bb"),
+        borderColor: DATA.map(d => COLORS[d.president]),
+        borderWidth: 1,
+        borderRadius: 3,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => m.unit === "$" ? `$${ctx.parsed.y}` : `${ctx.parsed.y}${m.unit}`,
+            afterLabel: ctx => DATA[ctx.dataIndex].president,
+          },
+          backgroundColor: "#1a1a1a",
+          borderColor: "#444",
+          borderWidth: 1,
+          titleColor: "#999",
+          bodyColor: "#f5f0eb",
+          titleFont: { family: "'JetBrains Mono', monospace", size: 11 },
+          bodyFont:  { family: "'JetBrains Mono', monospace", size: 15 },
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: "#6b6560", font: { family: "'JetBrains Mono', monospace", size: 11 } },
+          border: { color: "#c9c1b8" }
+        },
+        y: {
+          min: 0, max: m.yMax,
+          grid: { color: "#e8e0d8" },
+          border: { display: false },
+          ticks: {
+            color: "#6b6560",
+            font: { family: "'JetBrains Mono', monospace", size: 11 },
+            callback: v => m.unit === "$" ? `$${v}` : `${v}%`
+          }
+        }
+      }
+    }
+  });
+}
+
+updateChart();
+</script>
+</body>
+</html>
