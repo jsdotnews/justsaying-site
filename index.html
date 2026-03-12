@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Saying News — Facts first. You decide.</title>
+<meta name="description" content="An independent civic journalism project. We check claims, track bills, and link every source. Facts first. You decide.">
+<meta property="og:title" content="Just Saying News">
+<meta property="og:description" content="Facts first. You decide. Independent civic journalism with every source linked.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://justsaying.news">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,700;1,6..72,300;1,6..72,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #f5f0eb;
+  --paper-dark: #ebe4dc;
+  --accent: #c44b28;
+  --muted: #6b6560;
+  --rule: #c9c1b8;
+  --rule-light: #ddd7d0;
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--paper);
+  border-bottom: 3px double var(--rule);
+  position: sticky; top: 0; z-index: 200;
+}
+
+.topbar-date {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0 6px;
+  border-bottom: 1px solid var(--rule-light);
+}
+
+.topbar-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  gap: 16px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  padding: 12px 0;
+  white-space: nowrap;
+}
+.logo em { font-style: normal; color: var(--accent); }
+.logo:hover { text-decoration: none; }
+
+/* Nav */
+.nav { display: flex; align-items: stretch; gap: 0; }
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 16px 14px;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: var(--font-body);
+}
+.nav-link:hover, .nav-item:hover .nav-link {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-caret {
+  font-size: 9px;
+  transition: transform 0.2s;
+  opacity: 0.6;
+}
+.nav-item:hover .nav-caret { transform: rotate(180deg); }
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 260px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--accent);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 300;
+}
+.nav-item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-section {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule-light);
+}
+.dropdown-section:last-child { border-bottom: none; }
+
+.dropdown-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 16px 4px;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.dropdown-item:hover {
+  background: var(--paper);
+  text-decoration: none;
+}
+.dropdown-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.dropdown-item-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  text-align: center;
+  padding: 56px 0 48px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.masthead-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.masthead-logo {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 10vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -3px;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.masthead-logo em { font-style: normal; color: var(--accent); }
+
+.masthead-rule {
+  width: 80px;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto 20px;
+}
+
+.masthead-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(16px, 3vw, 22px);
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ── MISSION STRIP ── */
+.mission-strip {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  gap: 0;
+}
+
+.mission-item {
+  padding: 0 32px;
+  text-align: center;
+}
+.mission-item:first-child { padding-left: 0; }
+.mission-item:last-child { padding-right: 0; }
+
+.mission-divider {
+  background: var(--rule);
+  align-self: stretch;
+}
+
+.mission-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.mission-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.mission-desc {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .mission-strip {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .mission-divider { display: none; }
+  .mission-item { padding: 0; }
+}
+
+/* ── SECTION HEADERS ── */
+.section { padding: 48px 0; }
+.section + .section { border-top: 1px solid var(--rule); }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.section-all {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+.section-all:hover { text-decoration: underline; }
+
+/* ── STORY CARDS ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
+
+.card {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  transition: opacity 0.15s;
+}
+.card:hover { opacity: 0.75; text-decoration: none; }
+
+.card-grid .card:nth-child(odd) {
+  padding-right: 32px;
+  border-right: 1px solid var(--rule);
+}
+.card-grid .card:nth-child(even) {
+  padding-left: 32px;
+}
+/* Remove bottom border from last row */
+.card-grid .card:nth-last-child(-n+2) { border-bottom: none; }
+
+.card-type {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2.5vw, 21px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+
+.card-lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: #4a4540;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.card-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+/* Verdict pill on fact-check cards */
+.verdict-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.verdict-pill {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.pill-false { background: #fde8e8; color: #9b2226; }
+.pill-misleading { background: #fef3c7; color: #92400e; }
+.pill-true { background: #dcfce7; color: #166534; }
+
+/* Bill status pill */
+.bill-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #92400e;
+  background: #fef3c7;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.pulse {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #d97706;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* ── ABOUT STRIP ── */
+.about-strip {
+  padding: 48px 0;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 640px) { .about-strip { grid-template-columns: 1fr; gap: 32px; } }
+
+.about-strip h2 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.about-strip p {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4a4540;
+  margin-bottom: 12px;
+}
+
+.about-principles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.principle {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-light);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.principle:first-child { padding-top: 0; }
+.principle:last-child { border-bottom: none; }
+
+.principle-mark {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.principle-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.principle-text strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.principle-text span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 3px double var(--rule);
+  padding: 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.footer-logo em { font-style: normal; color: var(--accent); }
+
+.footer-fine {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  line-height: 1.7;
+  text-align: right;
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.shown { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.05s; }
+.d2 { transition-delay: 0.1s; }
+.d3 { transition-delay: 0.15s; }
+.d4 { transition-delay: 0.2s; }
+
+@media (max-width: 640px) {
+  .topbar-date { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-date">Thursday, March 12, 2026</div>
+  <div class="container topbar-main">
+    <a href="/" class="logo">just saying<em>.</em></a>
+    <nav class="nav" aria-label="Main navigation">
+
+      <div class="nav-item">
+        <button class="nav-link" aria-haspopup="true">
+          Fact Checks <span class="nav-caret">▾</span>
+        </button>
+        <div class="dropdown" role="menu">
+          <div class="dropdown-section">
+            <div class="dropdown-label">March 2026</div>
+            <a class="dropdown-item" href="newsom-economy-march2026.html" role="menuitem">
+              <div class="dropdown-item-title">5 Economic Claims vs. Federal Data</div>
+              <div class="dropdown-item-meta">Newsom · Mar 11, 2026</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <button class="nav-link" aria-haspopup="true">
+          Bills <span class="nav-caret">▾</span>
+        </button>
+        <div class="dropdown" role="menu">
+          <div class="dropdown-section">
+            <div class="dropdown-label">119th Congress</div>
+            <a class="dropdown-item" href="hr7611-sharia-act.html" role="menuitem">
+              <div class="dropdown-item-title">H.R.7611 — Protecting Puppies from Sharia Act</div>
+              <div class="dropdown-item-meta">Introduced Feb 20, 2026 · In committee</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item">
+        <a class="nav-link" href="#about">About</a>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="container">
+    <div class="masthead-eyebrow reveal">Independent civic journalism</div>
+    <div class="masthead-logo reveal d1">just saying<em>.</em></div>
+    <div class="masthead-rule reveal d2"></div>
+    <div class="masthead-tagline reveal d3">Facts first. You decide.</div>
+  </div>
+</div>
+
+<!-- MISSION STRIP -->
+<div class="mission-strip container reveal d4">
+  <div class="mission-item">
+    <div class="mission-num">01</div>
+    <div class="mission-label">Primary sources</div>
+    <div class="mission-desc">Federal data, court opinions, bill text—never summaries of summaries</div>
+  </div>
+  <div class="mission-divider"></div>
+  <div class="mission-item">
+    <div class="mission-num">02</div>
+    <div class="mission-label">Every source linked</div>
+    <div class="mission-desc">Click through to the original. Don't take our word for it</div>
+  </div>
+  <div class="mission-divider"></div>
+  <div class="mission-item">
+    <div class="mission-num">03</div>
+    <div class="mission-label">No opinion</div>
+    <div class="mission-desc">We apply the same standard regardless of who's talking</div>
+  </div>
+</div>
+
+<!-- FACT CHECKS -->
+<div class="container">
+  <section class="section">
+    <div class="section-head reveal">
+      <h2 class="section-title">Fact Checks</h2>
+    </div>
+    <div class="card-grid">
+      <a class="card reveal d1" href="newsom-economy-march2026.html">
+        <div class="card-type">Fact Check · Economy</div>
+        <div class="card-title">5 Economic Claims vs. Federal Data</div>
+        <div class="verdict-row">
+          <span class="verdict-pill pill-false">False ×3</span>
+          <span class="verdict-pill pill-misleading">Misleading ×1</span>
+          <span class="verdict-pill pill-true">True (overstated) ×1</span>
+        </div>
+        <div class="card-lede">Five claims about the U.S. economy, checked line by line against federal data from BLS, BEA, EIA, and the Supreme Court.</div>
+        <div class="card-meta">Newsom · X.com · March 11, 2026</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- BILLS -->
+  <section class="section">
+    <div class="section-head reveal">
+      <h2 class="section-title">Bill Tracker</h2>
+    </div>
+    <div class="card-grid">
+      <a class="card reveal d1" href="hr7611-sharia-act.html">
+        <div class="card-type">H.R.7611 · 119th Congress</div>
+        <div class="card-title">Protecting Puppies from Sharia Act</div>
+        <div class="bill-status"><span class="pulse"></span> In committee</div>
+        <div class="card-lede">A bill that would cut federal funding to any government that bans dog ownership. Here's what it actually says and where it stands.</div>
+        <div class="card-meta">Sponsor: Rep. Randy Fine (R-FL) · Introduced Feb 20, 2026</div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="container" id="about">
+  <div class="about-strip">
+    <div class="reveal">
+      <h2>What this is</h2>
+      <p>Just Saying is an independent civic journalism project. We don't lobby, we don't endorse, and we don't take ads.</p>
+      <p>We pick things people are talking about—claims, bills, votes—and check them against primary sources. Federal databases, court opinions, the actual bill text. Then we link every source so you can verify it yourself.</p>
+      <p>We apply the same standard to everyone, regardless of party. If we check a Democrat's claim this week, we'll check a Republican's claim next week.</p>
+    </div>
+    <div class="about-principles reveal d2">
+      <div class="principle">
+        <div class="principle-mark">§</div>
+        <div class="principle-text">
+          <strong>Primary sources only</strong>
+          <span>BLS, BEA, EIA, Congress.gov, SCOTUS opinions. Not op-eds, not pundits, not cable news summaries.</span>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-mark">§</div>
+        <div class="principle-text">
+          <strong>Every source linked</strong>
+          <span>Every number comes with a URL. Click it. Read the underlying data yourself.</span>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-mark">§</div>
+        <div class="principle-text">
+          <strong>No opinion, no spin</strong>
+          <span>We tell you what the data says. What you think about it is your business.</span>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-mark">§</div>
+        <div class="principle-text">
+          <strong>Same standard, every time</strong>
+          <span>The methodology doesn't change based on who made the claim.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer class="footer">
+    <div class="footer-logo">just saying<em>.</em></div>
+    <div class="footer-fine">
+      Independent. No ads. No endorsements.<br>
+      justsaying.news
+    </div>
+  </footer>
+</div>
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Update date
+const d = new Date();
+document.querySelector('.topbar-date').textContent = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+</script>
+</body>
+</html>
