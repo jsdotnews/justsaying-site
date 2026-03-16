@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVE Act — H.R.22 | Just Saying News</title>
+    <meta name="description" content="Track the SAVE Act (H.R.22). Read what it does, where it stands, and how to contact your senators before a vote this week.">
+    <meta property="og:title" content="SAVE Act — H.R.22 | Just Saying News">
+    <meta property="og:description" content="The Senate could vote this week on a law that would change how every American registers to vote. Here's what it actually says.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://justsaying.news">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #f5f0eb;
+            --paper-dark: #ebe4dc;
+            --accent: #c44b28;
+            --accent-light: #e8d5cc;
+            --muted: #6b6560;
+            --rule: #c9c1b8;
+            --highlight: #fdf6e3;
+            --blue-link: #2a5aa7;
+            --green: #2d6a4f;
+            --red-subtle: #9b2226;
+            --urgent: #7c1d1d;
+            --urgent-bg: #fef2f2;
+            --urgent-border: #fca5a5;
+            --font-display: 'Newsreader', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+        /* ── ALERT BANNER ── */
+        .alert-banner {
+            background: var(--urgent);
+            color: white;
+            text-align: center;
+            padding: 10px 24px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .alert-banner strong { letter-spacing: 1.5px; }
+
+        /* ── MASTHEAD ── */
+        .masthead { border-bottom: 3px double var(--rule); padding: 20px 0 16px; text-align: center; }
+        .masthead-date { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+        .masthead-logo { font-family: var(--font-display); font-size: clamp(28px, 5vw, 42px); font-weight: 700; letter-spacing: -0.5px; color: var(--ink); text-decoration: none; }
+        .masthead-logo span { color: var(--accent); }
+        .masthead-tagline { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--muted); margin-top: 4px; }
+
+        /* ── NAV ── */
+        .nav { border-bottom: 1px solid var(--rule); padding: 10px 0; position: sticky; top: 0; background: var(--paper); z-index: 100; }
+        .nav-inner { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .nav a { font-family: var(--font-body); font-size: 13px; font-weight: 600; text-decoration: none; color: var(--ink); padding: 6px 14px; border-radius: 3px; letter-spacing: 0.3px; text-transform: uppercase; transition: all 0.2s; }
+        .nav a:hover { background: var(--ink); color: var(--paper); }
+
+        /* ── HERO ── */
+        .hero { padding: 48px 0 40px; border-bottom: 1px solid var(--rule); }
+        .bill-tag { display: inline-block; font-family: var(--font-mono); font-size: 12px; font-weight: 500; background: var(--ink); color: var(--paper); padding: 4px 12px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(32px, 6vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; max-width: 750px; }
+        .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-bottom: 24px; }
+        .meta-item { font-size: 14px; color: var(--muted); }
+        .meta-item strong { color: var(--ink); }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            background: var(--urgent-bg);
+            border: 1px solid var(--urgent-border);
+            padding: 5px 14px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--urgent);
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--urgent);
+            animation: pulse 1.2s ease infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        .hero-lede { font-family: var(--font-display); font-size: 20px; line-height: 1.55; color: #3a3632; max-width: 700px; }
+        .hero-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; text-decoration: none; padding: 12px 24px; border-radius: 4px; transition: all 0.2s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: #a83d1f; }
+        .btn-outline { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+        .btn-outline:hover { background: var(--ink); color: var(--paper); }
+        .btn-urgent { background: var(--urgent); color: white; }
+        .btn-urgent:hover { background: #5a1515; }
+
+        /* ── SECTIONS ── */
+        section { padding: 48px 0; border-bottom: 1px solid var(--rule); }
+        .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; }
+        .section-number { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 1px; }
+        .section-title { font-family: var(--font-display); font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: -0.5px; }
+        .section-rule { width: 60px; height: 3px; background: var(--accent); margin-bottom: 28px; }
+
+        /* ── EXPLAINER GRID ── */
+        .explainer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        @media (max-width: 600px) { .explainer-grid { grid-template-columns: 1fr; } }
+        .explainer-card { background: white; border: 1px solid var(--rule); padding: 28px; border-radius: 4px; }
+        .explainer-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .explainer-card p { font-size: 15px; line-height: 1.65; color: #4a4541; }
+        .explainer-card p + p { margin-top: 10px; }
+        .full-width-card { grid-column: 1 / -1; }
+
+        .fact-note { background: var(--highlight); border-left: 3px solid #d4a017; padding: 16px 20px; margin-top: 16px; font-size: 14px; line-height: 1.6; color: #5a5349; }
+        .fact-note strong { color: var(--ink); }
+
+        /* ── TWO-SIDES CARDS ── */
+        .sides-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+        @media (max-width: 600px) { .sides-grid { grid-template-columns: 1fr; } }
+        .side-card { padding: 28px; border-radius: 4px; }
+        .side-card.supporters { background: #f0f7f4; border: 1px solid #a7c4b5; }
+        .side-card.critics { background: #fdf0ee; border: 1px solid #d4a59a; }
+        .side-card h3 { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 16px; }
+        .side-card.supporters h3 { color: #1a4a35; }
+        .side-card.critics h3 { color: #6b2119; }
+        .side-point { display: flex; gap: 10px; margin-bottom: 12px; font-size: 14px; line-height: 1.55; color: #4a4541; }
+        .side-point:last-child { margin-bottom: 0; }
+        .side-mark { flex-shrink: 0; font-size: 16px; line-height: 1.4; }
+        .side-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+
+        /* ── DOCUMENTS LIST ── */
+        .docs-list { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
+        .doc-row { background: white; border: 1px solid var(--rule); padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+        .doc-num { font-family: var(--font-mono); font-size: 12px; color: var(--accent); flex-shrink: 0; line-height: 1.6; }
+        .doc-text { font-size: 14px; line-height: 1.55; color: var(--ink); }
+        .doc-text small { display: block; color: var(--muted); margin-top: 3px; font-size: 12px; }
+
+        /* ── TIMELINE ── */
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before { content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px; width: 2px; background: var(--rule); }
+        .timeline-item { position: relative; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px dashed var(--rule); }
+        .timeline-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .timeline-dot { position: absolute; left: -33px; top: 4px; width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--accent); background: var(--paper); }
+        .timeline-dot.active { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-light); }
+        .timeline-dot.urgent { background: var(--urgent); border-color: var(--urgent); box-shadow: 0 0 0 4px var(--urgent-bg); animation: pulse 1.2s ease infinite; }
+        .timeline-dot.future { border-color: var(--rule); background: var(--paper-dark); }
+        .timeline-date { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 6px; }
+        .timeline-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .timeline-desc { font-size: 15px; line-height: 1.6; color: #4a4541; }
+        .timeline-vote { display: inline-flex; gap: 12px; margin-top: 8px; }
+        .vote-pill { font-family: var(--font-mono); font-size: 11px; padding: 3px 10px; border-radius: 2px; }
+        .vote-y { background: #dcfce7; color: #166534; }
+        .vote-n { background: #fde8e8; color: #9b2226; }
+        .timeline-future { opacity: 0.5; }
+        .timeline-now { background: var(--urgent-bg); border: 1px solid var(--urgent-border); padding: 16px 20px; border-radius: 4px; margin-bottom: 8px; }
+        .timeline-now .timeline-date { color: var(--urgent); }
+
+        /* ── CONTACT ── */
+        .rep-intro { font-family: var(--font-display); font-size: 18px; line-height: 1.6; color: #3a3632; margin-bottom: 32px; max-width: 650px; }
+        .rep-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+        @media (max-width: 600px) { .rep-tools { grid-template-columns: 1fr; } }
+        .rep-tool-card { background: white; border: 1px solid var(--rule); padding: 28px; border-radius: 4px; text-decoration: none; color: var(--ink); transition: all 0.2s; display: block; }
+        .rep-tool-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .rep-tool-icon { font-size: 28px; margin-bottom: 12px; }
+        .rep-tool-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .rep-tool-card p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+        /* Senate contacts note */
+        .senate-note { background: var(--urgent-bg); border: 1px solid var(--urgent-border); border-radius: 4px; padding: 20px 24px; margin-bottom: 32px; }
+        .senate-note p { font-family: var(--font-display); font-size: 16px; line-height: 1.6; color: var(--urgent); }
+        .senate-note strong { color: var(--urgent); }
+
+        /* ── SCRIPT BOX ── */
+        .script-box { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 28px; margin-top: 32px; }
+        .script-box h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+        .script-text { font-family: var(--font-display); font-style: italic; font-size: 16px; line-height: 1.7; color: #3a3632; border-left: 3px solid var(--accent); padding-left: 20px; }
+        .fill-in { background: var(--highlight); padding: 1px 6px; border-radius: 2px; font-style: normal; font-weight: 500; }
+
+        /* ── FAQ ── */
+        .faq-item { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px dashed var(--rule); }
+        .faq-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .faq-item h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .faq-item p { font-size: 15px; line-height: 1.65; color: #4a4541; }
+        .faq-item p + p { margin-top: 10px; }
+        .faq-item a { color: var(--blue-link); }
+
+        /* ── FOOTER ── */
+        .footer { padding: 40px 0; text-align: center; border-top: 3px double var(--rule); }
+        .footer-logo { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        .footer-logo span { color: var(--accent); }
+        .footer p { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 500px; margin: 0 auto; }
+        .footer-disclaimer { margin-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.3px; }
+
+        /* ── ANIMATIONS ── */
+        .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 600px) {
+            .hero { padding: 32px 0; }
+            section { padding: 36px 0; }
+            .timeline { padding-left: 32px; }
+            .hero-meta { gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- URGENT BANNER -->
+<div class="alert-banner">
+    ⚡ <strong>Senate vote expected this week</strong> — as soon as March 16–21, 2026
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-date" id="current-date"></div>
+        <a href="/" class="masthead-logo">Just Saying<span>.</span> News</a>
+        <div class="masthead-tagline">Facts first. Then you decide.</div>
+    </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Page sections">
+    <div class="container nav-inner">
+        <a href="#about">What It Does</a>
+        <a href="#documents">The Documents</a>
+        <a href="#sides">Both Sides</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contact">Contact Senate</a>
+        <a href="#faq">FAQ</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-bottom: 1px solid var(--rule);">
+    <div class="container">
+        <div class="bill-tag">119th Congress · H.R.22</div>
+        <h1>SAVE Act — Safeguard American Voter Eligibility Act</h1>
+        <div class="hero-meta">
+            <span class="meta-item"><strong>Sponsor:</strong> Rep. Chip Roy (R-TX)</span>
+            <span class="meta-item"><strong>Introduced:</strong> Jan 3, 2025</span>
+            <span class="status-badge"><span class="status-dot"></span> Senate Floor — Vote This Week</span>
+        </div>
+        <p class="hero-lede">
+            This bill would require every American to show physical documents — like a passport or birth certificate — to register to vote in federal elections. The House has passed it twice. The Senate could vote as soon as this week.
+        </p>
+        <div class="hero-actions">
+            <a href="https://www.congress.gov/bill/119th-congress/house-bill/22" target="_blank" rel="noopener" class="btn btn-primary">
+                📄 Read H.R.22 on Congress.gov
+            </a>
+            <a href="#contact" class="btn btn-urgent">
+                ✉️ Contact Your Senators Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT IT DOES -->
+<section id="about" class="fade-in">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">What Would Change?</h2>
+        </div>
+        <div class="section-rule"></div>
+
+        <div class="explainer-grid">
+            <div class="explainer-card">
+                <h3>The Main Rule</h3>
+                <p>Right now, you sign a form saying you're a U.S. citizen when you register to vote — no documents required. Under this bill, you'd also have to <strong>show physical documents</strong> proving it, in person, before you're registered.</p>
+            </div>
+            <div class="explainer-card">
+                <h3>What's "Federal Elections"?</h3>
+                <p>This covers elections for President, U.S. Senate, and U.S. House. Most major national elections. State and local elections are a separate matter and not covered by this bill.</p>
+            </div>
+            <div class="explainer-card">
+                <h3>No Documents? There's a Backup</h3>
+                <p>If you can't show the required documents, you can sign a sworn statement saying you're a citizen — under penalty of perjury — and submit other evidence. A local election official then decides if it's enough.</p>
+            </div>
+            <div class="explainer-card">
+                <h3>Penalties</h3>
+                <p>Election officials who register someone without checking citizenship documents face criminal charges. And under the bill, any citizen can personally sue an election official who registers someone without proper proof.</p>
+            </div>
+            <div class="explainer-card full-width-card">
+                <h3>How the Legislation Got Here</h3>
+                <p>The original SAVE Act (H.R. 22) was introduced in January 2025 and passed the House in April 2025. It stalled in the Senate. Republicans then introduced an expanded version — the <strong>SAVE America Act</strong> — which passed the House in February 2026. That version now sits before the Senate, with a vote expected this week.</p>
+                <p>The SAVE America Act goes further than H.R. 22: it also adds voter ID requirements to cast a ballot on Election Day, not just at registration. The core document requirement for registration is the same in both versions.</p>
+                <div class="fact-note">
+                    <strong>What current law already requires:</strong> Under the National Voter Registration Act of 1993, all voter registration forms already require applicants to state, under penalty of perjury, that they are U.S. citizens. Non-citizens who vote in federal elections are already breaking federal law. The SAVE Act adds a document-verification step on top of that existing requirement.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT DOCUMENTS COUNT -->
+<section id="documents" class="fade-in">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">What Documents Would Count?</h2>
+        </div>
+        <div class="section-rule"></div>
+        <p style="font-size: 15px; color: #4a4541; margin-bottom: 20px;">The bill specifies which documents prove citizenship. These come directly from the bill text. You'd need at least one of the following:</p>
+
+        <div class="docs-list">
+            <div class="doc-row">
+                <div class="doc-num">01</div>
+                <div class="doc-text">
+                    A REAL ID-compliant license or ID that specifically says you are a U.S. citizen
+                    <small>Note: Most standard driver's licenses are REAL ID-compliant but do not show citizenship. Only enhanced driver's licenses (available in some states) indicate citizenship.</small>
+                </div>
+            </div>
+            <div class="doc-row">
+                <div class="doc-num">02</div>
+                <div class="doc-text">
+                    A valid U.S. passport or passport card
+                </div>
+            </div>
+            <div class="doc-row">
+                <div class="doc-num">03</div>
+                <div class="doc-text">
+                    A U.S. military ID card <strong>plus</strong> a military service record showing you were born in the United States
+                </div>
+            </div>
+            <div class="doc-row">
+                <div class="doc-num">04</div>
+                <div class="doc-text">
+                    Any government-issued photo ID that shows your U.S. birthplace
+                    <small>For example: an ID that lists "Place of Birth: United States"</small>
+                </div>
+            </div>
+            <div class="doc-row">
+                <div class="doc-num">05</div>
+                <div class="doc-text">
+                    A photo ID <strong>plus</strong> a certified birth certificate (meeting specific requirements listed in the bill)
+                    <small>The birth certificate must include full name, date of birth, place of birth, parent names, an authorized signature, filing date, and the issuing government's seal.</small>
+                </div>
+            </div>
+            <div class="doc-row">
+                <div class="doc-num">06</div>
+                <div class="doc-text">
+                    A photo ID <strong>plus</strong> a Naturalization Certificate or Certificate of Citizenship
+                </div>
+            </div>
+            <div class="doc-row">
+                <div class="doc-num">07</div>
+                <div class="doc-text">
+                    An American Indian Card issued by DHS with a 'KIC' classification
+                </div>
+            </div>
+        </div>
+
+        <div class="fact-note" style="margin-top: 20px;">
+            <strong>Source:</strong> All document types listed above come directly from the text of H.R. 22 as passed by the House. <a href="https://www.congress.gov/bill/119th-congress/house-bill/22/text" target="_blank" rel="noopener" style="color: var(--blue-link);">Read the full bill text on Congress.gov →</a>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT SUPPORTERS SAY / WHAT CRITICS SAY -->
+<section id="sides" class="fade-in">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">What People Are Saying</h2>
+        </div>
+        <div class="section-rule"></div>
+        <p style="font-size: 14px; color: var(--muted); margin-bottom: 20px; font-family: var(--font-mono); letter-spacing: 0.5px; text-transform: uppercase;">These are arguments made by supporters and critics. Just Saying News does not add its own position.</p>
+
+        <div class="sides-grid">
+            <div class="side-card supporters">
+                <div class="side-label">What supporters say</div>
+                <h3>The Case For</h3>
+                <div class="side-point">
+                    <span class="side-mark">✓</span>
+                    <span>Non-citizens voting in federal elections is already illegal, but the current system relies on the honor system — a sworn statement with no document check. Supporters say this bill closes that gap.</span>
+                </div>
+                <div class="side-point">
+                    <span class="side-mark">✓</span>
+                    <span>Passports and similar IDs are already required for many federal activities. Supporters argue registering to vote is no less important.</span>
+                </div>
+                <div class="side-point">
+                    <span class="side-mark">✓</span>
+                    <span>The bill includes a backup process for people without standard documents, so no citizen who is truly eligible would be permanently blocked.</span>
+                </div>
+                <div class="side-point">
+                    <span class="side-mark">✓</span>
+                    <span>President Trump has called this a top priority. The White House argues it is necessary to restore confidence in elections.</span>
+                </div>
+            </div>
+
+            <div class="side-card critics">
+                <div class="side-label">What critics say</div>
+                <h3>The Case Against</h3>
+                <div class="side-point">
+                    <span class="side-mark">✗</span>
+                    <span>The Brennan Center for Justice estimates more than 21 million U.S. citizens do not have the required documents readily available — meaning they'd have to obtain them to register.</span>
+                </div>
+                <div class="side-point">
+                    <span class="side-mark">✗</span>
+                    <span>The bill would effectively end mail-in voter registration, online registration, and registration through voter drives — since those methods can't collect physical documents in person.</span>
+                </div>
+                <div class="side-point">
+                    <span class="side-mark">✗</span>
+                    <span>The National Association of Counties estimates the changes would cost states $510 million or more per election cycle — without any federal funding provided in the bill to cover it.</span>
+                </div>
+                <div class="side-point">
+                    <span class="side-mark">✗</span>
+                    <span>Critics argue that credible studies consistently show non-citizen voting in federal elections is exceedingly rare, and the existing legal penalties are a strong deterrent.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" class="fade-in">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">How We Got Here</h2>
+        </div>
+        <div class="section-rule"></div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="timeline-date">Jan 3, 2025</div>
+                <div class="timeline-title">H.R. 22 Introduced</div>
+                <div class="timeline-desc">Rep. Chip Roy (R-TX) introduced the Safeguard American Voter Eligibility Act with 53 original co-sponsors.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="timeline-date">April 10, 2025</div>
+                <div class="timeline-title">House Passes H.R. 22 (First Time)</div>
+                <div class="timeline-desc">The House voted to pass the SAVE Act. Four Democrats joined Republicans in voting yes.</div>
+                <div class="timeline-vote">
+                    <span class="vote-pill vote-y">✓ Yes: 220</span>
+                    <span class="vote-pill vote-n">✗ No: 208</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="timeline-date">April 10, 2025</div>
+                <div class="timeline-title">Received in the Senate — Stalled</div>
+                <div class="timeline-desc">The bill was sent to the Senate but never received a floor vote. Without 60 votes to overcome a filibuster, it did not advance. Senate Republicans began working on a revised version.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="timeline-date">Jan–Feb 2026</div>
+                <div class="timeline-title">Reintroduced as the SAVE America Act</div>
+                <div class="timeline-desc">An expanded version — now called the SAVE America Act — was introduced in both the House and Senate. It kept the document requirement for registration and added voter ID requirements to cast a ballot on Election Day.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot active"></div>
+                <div class="timeline-date">Feb 11, 2026</div>
+                <div class="timeline-title">House Passes the SAVE America Act (Second Time)</div>
+                <div class="timeline-desc">The House passed the expanded version and sent it back to the Senate. As of this writing, Republican leadership is considering whether to use procedural maneuvers to bypass the 60-vote filibuster threshold.</div>
+                <div class="timeline-vote">
+                    <span class="vote-pill vote-y">✓ Yes: 218</span>
+                    <span class="vote-pill vote-n">✗ No: 213</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot urgent"></div>
+                <div class="timeline-now">
+                    <div class="timeline-date">⚡ Week of March 16, 2026</div>
+                    <div class="timeline-title">Senate Vote Expected</div>
+                    <div class="timeline-desc">The National Association of Counties reports the Senate could vote as early as this week. The White House has called this a top legislative priority. Whether Republicans have the votes — and whether they'll change the rules to pass it — remains unresolved as of this writing.</div>
+                </div>
+            </div>
+
+            <div class="timeline-item timeline-future">
+                <div class="timeline-dot future"></div>
+                <div class="timeline-date">TBD</div>
+                <div class="timeline-title">Presidential Signature</div>
+                <div class="timeline-desc">If it passes the Senate in any form, it would go to the President for signature. The bill would take effect immediately upon signing.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT YOUR SENATORS -->
+<section id="contact" class="fade-in">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Contact Your Senators</h2>
+        </div>
+        <div class="section-rule"></div>
+
+        <div class="senate-note">
+            <p><strong>The Senate decides this one.</strong> The House has already voted twice. Your two U.S. senators are the people to contact right now — especially if they are undecided or from a competitive state.</p>
+        </div>
+
+        <div class="rep-tools">
+            <a href="https://www.senate.gov/senators/senators-contact.htm" target="_blank" rel="noopener" class="rep-tool-card">
+                <div class="rep-tool-icon">🏛️</div>
+                <h3>Find Your Senators</h3>
+                <p>Enter your state on Senate.gov to find both of your U.S. senators and their direct contact forms or phone numbers.</p>
+            </a>
+            <a href="https://www.house.gov/representatives/find-your-representative" target="_blank" rel="noopener" class="rep-tool-card">
+                <div class="rep-tool-icon">🏛️</div>
+                <h3>Find Your House Member</h3>
+                <p>Your House rep already voted. Look up how they voted and send feedback if you want them to know your position.</p>
+            </a>
+            <a href="https://www.congress.gov/bill/119th-congress/house-bill/22/text" target="_blank" rel="noopener" class="rep-tool-card">
+                <div class="rep-tool-icon">📄</div>
+                <h3>Read the Full Bill Text</h3>
+                <p>The full text of H.R. 22 as passed by the House, on Congress.gov.</p>
+            </a>
+            <a href="https://www.congress.gov/bill/119th-congress/house-bill/22/cosponsors" target="_blank" rel="noopener" class="rep-tool-card">
+                <div class="rep-tool-icon">📋</div>
+                <h3>All 110 Co-Sponsors</h3>
+                <p>See the full list of representatives who co-sponsored H.R. 22 on Congress.gov.</p>
+            </a>
+        </div>
+
+        <!-- Sample Script -->
+        <div class="script-box">
+            <h3>Sample Call Script</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Adapt this to your own words and position — phone calls get logged. Emails and web forms do too, but calls carry more weight.</p>
+            <div class="script-text">
+                "Hi, my name is <span class="fill-in">[Your Name]</span> and I'm a constituent from <span class="fill-in">[Your City, State]</span>. I'm calling about the SAVE Act and the SAVE America Act — the voter registration citizenship documentation bill. I'd like Senator <span class="fill-in">[Name]</span> to know that I <span class="fill-in">[support / oppose / have questions about]</span> this legislation. <span class="fill-in">[Your reason in one or two sentences]</span>. Thank you for your time and for logging my call."
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="fade-in">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="section-rule"></div>
+
+        <div class="faq-item">
+            <h3>What's the difference between the SAVE Act and the SAVE America Act?</h3>
+            <p>The original SAVE Act (H.R. 22) focuses on voter registration — you'd need to show citizenship documents to sign up to vote. The SAVE America Act is an expanded version that passed in early 2026. It keeps the registration document requirement and adds voter ID requirements to actually cast a ballot on Election Day. The Senate is currently considering the SAVE America Act version.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I need to show documents to vote right now?</h3>
+            <p>No. Under current federal law, you sign a form swearing you're a citizen when you register — but you don't have to show documents. Some states have their own ID requirements at the polls. This bill would add a document requirement at the registration step for federal elections, which is a new layer that doesn't exist today at the federal level.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Would people who are already registered be affected?</h3>
+            <p>The document requirement in H.R. 22 applies to new registration applications. People already registered under existing rules would not automatically need to re-register. However, the SAVE America Act's additional provisions on voter ID at the polls would affect everyone who votes in federal elections if it becomes law — exact details depend on the final bill text.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What if someone doesn't have a passport or birth certificate?</h3>
+            <p>The bill includes a backup process: you can sign a sworn statement under penalty of perjury and submit other evidence of citizenship. A state or local election official then decides if you've proven your citizenship well enough to be registered. Some advocacy groups argue this backup process is not a reliable safety net for all voters.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does non-citizen voting in federal elections actually happen?</h3>
+            <p>Federal law already makes it illegal for non-citizens to vote in federal elections, with criminal penalties. Multiple independent studies have found that instances of non-citizens voting in federal elections are rare. Supporters of the bill say documenting eligibility upfront is a reasonable safeguard regardless of current rates.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What would "nuking the filibuster" mean here?</h3>
+            <p>Normally, 60 Senate votes are needed to end debate and bring a bill to a final vote. Since Republicans control 53 seats, they'd need 7 Democratic votes — which they don't appear to have. Some Republican senators and the White House have publicly discussed changing Senate rules to require only a simple majority (51 votes) to pass this bill. As of this writing, whether they will do so is not resolved.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I stay updated?</h3>
+            <p>You can track H.R. 22 directly on <a href="https://www.congress.gov/bill/119th-congress/house-bill/22" target="_blank" rel="noopener">Congress.gov</a>, which will show any Senate action. We'll also update this page when the Senate votes.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-logo">Just Saying<span>.</span> News</div>
+        <p>An independent civic information resource. We don't lobby, endorse, or fundraise. We present facts so you can make your own decisions.</p>
+        <div class="footer-disclaimer">
+            This site is not affiliated with the U.S. government. Information sourced from Congress.gov, CRS, National Association of Counties, and public reporting. Last updated March 16, 2026.
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('current-date').textContent =
+        new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
