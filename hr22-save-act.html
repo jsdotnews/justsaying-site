@@ -8,6 +8,7 @@
     <meta property="og:title" content="SAVE Act — H.R.22 | Just Saying News">
     <meta property="og:description" content="The Senate is debating a law that would change how every American registers to vote. Here's what it actually says.">
     <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231c1917'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23c44422'>js</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -92,7 +93,7 @@
         }
 
         /* ── HERO ── */
-        .hero { padding: 52px 0 44px; }
+        .hero { padding: 32px 0 28px; }
         .hero-tag {
             font-family: var(--font-mono);
             font-size: 12px;
@@ -102,7 +103,7 @@
         }
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(38px, 7vw, 62px);
+            font-size: clamp(32px, 5vw, 46px);
             font-weight: 900;
             line-height: 1.04;
             letter-spacing: -2px;
@@ -191,7 +192,7 @@
         .btn-sm { font-size: 14px; padding: 11px 20px; }
 
         /* ── SECTIONS ── */
-        .section { padding: 60px 0; }
+        .section { padding: 44px 0; }
         .section + .section { border-top: 1px solid var(--rule); }
         .section-label {
             font-family: var(--font-mono);
@@ -204,7 +205,7 @@
         }
         .section h2 {
             font-family: var(--font-display);
-            font-size: clamp(26px, 5vw, 38px);
+            font-size: clamp(20px, 3vw, 28px);
             font-weight: 700;
             letter-spacing: -0.8px;
             color: var(--navy);
@@ -614,6 +615,9 @@
         .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
         .reveal.shown { opacity: 1; transform: translateY(0); }
         .s1 { transition-delay: 0.05s; } .s2 { transition-delay: 0.1s; } .s3 { transition-delay: 0.15s; }
+
+        .resource-btn { font-family: var(--font-mono); font-size: 11px; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 14px; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: border-color 0.15s; }
+        .resource-btn:hover { border-color: var(--action); color: var(--action); text-decoration: none; }
         @media print { .topbar { position: static; } .reveal { opacity: 1; transform: none; } }
     </style>
 </head>
@@ -630,6 +634,7 @@
             <a href="#bill">What it does</a>
             <a href="#sides">Both sides</a>
             <a href="#timeline">Timeline</a>
+            <a href="#votes">Vote record</a>
             <a href="#faq">FAQ</a>
             <a href="#action" class="topbar-cta">Contact senators</a>
         </nav>
@@ -750,6 +755,10 @@
         <div class="section-label reveal">The specifics</div>
         <h2 class="reveal">What documents would count?</h2>
         <p class="section-intro reveal">Taken directly from the bill text. You'd need at least one. <a href="https://www.congress.gov/bill/119th-congress/house-bill/22/text" target="_blank" rel="noopener">Read the source on Congress.gov</a></p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+            <a href="https://www.congress.gov/119/bills/hr22/BILLS-119hr22eh.pdf" target="_blank" rel="noopener" class="resource-btn">&#8595; Download bill PDF</a>
+            <a href="https://www.congress.gov/bill/119th-congress/house-bill/22/text" target="_blank" rel="noopener" class="resource-btn">&#9654; Listen to bill text (Congress.gov)</a>
+        </div>
 
         <div class="doc-list">
             <div class="doc-row reveal">
@@ -942,13 +951,20 @@
 
         <!-- ZIP FINDER -->
         <div class="zip-finder reveal">
-            <h3>Find your senators in 10 seconds</h3>
-            <p>Enter your ZIP code to see who represents you and how to reach them.</p>
-            <div class="zip-row">
-                <input type="text" id="zip-input" class="zip-input" placeholder="Your ZIP code" maxlength="5" inputmode="numeric" pattern="[0-9]*">
-                <button class="zip-btn" onclick="findRep()">Find my senators</button>
+            <h3>Find your senators fast</h3>
+            <p>Pick your state to go straight to Senate.gov contacts — or enter your ZIP to find all three of your reps on Congress.gov.</p>
+            <div class="zip-row" style="flex-wrap:wrap;gap:10px;margin-bottom:10px;">
+                <select id="state-select" class="zip-input" style="flex:1;min-width:160px;cursor:pointer;">
+                    <option value="">Select your state...</option>
+                    <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+                </select>
+                <button class="zip-btn" id="state-btn">Go to Senate contacts</button>
             </div>
-            <p class="zip-note">Opens Congress.gov — shows your 2 senators and House rep with contact info.</p>
+            <div class="zip-row">
+                <input type="text" id="zip-input" class="zip-input" placeholder="Or enter ZIP code" maxlength="5" inputmode="numeric" pattern="[0-9]*" style="flex:1;min-width:160px;">
+                <button class="zip-btn" id="zip-btn">Find all my reps</button>
+            </div>
+            <p class="zip-note">State button opens Senate.gov. ZIP opens Congress.gov — shows your 2 senators + House rep.</p>
         </div>
 
         <!-- PHONE SCRIPT -->
@@ -998,6 +1014,43 @@
 </section>
 
 <!-- FAQ -->
+
+<section id="votes" class="section">
+    <div class="wrap">
+        <div class="section-label reveal">House roll call</div>
+        <h2 class="reveal">How every House member voted</h2>
+        <p class="section-intro reveal">This is the final House passage vote on H.R.22 (original SAVE Act), April 10, 2025. Type a state name or rep name to filter. All 433 members shown. Source: Congress.gov official roll call records.</p>
+
+        <div style="background:var(--paper-warm);border-left:3px solid var(--amber);padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:20px;font-size:13.5px;line-height:1.6;color:var(--ink-soft);" class="reveal">
+            <strong>Important:</strong> Marie Gluesenkamp Perez (D-WA) voted <strong>YES</strong> on this vote but <strong>NO</strong> on the February 2026 SAVE America Act. Henry Cuellar (D-TX) voted yes on both. All four Democrats who voted yes are still serving in the House as of March 16, 2026. Cuellar is currently awaiting trial on unrelated criminal charges.
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;" class="reveal">
+            <input type="text" id="vote-search" placeholder="Type a state or name to filter..." oninput="filterVotes()" style="flex:1;min-width:200px;padding:10px 14px;border:2px solid var(--rule-strong);border-radius:8px;font-family:var(--font-body);font-size:14px;background:var(--paper);outline:none;" onfocus="this.style.borderColor='var(--action)'" onblur="this.style.borderColor='var(--rule-strong)'">
+            <select id="vote-filter" onchange="filterVotes()" style="padding:10px 14px;border:2px solid var(--rule-strong);border-radius:8px;font-family:var(--font-body);font-size:14px;background:var(--paper);cursor:pointer;outline:none;">
+                <option value="">All votes</option>
+                <option value="Yea">Yea only</option>
+                <option value="Nay">Nay only</option>
+                <option value="Not Voting">Not Voting</option>
+            </select>
+        </div>
+        <div id="vote-count" style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);margin-bottom:8px;" class="reveal"></div>
+
+        <div class="reveal" style="overflow-x:auto;border:1px solid var(--rule);border-radius:var(--radius);">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;">
+                <thead><tr style="background:var(--navy);color:white;">
+                    <th style="padding:10px 14px;text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:1px;">Representative</th>
+                    <th style="padding:10px 14px;text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:1px;">Party</th>
+                    <th style="padding:10px 14px;text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:1px;">State</th>
+                    <th style="padding:10px 14px;text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:1px;">Vote</th>
+                </tr></thead>
+                <tbody id="vote-tbody"></tbody>
+            </table>
+        </div>
+        <p style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);margin-top:10px;">Source: <a href="https://www.congress.gov/votes/house/119-1/102" target="_blank" rel="noopener" style="color:var(--action);">Congress.gov Roll Call #102, April 10, 2025</a> &middot; Downloaded March 16, 2026</p>
+    </div>
+</section>
+
 <section id="faq" class="section">
     <div class="wrap">
         <div class="section-label reveal">FAQ</div>
@@ -1050,7 +1103,12 @@
                     <span class="faq-q-text">Would people already registered be affected?</span>
                     <span class="faq-icon">+</span>
                 </button>
-                <div class="faq-body"><div class="faq-body-inner"><p>The registration document requirement applies to new applications—people already registered wouldn't need to re-register right away. However, the newer SAVE America Act also adds voter ID requirements at the polls, which would affect currently registered voters too.</p></div></div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    <p>The bill says its requirements apply to "applications to register to vote" — those words appear throughout. The bill never explicitly mentions what happens when someone updates their registration after a move or name change.</p>
+                    <p><strong>Definitely affects registered voters:</strong> States must regularly check voter rolls against a federal citizenship database. Anyone flagged would need to show citizenship documents to stay on the rolls. The SAVE America Act also requires photo ID at the polls — that affects every voter.</p>
+                    <p><strong>Still disputed:</strong> Whether a registration update (move, name change) counts as a new "application." Democratic staff analysts who read the bill say it does. Republican supporters say it applies only to first-time registrations. Courts would decide.</p>
+                    <p style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);margin-top:8px;">Bill text source: <a href="https://www.congress.gov/119/bills/hr22/BILLS-119hr22eh.pdf" target="_blank" rel="noopener">H.R.22, Section 8 (effective date) — Congress.gov</a></p>
+                </div></div>
             </div>
 
             <div class="faq-item">
@@ -1084,6 +1142,54 @@
 </footer>
 
 <script>
+    /* ── Roll call vote data ── */
+    const VOTES = [{"n":"Adams, Alma S.","p":"D","s":"North Carolina","v":"Nay"},{"n":"Aderholt, Robert B.","p":"R","s":"Alabama","v":"Yea"},{"n":"Aguilar, Pete","p":"D","s":"California","v":"Nay"},{"n":"Alford, Mark","p":"R","s":"Missouri","v":"Yea"},{"n":"Allen, Rick W.","p":"R","s":"Georgia","v":"Yea"},{"n":"Amo, Gabe","p":"D","s":"Rhode Island","v":"Nay"},{"n":"Amodei, Mark E.","p":"R","s":"Nevada","v":"Yea"},{"n":"Ansari, Yassamin","p":"D","s":"Arizona","v":"Nay"},{"n":"Arrington, Jodey C.","p":"R","s":"Texas","v":"Yea"},{"n":"Auchincloss, Jake","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Babin, Brian","p":"R","s":"Texas","v":"Yea"},{"n":"Bacon, Don","p":"R","s":"Nebraska","v":"Yea"},{"n":"Baird, James R.","p":"R","s":"Indiana","v":"Yea"},{"n":"Balderson, Troy","p":"R","s":"Ohio","v":"Yea"},{"n":"Balint, Becca","p":"D","s":"Vermont","v":"Nay"},{"n":"Barr, Andy","p":"R","s":"Kentucky","v":"Yea"},{"n":"Barragán, Nanette Diaz","p":"D","s":"California","v":"Nay"},{"n":"Barrett, Tom","p":"R","s":"Michigan","v":"Yea"},{"n":"Baumgartner, Michael","p":"R","s":"Washington","v":"Yea"},{"n":"Bean, Aaron","p":"R","s":"Florida","v":"Yea"},{"n":"Beatty, Joyce","p":"D","s":"Ohio","v":"Nay"},{"n":"Begich, Nicholas","p":"R","s":"Alaska","v":"Yea"},{"n":"Bell, Wesley","p":"D","s":"Missouri","v":"Nay"},{"n":"Bentz, Cliff","p":"R","s":"Oregon","v":"Yea"},{"n":"Bera, Ami","p":"D","s":"California","v":"Nay"},{"n":"Bergman, Jack","p":"R","s":"Michigan","v":"Yea"},{"n":"Beyer, Donald S.","p":"D","s":"Virginia","v":"Nay"},{"n":"Bice, Stephanie I.","p":"R","s":"Oklahoma","v":"Yea"},{"n":"Biggs, Andy","p":"R","s":"Arizona","v":"Yea"},{"n":"Biggs, Sheri","p":"R","s":"South Carolina","v":"Yea"},{"n":"Bilirakis, Gus M.","p":"R","s":"Florida","v":"Yea"},{"n":"Bishop, Sanford D.","p":"D","s":"Georgia","v":"Nay"},{"n":"Boebert, Lauren","p":"R","s":"Colorado","v":"Yea"},{"n":"Bonamici, Suzanne","p":"D","s":"Oregon","v":"Nay"},{"n":"Bost, Mike","p":"R","s":"Illinois","v":"Yea"},{"n":"Boyle, Brendan F.","p":"D","s":"Pennsylvania","v":"Nay"},{"n":"Brecheen, Josh","p":"R","s":"Oklahoma","v":"Yea"},{"n":"Bresnahan, Robert","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Brown, Shontel M.","p":"D","s":"Ohio","v":"Nay"},{"n":"Brownley, Julia","p":"D","s":"California","v":"Nay"},{"n":"Buchanan, Vern","p":"R","s":"Florida","v":"Yea"},{"n":"Budzinski, Nikki","p":"D","s":"Illinois","v":"Nay"},{"n":"Burchett, Tim","p":"R","s":"Tennessee","v":"Yea"},{"n":"Burlison, Eric","p":"R","s":"Missouri","v":"Yea"},{"n":"Bynum, Janelle","p":"D","s":"Oregon","v":"Nay"},{"n":"Calvert, Ken","p":"R","s":"California","v":"Yea"},{"n":"Cammack, Kat","p":"R","s":"Florida","v":"Yea"},{"n":"Carbajal, Salud O.","p":"D","s":"California","v":"Nay"},{"n":"Carey, Mike","p":"R","s":"Ohio","v":"Yea"},{"n":"Carson, André","p":"D","s":"Indiana","v":"Nay"},{"n":"Carter, Earl L. \"Buddy\"","p":"R","s":"Georgia","v":"Yea"},{"n":"Carter, John R.","p":"R","s":"Texas","v":"Yea"},{"n":"Carter, Troy A.","p":"D","s":"Louisiana","v":"Nay"},{"n":"Casar, Greg","p":"D","s":"Texas","v":"Nay"},{"n":"Case, Ed","p":"D","s":"Hawaii","v":"Yea"},{"n":"Casten, Sean","p":"D","s":"Illinois","v":"Nay"},{"n":"Castor, Kathy","p":"D","s":"Florida","v":"Nay"},{"n":"Castro, Joaquin","p":"D","s":"Texas","v":"Nay"},{"n":"Cherfilus-McCormick, Sheila","p":"D","s":"Florida","v":"Nay"},{"n":"Chu, Judy","p":"D","s":"California","v":"Nay"},{"n":"Ciscomani, Juan","p":"R","s":"Arizona","v":"Yea"},{"n":"Cisneros, Gilbert Ray","p":"D","s":"California","v":"Nay"},{"n":"Clark, Katherine M.","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Clarke, Yvette D.","p":"D","s":"New York","v":"Nay"},{"n":"Cleaver, Emanuel","p":"D","s":"Missouri","v":"Nay"},{"n":"Cline, Ben","p":"R","s":"Virginia","v":"Yea"},{"n":"Cloud, Michael","p":"R","s":"Texas","v":"Yea"},{"n":"Clyburn, James E.","p":"D","s":"South Carolina","v":"Nay"},{"n":"Clyde, Andrew S.","p":"R","s":"Georgia","v":"Yea"},{"n":"Cohen, Steve","p":"D","s":"Tennessee","v":"Nay"},{"n":"Cole, Tom","p":"R","s":"Oklahoma","v":"Yea"},{"n":"Collins, Mike","p":"R","s":"Georgia","v":"Yea"},{"n":"Comer, James","p":"R","s":"Kentucky","v":"Yea"},{"n":"Conaway, Herbert","p":"D","s":"New Jersey","v":"Nay"},{"n":"Connolly, Gerald E.","p":"D","s":"Virginia","v":"Nay"},{"n":"Correa, J. Luis","p":"D","s":"California","v":"Nay"},{"n":"Costa, Jim","p":"D","s":"California","v":"Nay"},{"n":"Courtney, Joe","p":"D","s":"Connecticut","v":"Nay"},{"n":"Craig, Angie","p":"D","s":"Minnesota","v":"Nay"},{"n":"Crane, Elijah","p":"R","s":"Arizona","v":"Yea"},{"n":"Crank, Jeff","p":"R","s":"Colorado","v":"Yea"},{"n":"Crawford, Eric A. \"Rick\"","p":"R","s":"Arkansas","v":"Yea"},{"n":"Crenshaw, Dan","p":"R","s":"Texas","v":"Yea"},{"n":"Crockett, Jasmine","p":"D","s":"Texas","v":"Nay"},{"n":"Crow, Jason","p":"D","s":"Colorado","v":"Nay"},{"n":"Cuellar, Henry","p":"D","s":"Texas","v":"Yea"},{"n":"Davids, Sharice","p":"D","s":"Kansas","v":"Nay"},{"n":"Davidson, Warren","p":"R","s":"Ohio","v":"Yea"},{"n":"Davis, Danny K.","p":"D","s":"Illinois","v":"Nay"},{"n":"Davis, Donald G.","p":"D","s":"North Carolina","v":"Nay"},{"n":"De La Cruz, Monica","p":"R","s":"Texas","v":"Not Voting"},{"n":"Dean, Madeleine","p":"D","s":"Pennsylvania","v":"Nay"},{"n":"DeGette, Diana","p":"D","s":"Colorado","v":"Nay"},{"n":"DeLauro, Rosa L.","p":"D","s":"Connecticut","v":"Nay"},{"n":"DelBene, Suzan K.","p":"D","s":"Washington","v":"Nay"},{"n":"Deluzio, Christopher R.","p":"D","s":"Pennsylvania","v":"Nay"},{"n":"DeSaulnier, Mark","p":"D","s":"California","v":"Nay"},{"n":"DesJarlais, Scott","p":"R","s":"Tennessee","v":"Yea"},{"n":"Dexter, Maxine","p":"D","s":"Oregon","v":"Nay"},{"n":"Diaz-Balart, Mario","p":"R","s":"Florida","v":"Yea"},{"n":"Dingell, Debbie","p":"D","s":"Michigan","v":"Nay"},{"n":"Doggett, Lloyd","p":"D","s":"Texas","v":"Nay"},{"n":"Donalds, Byron","p":"R","s":"Florida","v":"Yea"},{"n":"Downing, Troy","p":"R","s":"Montana","v":"Yea"},{"n":"Dunn, Neal P.","p":"R","s":"Florida","v":"Yea"},{"n":"Edwards, Chuck","p":"R","s":"North Carolina","v":"Yea"},{"n":"Elfreth, Sarah","p":"D","s":"Maryland","v":"Nay"},{"n":"Ellzey, Jake","p":"R","s":"Texas","v":"Yea"},{"n":"Emmer, Tom","p":"R","s":"Minnesota","v":"Yea"},{"n":"Escobar, Veronica","p":"D","s":"Texas","v":"Nay"},{"n":"Espaillat, Adriano","p":"D","s":"New York","v":"Nay"},{"n":"Estes, Ron","p":"R","s":"Kansas","v":"Yea"},{"n":"Evans, Dwight","p":"D","s":"Pennsylvania","v":"Nay"},{"n":"Evans, Gabe","p":"R","s":"Colorado","v":"Yea"},{"n":"Ezell, Mike","p":"R","s":"Mississippi","v":"Yea"},{"n":"Fallon, Pat","p":"R","s":"Texas","v":"Yea"},{"n":"Fedorchak, Julie","p":"R","s":"North Dakota","v":"Yea"},{"n":"Feenstra, Randy","p":"R","s":"Iowa","v":"Yea"},{"n":"Fields, Cleo","p":"D","s":"Louisiana","v":"Nay"},{"n":"Figures, Shomari","p":"D","s":"Alabama","v":"Nay"},{"n":"Fine, Randy","p":"R","s":"Florida","v":"Yea"},{"n":"Finstad, Brad","p":"R","s":"Minnesota","v":"Yea"},{"n":"Fischbach, Michelle","p":"R","s":"Minnesota","v":"Yea"},{"n":"Fitzgerald, Scott","p":"R","s":"Wisconsin","v":"Yea"},{"n":"Fitzpatrick, Brian K.","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Fleischmann, Charles J. \"Chuck\"","p":"R","s":"Tennessee","v":"Yea"},{"n":"Fletcher, Lizzie","p":"D","s":"Texas","v":"Nay"},{"n":"Flood, Mike","p":"R","s":"Nebraska","v":"Yea"},{"n":"Fong, Vince","p":"R","s":"California","v":"Yea"},{"n":"Foster, Bill","p":"D","s":"Illinois","v":"Nay"},{"n":"Foushee, Valerie P.","p":"D","s":"North Carolina","v":"Nay"},{"n":"Foxx, Virginia","p":"R","s":"North Carolina","v":"Yea"},{"n":"Frankel, Lois","p":"D","s":"Florida","v":"Nay"},{"n":"Franklin, Scott","p":"R","s":"Florida","v":"Yea"},{"n":"Friedman, Laura","p":"D","s":"California","v":"Nay"},{"n":"Frost, Maxwell","p":"D","s":"Florida","v":"Nay"},{"n":"Fry, Russell","p":"R","s":"South Carolina","v":"Yea"},{"n":"Fulcher, Russ","p":"R","s":"Idaho","v":"Yea"},{"n":"Garamendi, John","p":"D","s":"California","v":"Nay"},{"n":"Garbarino, Andrew R.","p":"R","s":"New York","v":"Yea"},{"n":"García, Jesús G. \"Chuy\"","p":"D","s":"Illinois","v":"Nay"},{"n":"Garcia, Robert","p":"D","s":"California","v":"Nay"},{"n":"Garcia, Sylvia R.","p":"D","s":"Texas","v":"Nay"},{"n":"Gill, Brandon","p":"R","s":"Texas","v":"Yea"},{"n":"Gillen, Laura","p":"D","s":"New York","v":"Nay"},{"n":"Gimenez, Carlos A.","p":"R","s":"Florida","v":"Yea"},{"n":"Golden, Jared F.","p":"D","s":"Maine","v":"Yea"},{"n":"Goldman, Craig","p":"R","s":"Texas","v":"Yea"},{"n":"Goldman, Daniel S.","p":"D","s":"New York","v":"Nay"},{"n":"Gomez, Jimmy","p":"D","s":"California","v":"Nay"},{"n":"Gonzales, Tony","p":"R","s":"Texas","v":"Yea"},{"n":"Gonzalez, Vicente","p":"D","s":"Texas","v":"Nay"},{"n":"Gooden, Lance","p":"R","s":"Texas","v":"Yea"},{"n":"Goodlander, Maggie","p":"D","s":"New Hampshire","v":"Nay"},{"n":"Gosar, Paul A.","p":"R","s":"Arizona","v":"Yea"},{"n":"Gottheimer, Josh","p":"D","s":"New Jersey","v":"Nay"},{"n":"Graves, Sam","p":"R","s":"Missouri","v":"Yea"},{"n":"Gray, Adam","p":"D","s":"California","v":"Nay"},{"n":"Green, Al","p":"D","s":"Texas","v":"Nay"},{"n":"Green, Mark E.","p":"R","s":"Tennessee","v":"Yea"},{"n":"Greene, Marjorie Taylor","p":"R","s":"Georgia","v":"Not Voting"},{"n":"Griffith, H. Morgan","p":"R","s":"Virginia","v":"Yea"},{"n":"Grothman, Glenn","p":"R","s":"Wisconsin","v":"Yea"},{"n":"Guest, Michael","p":"R","s":"Mississippi","v":"Yea"},{"n":"Guthrie, Brett","p":"R","s":"Kentucky","v":"Yea"},{"n":"Hageman, Harriet M.","p":"R","s":"Wyoming","v":"Yea"},{"n":"Hamadeh, Abraham","p":"R","s":"Arizona","v":"Yea"},{"n":"Harder, Josh","p":"D","s":"California","v":"Nay"},{"n":"Haridopolos, Mike","p":"R","s":"Florida","v":"Yea"},{"n":"Harrigan, Pat","p":"R","s":"North Carolina","v":"Yea"},{"n":"Harris, Andy","p":"R","s":"Maryland","v":"Yea"},{"n":"Harris, Mark","p":"R","s":"North Carolina","v":"Yea"},{"n":"Harshbarger, Diana","p":"R","s":"Tennessee","v":"Yea"},{"n":"Hayes, Jahana","p":"D","s":"Connecticut","v":"Nay"},{"n":"Hern, Kevin","p":"R","s":"Oklahoma","v":"Yea"},{"n":"Higgins, Clay","p":"R","s":"Louisiana","v":"Yea"},{"n":"Hill, J. French","p":"R","s":"Arkansas","v":"Yea"},{"n":"Himes, James A.","p":"D","s":"Connecticut","v":"Nay"},{"n":"Hinson, Ashley","p":"R","s":"Iowa","v":"Yea"},{"n":"Horsford, Steven","p":"D","s":"Nevada","v":"Nay"},{"n":"Houchin, Erin","p":"R","s":"Indiana","v":"Yea"},{"n":"Houlahan, Chrissy","p":"D","s":"Pennsylvania","v":"Nay"},{"n":"Hoyer, Steny H.","p":"D","s":"Maryland","v":"Nay"},{"n":"Hoyle, Val T.","p":"D","s":"Oregon","v":"Nay"},{"n":"Hudson, Richard","p":"R","s":"North Carolina","v":"Yea"},{"n":"Huffman, Jared","p":"D","s":"California","v":"Nay"},{"n":"Huizenga, Bill","p":"R","s":"Michigan","v":"Yea"},{"n":"Hunt, Wesley","p":"R","s":"Texas","v":"Yea"},{"n":"Hurd, Jeff","p":"R","s":"Colorado","v":"Yea"},{"n":"Issa, Darrell","p":"R","s":"California","v":"Yea"},{"n":"Ivey, Glenn","p":"D","s":"Maryland","v":"Nay"},{"n":"Jack, Brian","p":"R","s":"Georgia","v":"Yea"},{"n":"Jackson, Jonathan L.","p":"D","s":"Illinois","v":"Nay"},{"n":"Jackson, Ronny","p":"R","s":"Texas","v":"Yea"},{"n":"Jacobs, Sara","p":"D","s":"California","v":"Nay"},{"n":"James, John","p":"R","s":"Michigan","v":"Yea"},{"n":"Jayapal, Pramila","p":"D","s":"Washington","v":"Nay"},{"n":"Jeffries, Hakeem S.","p":"D","s":"New York","v":"Nay"},{"n":"Johnson, Dusty","p":"R","s":"South Dakota","v":"Yea"},{"n":"Johnson, Henry C. \"Hank\"","p":"D","s":"Georgia","v":"Nay"},{"n":"Johnson, Julie","p":"D","s":"Texas","v":"Nay"},{"n":"Johnson, Mike","p":"R","s":"Louisiana","v":"Yea"},{"n":"Jordan, Jim","p":"R","s":"Ohio","v":"Yea"},{"n":"Joyce, David P.","p":"R","s":"Ohio","v":"Yea"},{"n":"Joyce, John","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Kamlager-Dove, Sydney","p":"D","s":"California","v":"Nay"},{"n":"Kaptur, Marcy","p":"D","s":"Ohio","v":"Nay"},{"n":"Kean, Thomas H.","p":"R","s":"New Jersey","v":"Yea"},{"n":"Keating, William R.","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Kelly, Mike","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Kelly, Robin L.","p":"D","s":"Illinois","v":"Nay"},{"n":"Kelly, Trent","p":"R","s":"Mississippi","v":"Yea"},{"n":"Kennedy, Mike","p":"R","s":"Utah","v":"Yea"},{"n":"Kennedy, Timothy M.","p":"D","s":"New York","v":"Nay"},{"n":"Khanna, Ro","p":"D","s":"California","v":"Nay"},{"n":"Kiggans, Jennifer A.","p":"R","s":"Virginia","v":"Yea"},{"n":"Kiley, Kevin","p":"R","s":"California","v":"Yea"},{"n":"Kim, Young","p":"R","s":"California","v":"Yea"},{"n":"Knott, Brad","p":"R","s":"North Carolina","v":"Yea"},{"n":"Krishnamoorthi, Raja","p":"D","s":"Illinois","v":"Nay"},{"n":"Kustoff, David","p":"R","s":"Tennessee","v":"Yea"},{"n":"LaHood, Darin","p":"R","s":"Illinois","v":"Yea"},{"n":"LaLota, Nick","p":"R","s":"New York","v":"Yea"},{"n":"LaMalfa, Doug","p":"R","s":"California","v":"Yea"},{"n":"Landsman, Greg","p":"D","s":"Ohio","v":"Nay"},{"n":"Langworthy, Nicholas A.","p":"R","s":"New York","v":"Yea"},{"n":"Larsen, Rick","p":"D","s":"Washington","v":"Nay"},{"n":"Larson, John B.","p":"D","s":"Connecticut","v":"Nay"},{"n":"Latimer, George","p":"D","s":"New York","v":"Nay"},{"n":"Latta, Robert E.","p":"R","s":"Ohio","v":"Yea"},{"n":"Lawler, Michael","p":"R","s":"New York","v":"Yea"},{"n":"Lee, Laurel M.","p":"R","s":"Florida","v":"Yea"},{"n":"Lee, Summer L.","p":"D","s":"Pennsylvania","v":"Nay"},{"n":"Lee, Susie","p":"D","s":"Nevada","v":"Nay"},{"n":"Leger Fernandez, Teresa","p":"D","s":"New Mexico","v":"Nay"},{"n":"Letlow, Julia","p":"R","s":"Louisiana","v":"Yea"},{"n":"Levin, Mike","p":"D","s":"California","v":"Nay"},{"n":"Liccardo, Sam","p":"D","s":"California","v":"Nay"},{"n":"Lieu, Ted","p":"D","s":"California","v":"Nay"},{"n":"Lofgren, Zoe","p":"D","s":"California","v":"Nay"},{"n":"Loudermilk, Barry","p":"R","s":"Georgia","v":"Yea"},{"n":"Lucas, Frank D.","p":"R","s":"Oklahoma","v":"Yea"},{"n":"Luna, Anna Paulina","p":"R","s":"Florida","v":"Yea"},{"n":"Luttrell, Morgan","p":"R","s":"Texas","v":"Yea"},{"n":"Lynch, Stephen F.","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Mace, Nancy","p":"R","s":"South Carolina","v":"Yea"},{"n":"Mackenzie, Ryan","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Magaziner, Seth","p":"D","s":"Rhode Island","v":"Nay"},{"n":"Malliotakis, Nicole","p":"R","s":"New York","v":"Yea"},{"n":"Maloy, Celeste","p":"R","s":"Utah","v":"Yea"},{"n":"Mann, Tracey","p":"R","s":"Kansas","v":"Yea"},{"n":"Mannion, John","p":"D","s":"New York","v":"Nay"},{"n":"Massie, Thomas","p":"R","s":"Kentucky","v":"Yea"},{"n":"Mast, Brian J.","p":"R","s":"Florida","v":"Yea"},{"n":"Matsui, Doris O.","p":"D","s":"California","v":"Nay"},{"n":"McBath, Lucy","p":"D","s":"Georgia","v":"Nay"},{"n":"McBride, Sarah","p":"D","s":"Delaware","v":"Nay"},{"n":"McCaul, Michael T.","p":"R","s":"Texas","v":"Yea"},{"n":"McClain Delaney, April","p":"D","s":"Maryland","v":"Nay"},{"n":"McClain, Lisa C.","p":"R","s":"Michigan","v":"Yea"},{"n":"McClellan, Jennifer L.","p":"D","s":"Virginia","v":"Nay"},{"n":"McClintock, Tom","p":"R","s":"California","v":"Yea"},{"n":"McCollum, Betty","p":"D","s":"Minnesota","v":"Nay"},{"n":"McCormick, Richard","p":"R","s":"Georgia","v":"Yea"},{"n":"McDonald Rivet, Kristen","p":"D","s":"Michigan","v":"Nay"},{"n":"McDowell, Addison","p":"R","s":"North Carolina","v":"Yea"},{"n":"McGarvey, Morgan","p":"D","s":"Kentucky","v":"Nay"},{"n":"McGovern, James P.","p":"D","s":"Massachusetts","v":"Nay"},{"n":"McGuire, John","p":"R","s":"Virginia","v":"Yea"},{"n":"McIver, LaMonica","p":"D","s":"New Jersey","v":"Nay"},{"n":"Meeks, Gregory W.","p":"D","s":"New York","v":"Nay"},{"n":"Menendez, Robert","p":"D","s":"New Jersey","v":"Nay"},{"n":"Meng, Grace","p":"D","s":"New York","v":"Nay"},{"n":"Messmer, Mark","p":"R","s":"Indiana","v":"Yea"},{"n":"Meuser, Daniel","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Mfume, Kweisi","p":"D","s":"Maryland","v":"Nay"},{"n":"Miller, Carol D.","p":"R","s":"West Virginia","v":"Yea"},{"n":"Miller, Mary E.","p":"R","s":"Illinois","v":"Yea"},{"n":"Miller, Max L.","p":"R","s":"Ohio","v":"Yea"},{"n":"Miller-Meeks, Mariannette","p":"R","s":"Iowa","v":"Yea"},{"n":"Mills, Cory","p":"R","s":"Florida","v":"Yea"},{"n":"Min, Dave","p":"D","s":"California","v":"Nay"},{"n":"Moolenaar, John R.","p":"R","s":"Michigan","v":"Yea"},{"n":"Moore, Barry","p":"R","s":"Alabama","v":"Yea"},{"n":"Moore, Blake D.","p":"R","s":"Utah","v":"Yea"},{"n":"Moore, Gwen","p":"D","s":"Wisconsin","v":"Nay"},{"n":"Moore, Riley","p":"R","s":"West Virginia","v":"Yea"},{"n":"Moore, Tim","p":"R","s":"North Carolina","v":"Yea"},{"n":"Moran, Nathaniel","p":"R","s":"Texas","v":"Yea"},{"n":"Morelle, Joseph D.","p":"D","s":"New York","v":"Nay"},{"n":"Morrison, Kelly","p":"D","s":"Minnesota","v":"Nay"},{"n":"Moskowitz, Jared","p":"D","s":"Florida","v":"Nay"},{"n":"Moulton, Seth","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Mrvan, Frank J.","p":"D","s":"Indiana","v":"Nay"},{"n":"Mullin, Kevin","p":"D","s":"California","v":"Nay"},{"n":"Murphy, Gregory F.","p":"R","s":"North Carolina","v":"Yea"},{"n":"Nadler, Jerrold","p":"D","s":"New York","v":"Nay"},{"n":"Neal, Richard E.","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Neguse, Joe","p":"D","s":"Colorado","v":"Nay"},{"n":"Nehls, Troy E.","p":"R","s":"Texas","v":"Yea"},{"n":"Newhouse, Dan","p":"R","s":"Washington","v":"Yea"},{"n":"Norcross, Donald","p":"D","s":"New Jersey","v":"Not Voting"},{"n":"Norman, Ralph","p":"R","s":"South Carolina","v":"Yea"},{"n":"Nunn, Zachary","p":"R","s":"Iowa","v":"Yea"},{"n":"Obernolte, Jay","p":"R","s":"California","v":"Yea"},{"n":"Ocasio-Cortez, Alexandria","p":"D","s":"New York","v":"Nay"},{"n":"Ogles, Andrew","p":"R","s":"Tennessee","v":"Yea"},{"n":"Olszewski, Johnny","p":"D","s":"Maryland","v":"Nay"},{"n":"Omar, Ilhan","p":"D","s":"Minnesota","v":"Nay"},{"n":"Onder, Robert","p":"R","s":"Missouri","v":"Not Voting"},{"n":"Owens, Burgess","p":"R","s":"Utah","v":"Yea"},{"n":"Pallone, Frank","p":"D","s":"New Jersey","v":"Nay"},{"n":"Palmer, Gary J.","p":"R","s":"Alabama","v":"Yea"},{"n":"Panetta, Jimmy","p":"D","s":"California","v":"Nay"},{"n":"Pappas, Chris","p":"D","s":"New Hampshire","v":"Nay"},{"n":"Patronis, Jimmy","p":"R","s":"Florida","v":"Yea"},{"n":"Pelosi, Nancy","p":"D","s":"California","v":"Nay"},{"n":"Perez, Marie Gluesenkamp","p":"D","s":"Washington","v":"Yea"},{"n":"Perry, Scott","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Peters, Scott H.","p":"D","s":"California","v":"Nay"},{"n":"Pettersen, Brittany","p":"D","s":"Colorado","v":"Nay"},{"n":"Pfluger, August","p":"R","s":"Texas","v":"Yea"},{"n":"Pingree, Chellie","p":"D","s":"Maine","v":"Nay"},{"n":"Pocan, Mark","p":"D","s":"Wisconsin","v":"Nay"},{"n":"Pou, Nellie","p":"D","s":"New Jersey","v":"Nay"},{"n":"Pressley, Ayanna","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Quigley, Mike","p":"D","s":"Illinois","v":"Nay"},{"n":"Ramirez, Delia C.","p":"D","s":"Illinois","v":"Nay"},{"n":"Randall, Emily","p":"D","s":"Washington","v":"Nay"},{"n":"Raskin, Jamie","p":"D","s":"Maryland","v":"Nay"},{"n":"Reschenthaler, Guy","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Riley, Josh","p":"D","s":"New York","v":"Nay"},{"n":"Rivas, Luz","p":"D","s":"California","v":"Nay"},{"n":"Rogers, Harold","p":"R","s":"Kentucky","v":"Yea"},{"n":"Rogers, Mike D.","p":"R","s":"Alabama","v":"Yea"},{"n":"Rose, John W.","p":"R","s":"Tennessee","v":"Yea"},{"n":"Ross, Deborah K.","p":"D","s":"North Carolina","v":"Nay"},{"n":"Rouzer, David","p":"R","s":"North Carolina","v":"Yea"},{"n":"Roy, Chip","p":"R","s":"Texas","v":"Yea"},{"n":"Ruiz, Raul","p":"D","s":"California","v":"Nay"},{"n":"Rulli, Michael A.","p":"R","s":"Ohio","v":"Yea"},{"n":"Rutherford, John H.","p":"R","s":"Florida","v":"Yea"},{"n":"Ryan, Patrick","p":"D","s":"New York","v":"Nay"},{"n":"Salazar, Maria Elvira","p":"R","s":"Florida","v":"Yea"},{"n":"Salinas, Andrea","p":"D","s":"Oregon","v":"Nay"},{"n":"Sánchez, Linda T.","p":"D","s":"California","v":"Nay"},{"n":"Scalise, Steve","p":"R","s":"Louisiana","v":"Yea"},{"n":"Scanlon, Mary Gay","p":"D","s":"Pennsylvania","v":"Nay"},{"n":"Schakowsky, Janice D.","p":"D","s":"Illinois","v":"Nay"},{"n":"Schmidt, Derek","p":"R","s":"Kansas","v":"Yea"},{"n":"Schneider, Bradley Scott","p":"D","s":"Illinois","v":"Nay"},{"n":"Scholten, Hillary J.","p":"D","s":"Michigan","v":"Nay"},{"n":"Schrier, Kim","p":"D","s":"Washington","v":"Nay"},{"n":"Schweikert, David","p":"R","s":"Arizona","v":"Yea"},{"n":"Scott, Austin","p":"R","s":"Georgia","v":"Yea"},{"n":"Scott, David","p":"D","s":"Georgia","v":"Nay"},{"n":"Scott, Robert C. \"Bobby\"","p":"D","s":"Virginia","v":"Nay"},{"n":"Self, Keith","p":"R","s":"Texas","v":"Yea"},{"n":"Sessions, Pete","p":"R","s":"Texas","v":"Yea"},{"n":"Sewell, Terri A.","p":"D","s":"Alabama","v":"Nay"},{"n":"Sherman, Brad","p":"D","s":"California","v":"Nay"},{"n":"Sherrill, Mikie","p":"D","s":"New Jersey","v":"Nay"},{"n":"Shreve, Jefferson","p":"R","s":"Indiana","v":"Yea"},{"n":"Simon, Lateefah","p":"D","s":"California","v":"Nay"},{"n":"Simpson, Michael K.","p":"R","s":"Idaho","v":"Yea"},{"n":"Smith, Adam","p":"D","s":"Washington","v":"Nay"},{"n":"Smith, Adrian","p":"R","s":"Nebraska","v":"Yea"},{"n":"Smith, Christopher H.","p":"R","s":"New Jersey","v":"Yea"},{"n":"Smith, Jason","p":"R","s":"Missouri","v":"Yea"},{"n":"Smucker, Lloyd","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Sorensen, Eric","p":"D","s":"Illinois","v":"Nay"},{"n":"Soto, Darren","p":"D","s":"Florida","v":"Nay"},{"n":"Spartz, Victoria","p":"R","s":"Indiana","v":"Yea"},{"n":"Stansbury, Melanie A.","p":"D","s":"New Mexico","v":"Nay"},{"n":"Stanton, Greg","p":"D","s":"Arizona","v":"Nay"},{"n":"Stauber, Pete","p":"R","s":"Minnesota","v":"Yea"},{"n":"Stefanik, Elise M.","p":"R","s":"New York","v":"Yea"},{"n":"Steil, Bryan","p":"R","s":"Wisconsin","v":"Yea"},{"n":"Steube, W. Gregory","p":"R","s":"Florida","v":"Yea"},{"n":"Stevens, Haley M.","p":"D","s":"Michigan","v":"Nay"},{"n":"Strickland, Marilyn","p":"D","s":"Washington","v":"Nay"},{"n":"Strong, Dale W.","p":"R","s":"Alabama","v":"Yea"},{"n":"Stutzman, Marlin A.","p":"R","s":"Indiana","v":"Yea"},{"n":"Subramanyam, Suhas","p":"D","s":"Virginia","v":"Nay"},{"n":"Suozzi, Thomas R.","p":"D","s":"New York","v":"Nay"},{"n":"Swalwell, Eric","p":"D","s":"California","v":"Nay"},{"n":"Sykes, Emilia Strong","p":"D","s":"Ohio","v":"Nay"},{"n":"Takano, Mark","p":"D","s":"California","v":"Nay"},{"n":"Taylor, David","p":"R","s":"Ohio","v":"Yea"},{"n":"Tenney, Claudia","p":"R","s":"New York","v":"Yea"},{"n":"Thanedar, Shri","p":"D","s":"Michigan","v":"Nay"},{"n":"Thompson, Bennie G.","p":"D","s":"Mississippi","v":"Nay"},{"n":"Thompson, Glenn","p":"R","s":"Pennsylvania","v":"Yea"},{"n":"Thompson, Mike","p":"D","s":"California","v":"Nay"},{"n":"Tiffany, Thomas P.","p":"R","s":"Wisconsin","v":"Yea"},{"n":"Timmons, William R.","p":"R","s":"South Carolina","v":"Yea"},{"n":"Titus, Dina","p":"D","s":"Nevada","v":"Nay"},{"n":"Tlaib, Rashida","p":"D","s":"Michigan","v":"Nay"},{"n":"Tokuda, Jill N.","p":"D","s":"Hawaii","v":"Nay"},{"n":"Tonko, Paul","p":"D","s":"New York","v":"Nay"},{"n":"Torres, Norma J.","p":"D","s":"California","v":"Nay"},{"n":"Torres, Ritchie","p":"D","s":"New York","v":"Nay"},{"n":"Trahan, Lori","p":"D","s":"Massachusetts","v":"Nay"},{"n":"Tran, Derek","p":"D","s":"California","v":"Nay"},{"n":"Turner, Michael R.","p":"R","s":"Ohio","v":"Yea"},{"n":"Underwood, Lauren","p":"D","s":"Illinois","v":"Nay"},{"n":"Valadao, David G.","p":"R","s":"California","v":"Not Voting"},{"n":"Van Drew, Jefferson","p":"R","s":"New Jersey","v":"Yea"},{"n":"Van Duyne, Beth","p":"R","s":"Texas","v":"Yea"},{"n":"Van Orden, Derrick","p":"R","s":"Wisconsin","v":"Yea"},{"n":"Vargas, Juan","p":"D","s":"California","v":"Nay"},{"n":"Vasquez, Gabe","p":"D","s":"New Mexico","v":"Nay"},{"n":"Veasey, Marc A.","p":"D","s":"Texas","v":"Nay"},{"n":"Velázquez, Nydia M.","p":"D","s":"New York","v":"Nay"},{"n":"Vindman, Eugene","p":"D","s":"Virginia","v":"Nay"},{"n":"Wagner, Ann","p":"R","s":"Missouri","v":"Yea"},{"n":"Walberg, Tim","p":"R","s":"Michigan","v":"Yea"},{"n":"Wasserman Schultz, Debbie","p":"D","s":"Florida","v":"Nay"},{"n":"Waters, Maxine","p":"D","s":"California","v":"Nay"},{"n":"Watson Coleman, Bonnie","p":"D","s":"New Jersey","v":"Nay"},{"n":"Weber, Randy K. Sr.","p":"R","s":"Texas","v":"Yea"},{"n":"Webster, Daniel","p":"R","s":"Florida","v":"Yea"},{"n":"Westerman, Bruce","p":"R","s":"Arkansas","v":"Yea"},{"n":"Whitesides, George","p":"D","s":"California","v":"Nay"},{"n":"Wied, Tony","p":"R","s":"Wisconsin","v":"Yea"},{"n":"Williams, Nikema","p":"D","s":"Georgia","v":"Nay"},{"n":"Williams, Roger","p":"R","s":"Texas","v":"Yea"},{"n":"Wilson, Frederica S.","p":"D","s":"Florida","v":"Nay"},{"n":"Wilson, Joe","p":"R","s":"South Carolina","v":"Yea"},{"n":"Wittman, Robert J.","p":"R","s":"Virginia","v":"Yea"},{"n":"Womack, Steve","p":"R","s":"Arkansas","v":"Yea"},{"n":"Yakym, Rudy","p":"R","s":"Indiana","v":"Yea"},{"n":"Zinke, Ryan K.","p":"R","s":"Montana","v":"Yea"}];
+
+    function renderVotes(data) {
+        const tbody = document.getElementById('vote-tbody');
+        const countEl = document.getElementById('vote-count');
+        if (!tbody) return;
+        tbody.innerHTML = data.map(r => {
+            const pColor = r.p === 'R' ? '#991b1b' : r.p === 'D' ? '#1e40af' : '#6b7280';
+            const pBg = r.p === 'R' ? '#fef2f2' : r.p === 'D' ? '#eff6ff' : '#f5f5f4';
+            const vColor = r.v === 'Yea' ? '#166534' : r.v === 'Nay' ? '#991b1b' : '#6b7280';
+            const vBg = r.v === 'Yea' ? '#dcfce7' : r.v === 'Nay' ? '#fef2f2' : '#f5f5f4';
+            const pLabel = r.p === 'R' ? 'Republican' : r.p === 'D' ? 'Democrat' : r.p;
+            return `<tr style="border-bottom:1px solid #e7e5e4;">
+                <td style="padding:9px 14px;">${r.n}</td>
+                <td style="padding:9px 14px;"><span style="font-family:monospace;font-size:10px;background:${pBg};color:${pColor};padding:2px 8px;border-radius:100px;white-space:nowrap;">${pLabel}</span></td>
+                <td style="padding:9px 14px;font-size:13px;color:#78716c;">${r.s}</td>
+                <td style="padding:9px 14px;"><span style="font-family:monospace;font-size:10px;background:${vBg};color:${vColor};padding:2px 8px;border-radius:100px;">${r.v}</span></td>
+            </tr>`;
+        }).join('');
+        if (countEl) countEl.textContent = `Showing ${data.length} of ${VOTES.length} representatives`;
+    }
+
+    function filterVotes() {
+        const search = (document.getElementById('vote-search')?.value || '').toLowerCase();
+        const vf = document.getElementById('vote-filter')?.value || '';
+        renderVotes(VOTES.filter(r => {
+            const ms = !search || r.n.toLowerCase().includes(search) || r.s.toLowerCase().includes(search);
+            const mv = !vf || r.v === vf;
+            return ms && mv;
+        }));
+    }
+
+    /* ── Senator/rep finders ── */
+    document.addEventListener('DOMContentLoaded', function() {
+        const stateBtn = document.getElementById('state-btn');
+        const zipBtn = document.getElementById('zip-btn');
+        const zipInput = document.getElementById('zip-input');
+        if (stateBtn) stateBtn.addEventListener('click', function() {
+            const state = document.getElementById('state-select')?.value;
+            if (state) window.open('https://www.senate.gov/senators/senators-contact.htm', '_blank');
+            else document.getElementById('state-select').focus();
+        });
+        if (zipBtn) zipBtn.addEventListener('click', findRep);
+        if (zipInput) zipInput.addEventListener('keydown', e => { if (e.key === 'Enter') findRep(); });
+        renderVotes(VOTES);
+    });
+
     /* ── FAQ accordions ── */
     function toggleFaq(btn) {
         const item = btn.closest('.faq-item');
@@ -1115,10 +1221,7 @@
         }
     }
 
-    // Allow Enter key in ZIP field
-    document.getElementById('zip-input').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') findRep();
-    });
+
 
     /* ── Scroll reveal ── */
     const io = new IntersectionObserver((entries) => {
