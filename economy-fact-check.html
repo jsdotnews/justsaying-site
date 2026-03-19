@@ -383,7 +383,7 @@ VERDICTS.forEach((v, idx) => {
 function downloadVerdict(idx) {
   const v = VERDICTS[idx];
   const canvas = document.createElement("canvas");
-  canvas.width = 1200; canvas.height = 630;
+  canvas.width = 1080; canvas.height = 1080;
   const ctx = canvas.getContext("2d");
 
   // Background
@@ -462,7 +462,7 @@ function downloadChart() {
   const m = activeMetricObj;
   // Build a clean offscreen canvas with branding
   const offscreen = document.createElement("canvas");
-  offscreen.width = 1200; offscreen.height = 630;
+  offscreen.width = 1080; offscreen.height = 1080;
   const ctx2 = offscreen.getContext("2d");
 
   ctx2.fillStyle = "#faf8f5";
