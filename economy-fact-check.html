@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Economic Claims vs. Federal Data | Just Saying News</title>
+<meta name="description" content="Someone made 5 claims about the economy. We looked up the actual numbers. Here's what's true.">
+<meta property="og:title" content="5 Economic Claims vs. Federal Data | Just Saying News">
+<meta property="og:description" content="Someone made 5 claims about the economy. We looked up the actual numbers. Here's what's true.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://justsaying.news/economy-fact-check.html">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://justsaying.news/economy-fact-check.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231c1917'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='700' text-anchor='middle' fill='%23c44422'>js</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P5K9ZJYRHQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P5K9ZJYRHQ');</script>
+<style>
+:root {
+  --ink: #1c1917;
+  --ink-soft: #44403c;
+  --ink-muted: #78716c;
+  --paper: #faf8f5;
+  --paper-warm: #f5f0ea;
+  --card: #ffffff;
+  --navy: #1e293b;
+  --action: #c44422;
+  --action-hover: #a83919;
+  --green: #15803d;
+  --green-bg: #f0fdf4;
+  --amber: #b45309;
+  --amber-bg: #fffbeb;
+  --red-bg: #fef2f2;
+  --rule: #e7e5e4;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --radius: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::selection { background: var(--action); color: white; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+/* TOPBAR */
+.topbar { border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: rgba(250,248,245,.97); backdrop-filter: blur(16px); z-index: 100; }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 20px; max-width: 860px; margin: 0 auto; }
+.logo { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -.5px; }
+.logo:hover { text-decoration: none; }
+.logo em { font-style: normal; color: var(--action); }
+.topbar-nav a { font-size: 13px; font-weight: 600; color: var(--ink-soft); padding: 6px 10px; border-radius: 8px; text-decoration: none; transition: all .15s; }
+.topbar-nav a:hover { background: var(--ink); color: white; }
+
+/* NP BAR */
+.np-bar { background: var(--navy); padding: 10px 20px; text-align: center; }
+.np-bar p { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: .3px; }
+
+/* HERO */
+.hero { padding: 36px 0 28px; border-bottom: 1px solid var(--rule); }
+.hero-tag { font-family: var(--font-mono); font-size: 11px; color: var(--action); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(26px, 5vw, 44px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; color: var(--navy); margin-bottom: 14px; }
+.hero-lede { font-size: 17px; line-height: 1.6; color: var(--ink-soft); max-width: 620px; margin-bottom: 10px; }
+.attribution { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); }
+.attribution a { color: var(--ink-muted); text-decoration: underline; }
+
+/* CURRENT NUMBERS — FIRST THING PEOPLE SEE */
+.numbers-strip { background: var(--navy); padding: 28px 0; }
+.numbers-label { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; text-align: center; }
+.numbers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 560px) { .numbers-grid { grid-template-columns: 1fr; } }
+.num-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 20px; text-align: center; }
+.num-what { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px; font-weight: 500; }
+.num-value { font-family: var(--font-display); font-size: 42px; font-weight: 900; color: white; line-height: 1; letter-spacing: -2px; margin-bottom: 6px; }
+.num-context { font-size: 12px; line-height: 1.4; }
+.num-context.good { color: #86efac; }
+.num-context.warn { color: #fcd34d; }
+.num-source { display: block; font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 8px; text-decoration: underline; }
+.num-source:hover { color: rgba(255,255,255,0.6); }
+.numbers-note { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.35); text-align: center; margin-top: 16px; }
+
+/* VERDICTS — BIG AND TAPPABLE */
+.section { padding: 36px 0; border-bottom: 1px solid var(--rule); }
+.section-label { font-family: var(--font-mono); font-size: 11px; color: var(--action); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+.section h2 { font-family: var(--font-display); font-size: clamp(20px, 3.5vw, 26px); font-weight: 700; letter-spacing: -.8px; color: var(--navy); margin-bottom: 6px; }
+.section-sub { font-size: 15px; color: var(--ink-muted); margin-bottom: 24px; }
+
+.verdict-list { display: flex; flex-direction: column; gap: 8px; }
+
+.verdict-item { border-radius: var(--radius); overflow: hidden; }
+
+.verdict-btn {
+  width: 100%;
+  background: white;
+  border: 1px solid var(--rule);
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-family: var(--font-body);
+  transition: all .15s;
+  border-radius: var(--radius);
+  gap: 16px;
+}
+.verdict-btn:hover { border-color: var(--ink-muted); }
+.verdict-btn.open { border-radius: var(--radius) var(--radius) 0 0; }
+
+.verdict-claim { font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.3; flex: 1; }
+.verdict-claim small { display: block; font-size: 12px; font-weight: 400; color: var(--ink-muted); margin-top: 3px; font-style: italic; }
+
+.verdict-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.badge-false { background: var(--red-bg); color: #991b1b; }
+.badge-misleading { background: var(--amber-bg); color: var(--amber); }
+.badge-true { background: var(--green-bg); color: var(--green); }
+.verdict-arrow { font-size: 11px; color: var(--ink-muted); transition: transform .2s; }
+.verdict-btn.open .verdict-arrow { transform: rotate(180deg); }
+
+.verdict-detail {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-top: none;
+  padding: 20px 22px;
+  display: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.verdict-detail.open { display: block; }
+.verdict-detail p { font-family: var(--font-display); font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+.verdict-detail a.src-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-decoration: underline;
+  letter-spacing: .5px;
+}
+.verdict-detail a.src-link:hover { color: var(--action); }
+
+/* CHART SECTION */
+.tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--navy); flex-wrap: wrap; }
+.tab-btn { background: transparent; color: var(--ink-muted); border: 1px solid transparent; border-bottom: none; margin-bottom: -2px; padding: 8px 18px; cursor: pointer; font-size: 13px; font-weight: 600; text-transform: uppercase; font-family: var(--font-body); transition: all .15s; border-radius: 6px 6px 0 0; }
+.tab-btn.active { background: var(--paper); color: var(--ink); border-color: var(--navy); border-bottom: 2px solid var(--paper); }
+.chart-panel { background: white; border: 1px solid var(--rule); border-top: none; padding: 18px 16px 14px; border-radius: 0 0 var(--radius) var(--radius); }
+.chart-meta { display: flex; justify-content: space-between; align-items: center; padding: 0 4px 12px; flex-wrap: wrap; gap: 8px; border-bottom: 1px dashed var(--rule); margin-bottom: 14px; }
+.chart-desc { font-size: 12px; color: var(--ink-muted); font-family: var(--font-mono); }
+.chart-source { font-size: 11px; color: var(--ink-muted); text-decoration: underline; font-family: var(--font-mono); margin-left: 10px; }
+.chart-source:hover { color: var(--action); }
+.legend { display: flex; gap: 16px; }
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+.legend-label { font-size: 11px; color: var(--ink-muted); font-family: var(--font-mono); }
+.chart-wrap { position: relative; height: 240px; }
+.chart-note { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); margin-top: 12px; line-height: 1.7; }
+
+/* TABLE */
+.data-table-wrap { margin-top: 24px; overflow-x: auto; border: 1px solid var(--rule); border-radius: var(--radius); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead { background: var(--navy); color: white; }
+th { font-family: var(--font-mono); font-weight: 500; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+tbody tr { border-bottom: 1px solid var(--rule); }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover td { background: var(--paper-warm); }
+td { padding: 10px 14px; font-size: 13px; }
+td.period { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); white-space: nowrap; }
+
+/* SOURCES */
+.sources-grid { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.sources-grid a { font-size: 13px; color: #2a5aa7; text-decoration: underline; }
+
+/* FOOTER */
+.footer { padding: 32px 0; text-align: center; border-top: 1px solid var(--rule); }
+.footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
+.footer-logo em { font-style: normal; color: var(--action); }
+.footer-fine { font-family: var(--font-mono); font-size: 11px; color: var(--ink-muted); line-height: 1.8; }
+
+@media (max-width: 600px) { .hero { padding: 24px 0 20px; } .section { padding: 28px 0; } .badge { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="logo">just saying<em>.</em></a>
+    <nav class="topbar-nav">
+      <a href="hr22-save-act.html">SAVE Act</a>
+    </nav>
+  </div>
+</header>
+
+<div class="np-bar">
+  <p>We check claims against government data. Every source is linked. You decide what to think.</p>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-tag">Fact Check &middot; March 2026</div>
+    <h1>Someone made 5 claims<br>about the economy.<br>Here's what the data says.</h1>
+    <p class="hero-lede">We looked up the actual numbers from the federal government — and linked every source so you can check it yourself.</p>
+    <p class="attribution">Claims from <a href="https://x.com/gavinnewsom/status/2031901526717767926?s=46" target="_blank" rel="noreferrer">a post on X.com &middot; March 11, 2026 &#8599;</a></p>
+  </div>
+</div>
+
+<!-- WHERE WE ARE RIGHT NOW — FIRST -->
+<div class="numbers-strip">
+  <div class="wrap">
+    <div class="numbers-label">Where things actually stand right now</div>
+    <div class="numbers-grid">
+      <a class="num-card" href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noreferrer" style="text-decoration:none">
+        <div class="num-what">Are prices rising?</div>
+        <div class="num-value">2.4%</div>
+        <div class="num-context good">&#8595; Down from 8.5% in 2022</div>
+        <span class="num-source">Feb 2026 &middot; Bureau of Labor Statistics &#8599;</span>
+      </a>
+      <a class="num-card" href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noreferrer" style="text-decoration:none">
+        <div class="num-what">Out of work?</div>
+        <div class="num-value">4.4%</div>
+        <div class="num-context warn">&#8593; Up 0.4 pts since Jan 2025</div>
+        <span class="num-source">Feb 2026 &middot; Bureau of Labor Statistics &#8599;</span>
+      </a>
+      <a class="num-card" href="https://gasprices.aaa.com/" target="_blank" rel="noreferrer" style="text-decoration:none">
+        <div class="num-what">Gas prices?</div>
+        <div class="num-value">$3.58</div>
+        <div class="num-context warn">&#8593; Up from $2.81 low in Jan 2026</div>
+        <span class="num-source">Mar 2026 &middot; AAA &#8599;</span>
+      </a>
+    </div>
+    <div class="numbers-note">Feb 2026 is the most recent full month of data. March 2026 releases April 10.</div>
+  </div>
+</div>
+
+<!-- VERDICTS — THE WHOLE POINT -->
+<section class="section" id="verdicts">
+  <div class="wrap">
+    <div class="section-label">The verdicts</div>
+    <h2>Tap a claim to see what the data actually shows</h2>
+    <p class="section-sub">We don't take sides. We just look up the numbers.</p>
+    <div class="verdict-list" id="verdict-list"></div>
+  </div>
+</section>
+
+<!-- CHART — FOR PEOPLE WHO WANT TO DIG IN -->
+<section class="section" id="data">
+  <div class="wrap">
+    <div class="section-label">For the curious</div>
+    <h2>How we got here — the numbers over time</h2>
+    <p class="section-sub" style="margin-bottom:20px">Same month each year, so the comparison is fair. Blue = Biden years. Red = Trump years.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="chart-panel">
+      <div class="chart-meta">
+        <div>
+          <span class="chart-desc" id="chart-desc"></span>
+          <a class="chart-source" id="chart-source" href="#" target="_blank" rel="noreferrer">&#8599; Source</a>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#2a5aa7"></div><span class="legend-label">Biden</span></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#c44422"></div><span class="legend-label">Trump</span></div>
+        </div>
+      </div>
+      <div class="chart-wrap"><canvas id="myChart"></canvas></div>
+    </div>
+    <p class="chart-note" id="chart-note"></p>
+    <div class="data-table-wrap">
+      <table>
+        <thead><tr><th>Year</th><th>Context</th><th>President</th><th>Prices rising at</th><th>Unemployed</th><th>Gas</th></tr></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="section" style="border-bottom:none" id="sources">
+  <div class="wrap">
+    <div class="section-label">Where we got this</div>
+    <h2>Primary sources</h2>
+    <p class="section-sub" style="margin-bottom:20px">Every number links directly to the government agency that published it.</p>
+    <div class="sources-grid" id="sources-list"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-logo">just saying<em>.</em></div>
+    <div class="footer-fine">
+      Independent. We don't lobby, endorse, or take ads.<br>
+      We apply this same standard to any politician, regardless of party.
+    </div>
+  </div>
+</footer>
+
+<script>
+const SOURCES = {
+  inflation:    "https://www.bls.gov/news.release/cpi.nr0.htm",
+  unemployment: "https://www.bls.gov/news.release/empsit.nr0.htm",
+  gas:          "https://gasprices.aaa.com/",
+  gdp:          "https://www.bea.gov/news/2026/gross-domestic-product-fourth-quarter-and-year-2025-advance-estimate",
+  scotus:       "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf"
+};
+
+// March comparisons + Feb 2026 current
+const DATA = [
+  { year: "Mar 2022", context: "Ukraine war",    president: "Biden", inflation: 8.5, unemployment: 3.6, gas: 4.17 },
+  { year: "Mar 2023", context: "post-war",       president: "Biden", inflation: 5.0, unemployment: 3.5, gas: 3.46 },
+  { year: "Mar 2024", context: "election year",  president: "Biden", inflation: 3.5, unemployment: 3.8, gas: 3.53 },
+  { year: "Mar 2025", context: "Trump month 3",  president: "Trump", inflation: 2.4, unemployment: 4.2, gas: 3.10 },
+  { year: "Feb 2026", context: "latest data",    president: "Trump", inflation: 2.4, unemployment: 4.4, gas: 3.58 },
+];
+
+const METRICS = [
+  { key: "inflation",    label: "Price Increases", unit: "%", source: SOURCES.inflation,    yMax: 10, desc: "How fast prices are rising year over year" },
+  { key: "unemployment", label: "Unemployment",    unit: "%", source: SOURCES.unemployment, yMax: 6,  desc: "Share of workers without a job" },
+  { key: "gas",          label: "Gas Prices",      unit: "$", source: SOURCES.gas,          yMax: 5,  desc: "National average, regular unleaded" },
+];
+
+const VERDICTS = [
+  {
+    claim: '"Wrecked economy"',
+    sub: "The claim that the U.S. economy has been destroyed",
+    verdict: "false", badge: "FALSE",
+    detail: "A wrecked economy shrinks. The U.S. economy grew 2.2% in 2025. That's not a wreck — that's growth. You can dislike the direction, but the economy is not wrecked.",
+    source: SOURCES.gdp, sourceLabel: "BEA GDP Report"
+  },
+  {
+    claim: '"Gas prices are soaring"',
+    sub: "The claim that gas prices are way up",
+    verdict: "misleading", badge: "MISLEADING",
+    detail: "Gas is $3.58 right now — up from a $2.81 low in January 2026, partly because of a conflict with Iran. But that's still lower than the $4.17 Americans paid in March 2022. It went up recently, yes. 'Soaring' is a stretch.",
+    source: SOURCES.gas, sourceLabel: "AAA Gas Prices"
+  },
+  {
+    claim: '"Inflation is up"',
+    sub: "The claim that inflation has gotten worse",
+    verdict: "false", badge: "FALSE",
+    detail: "Inflation means how fast prices are rising. In 2022 prices were rising at 8.5% — very fast. By the time the current administration took over in early 2025, that had already fallen to 2.4%. It's still 2.4% today. Prices aren't going up faster. They're going up slower.",
+    source: SOURCES.inflation, sourceLabel: "BLS Consumer Price Index"
+  },
+  {
+    claim: '"Unemployment is skyrocketing"',
+    sub: "The claim that job losses are out of control",
+    verdict: "misleading", badge: "TRUE — OVERSTATED",
+    detail: "More people are out of work than a year ago — unemployment went from 4.0% to 4.4%. That's real. But a 0.4-point rise over more than a year is not 'skyrocketing.' The normal U.S. average since WWII is around 5–6%. We're still below that.",
+    source: SOURCES.unemployment, sourceLabel: "BLS Employment Situation"
+  },
+  {
+    claim: '"Fighting to TAX the American people"',
+    sub: "The claim about tariffs being imposed",
+    verdict: "false", badge: "FALSE",
+    detail: "The tariffs being described — taxes on imported goods — were struck down by the Supreme Court on February 20, 2026. Six of the nine justices ruled the president didn't have the legal authority to impose them. The policy was thrown out by the nation's highest court.",
+    source: SOURCES.scotus, sourceLabel: "Supreme Court Opinion"
+  },
+];
+
+const COLORS = { Biden: "#2a5aa7", Trump: "#c44422" };
+let activeMetric = "inflation";
+let chartInstance = null;
+
+// Build verdicts
+const list = document.getElementById("verdict-list");
+VERDICTS.forEach(v => {
+  const colorMap = { false: "#991b1b", misleading: "#b45309", true: "#15803d" };
+  const bgMap = { false: "#fef2f2", misleading: "#fffbeb", true: "#f0fdf4" };
+  const item = document.createElement("div");
+  item.className = "verdict-item";
+
+  const btn = document.createElement("button");
+  btn.className = "verdict-btn";
+  btn.innerHTML = `
+    <span class="verdict-claim">
+      ${v.claim}
+      <small>${v.sub}</small>
+    </span>
+    <div class="verdict-badge">
+      <span class="badge badge-${v.verdict}">${v.badge}</span>
+      <span class="verdict-arrow">&#9660;</span>
+    </div>
+  `;
+  btn.style.borderLeft = `4px solid ${colorMap[v.verdict]}`;
+
+  const detail = document.createElement("div");
+  detail.className = "verdict-detail";
+  detail.style.borderLeft = `4px solid ${colorMap[v.verdict]}`;
+  detail.style.background = bgMap[v.verdict];
+  detail.innerHTML = `<p>${v.detail}</p><a class="src-link" href="${v.source}" target="_blank" rel="noreferrer">&#8599; ${v.sourceLabel}</a>`;
+
+  btn.addEventListener("click", () => {
+    const isOpen = detail.classList.contains("open");
+    document.querySelectorAll(".verdict-detail").forEach(d => d.classList.remove("open"));
+    document.querySelectorAll(".verdict-btn").forEach(b => b.classList.remove("open"));
+    if (!isOpen) {
+      detail.classList.add("open");
+      btn.classList.add("open");
+    }
+  });
+
+  item.appendChild(btn);
+  item.appendChild(detail);
+  list.appendChild(item);
+});
+
+// Build tabs
+const tabsEl = document.getElementById("tabs");
+METRICS.forEach(m => {
+  const btn = document.createElement("button");
+  btn.className = "tab-btn" + (m.key === activeMetric ? " active" : "");
+  btn.textContent = m.label;
+  btn.addEventListener("click", () => {
+    activeMetric = m.key;
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    updateChart();
+  });
+  tabsEl.appendChild(btn);
+});
+
+// Build table
+const tbody = document.getElementById("table-body");
+DATA.forEach(row => {
+  const tr = document.createElement("tr");
+  const isCurrent = row.year === "Feb 2026";
+  tr.style.background = isCurrent ? "#fffbeb" : "";
+  tr.innerHTML = `
+    <td class="period">${row.year}${isCurrent ? ' <span style="font-size:10px;color:#b45309">(latest)</span>' : ''}</td>
+    <td style="font-size:13px;color:#78716c;font-style:italic">${row.context}</td>
+    <td><span style="color:${COLORS[row.president]};font-family:var(--font-mono);font-size:11px">${row.president}</span></td>
+    <td><a href="${SOURCES.inflation}" target="_blank" rel="noreferrer" style="color:var(--ink);border-bottom:1px dotted #ccc">${row.inflation}%/yr</a></td>
+    <td><a href="${SOURCES.unemployment}" target="_blank" rel="noreferrer" style="color:var(--ink);border-bottom:1px dotted #ccc">${row.unemployment}%</a></td>
+    <td><a href="${SOURCES.gas}" target="_blank" rel="noreferrer" style="color:var(--ink);border-bottom:1px dotted #ccc">$${row.gas}</a></td>
+  `;
+  tbody.appendChild(tr);
+});
+
+// Sources list
+const srcList = document.getElementById("sources-list");
+[
+  { label: "BLS — Consumer Price Index (inflation)",                    url: SOURCES.inflation },
+  { label: "BLS — Employment Situation (unemployment)",                 url: SOURCES.unemployment },
+  { label: "AAA — National Average Gas Prices",                         url: SOURCES.gas },
+  { label: "BEA — GDP Q4 & Full Year 2025",                            url: SOURCES.gdp },
+  { label: "SCOTUS — Learning Resources, Inc. v. Trump (Feb 20, 2026)", url: SOURCES.scotus },
+].forEach(s => {
+  const a = document.createElement("a");
+  a.href = s.url; a.target = "_blank"; a.rel = "noreferrer"; a.textContent = s.label;
+  srcList.appendChild(a);
+});
+
+// Chart
+function updateChart() {
+  const m = METRICS.find(x => x.key === activeMetric);
+  document.getElementById("chart-desc").textContent = m.desc;
+  document.getElementById("chart-source").href = m.source;
+  document.getElementById("chart-note").textContent =
+    "March figures used for 2022–2025 so each year is a fair comparison. Feb 2026 is the most recent available.";
+
+  if (chartInstance) chartInstance.destroy();
+  chartInstance = new Chart(document.getElementById("myChart"), {
+    type: "bar",
+    data: {
+      labels: DATA.map(d => d.year),
+      datasets: [{
+        data: DATA.map(d => d[m.key]),
+        backgroundColor: DATA.map((d,i) => {
+          const base = COLORS[d.president];
+          return i === DATA.length - 1 ? base + "ff" : base + "bb";
+        }),
+        borderColor: DATA.map(d => COLORS[d.president]),
+        borderWidth: 1,
+        borderRadius: 4,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => m.unit === "$" ? `$${ctx.parsed.y}` : `${ctx.parsed.y}${m.unit}`,
+            afterLabel: ctx => DATA[ctx.dataIndex].president,
+          },
+          backgroundColor: "#1c1917",
+          titleColor: "#78716c",
+          bodyColor: "#faf8f5",
+          titleFont: { family: "'IBM Plex Mono', monospace", size: 11 },
+          bodyFont:  { family: "'IBM Plex Mono', monospace", size: 14 },
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: "#78716c", font: { family: "'IBM Plex Mono', monospace", size: 11 } } },
+        y: { min: 0, max: m.yMax, grid: { color: "#e7e5e4" }, border: { display: false },
+             ticks: { color: "#78716c", font: { family: "'IBM Plex Mono', monospace", size: 11 },
+                      callback: v => m.unit === "$" ? `$${v}` : `${v}%` } }
+      }
+    }
+  });
+}
+updateChart();
+</script>
+</body>
+</html>
